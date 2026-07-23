@@ -272,9 +272,6 @@
   .carousel-dots button{width:7px; height:7px; border-radius:50%; background:var(--line); border:none; cursor:pointer; padding:0;}
   .carousel-dots button.active{background:var(--gold-deep); width:20px; border-radius:4px; transition:width .25s ease;}
 
-  .work-note{margin-top:28px; padding:16px 20px; border:1px dashed var(--line); border-radius:4px; font-size:13px; color:var(--steel-soft); display:flex; gap:10px; align-items:flex-start;}
-  .work-note b{color:var(--ink);}
-
 
   /* ---------- why us ---------- */
   .why{background:var(--paper-dim);}
@@ -542,7 +539,7 @@
       <button class="carousel-btn carousel-next" id="workNext" aria-label="Next">›</button>
       <div class="work-track" id="workTrack">
         <div class="work-slide">
-          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-photo"><img src="assets/work/tires-delivery-1.jpg" alt="JSIXRON team delivering premium tires to a client warehouse" loading="lazy"></div>
           <div class="work-body"><span class="work-tag">GM-01 · Tires</span><h4>Fleet Tire Supply</h4><p>Bulk tires, delivered.</p></div>
         </div>
         <div class="work-slide">
@@ -562,15 +559,15 @@
           <div class="work-body"><span class="work-tag">OS-01 · Hauling</span><h4>Scheduled Hauling Job</h4><p>Hauled, on schedule.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-photo"><img src="assets/work/ppe-boots-delivery.jpg" alt="JSIXRON team delivering safety boots and PPE stock to a construction client" loading="lazy"></div>
           <div class="work-body"><span class="work-tag">GM-02 · PPE</span><h4>Safety Gear Deployment</h4><p>PPE, site-wide.</p></div>
+        </div>
+        <div class="work-slide">
+          <div class="work-photo"><img src="assets/work/cones-delivery-1.jpg" alt="JSIXRON team delivering traffic safety cones to an aviation ground support client" loading="lazy"></div>
+          <div class="work-body"><span class="work-tag">GM-02 · Safety Gear</span><h4>Traffic Cone Supply</h4><p>Delivered, ready for site.</p></div>
         </div>
       </div>
       <div class="carousel-dots" id="workDots"></div>
-    </div>
-    <div class="work-note reveal">
-      <span>ℹ</span>
-      <span><b>Note:</b> placeholders — real photos coming soon.</span>
     </div>
   </div>
 </section>
