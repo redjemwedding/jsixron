@@ -3,44 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSIXRON — General Merchandise &amp; Industrial Supplies | Manila</title>
-<meta name="description" content="JSIXRON Consumer Products &amp; Merchandise — Manila-based supplier of tires, PPE, industrial materials, corporate branding, uniforms, hauling, scrap, importation consulting and IT services.">
+<title>JSIXRON Consumer Products &amp; Merchandise | General Trading &amp; Industrial Supply — Manila</title>
+<meta name="description" content="JSIXRON Consumer Products &amp; Merchandise is a Manila-based general trading company supplying tires, industrial materials, PPE, corporate branding, uniforms, hauling, scrap disposal, importation consulting and IT services.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0b1f3a;
-    --ink-soft:#0f2a4d;
-    --paper:#ffffff;
-    --paper-dim:#eef1f6;
-    --gold:#2f6fed;
-    --gold-light:#6fa0ff;
-    --gold-deep:#1c4fb3;
-    --steel:#25324a;
-    --steel-soft:#5b6b85;
-    --line:rgba(11,31,58,0.12);
-    --line-light:rgba(255,255,255,0.16);
-    --shadow:0 20px 50px rgba(11,31,58,0.16);
+    --ink:#0b0c0e;
+    --ink-soft:#141519;
+    --paper:#faf9f6;
+    --paper-dim:#f0eee7;
+    --gold:#b8922f;
+    --gold-light:#d7b563;
+    --gold-deep:#7a5f1f;
+    --steel:#2b2d33;
+    --steel-soft:#666a75;
+    --line:rgba(11,12,14,0.12);
+    --line-light:rgba(255,255,255,0.14);
+    --shadow:0 16px 44px rgba(11,12,14,0.14);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--paper);
-    color:var(--ink);
+    color:var(--steel);
     font-family:'Inter', sans-serif;
-    line-height:1.5;
+    line-height:1.55;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
   h1,h2,h3,h4{
-    font-family:'Oswald', sans-serif;
-    text-transform:uppercase;
-    letter-spacing:0.02em;
+    font-family:'Playfair Display', serif;
     font-weight:600;
-    line-height:1.05;
+    line-height:1.15;
+    color:var(--ink);
   }
-  .mono{font-family:'JetBrains Mono', monospace;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
@@ -49,43 +48,36 @@
     *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
   }
 
-  /* ---------- reveal on scroll ---------- */
-  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1; transform:translateY(0);}
 
   /* ---------- header ---------- */
   header{
     position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(11,11,12,0.92);
-    backdrop-filter:blur(8px);
+    background:rgba(11,12,14,0.96);
     border-bottom:1px solid var(--line-light);
-    transition:transform .4s ease;
   }
-  header .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:78px;
-  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between; height:76px;}
   .brand{display:flex; align-items:center; gap:12px; color:var(--paper);}
   .brand-mark{
-    width:38px; height:38px; border-radius:50%;
-    border:1.5px solid var(--gold);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Oswald',sans-serif; font-weight:700; color:var(--gold);
-    font-size:15px; flex-shrink:0;
+    width:42px; height:42px; border-radius:50%; overflow:hidden; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; background:var(--ink);
+    border:1px solid rgba(184,146,47,0.4);
   }
-  .brand-name{font-family:'Oswald',sans-serif; font-weight:700; font-size:19px; letter-spacing:0.06em; color:var(--paper);}
-  .brand-name span{color:var(--gold);}
-  nav{display:flex; align-items:center; gap:34px;}
+  .brand-mark img{width:100%; height:100%; object-fit:cover;}
+  .brand-name{display:flex; flex-direction:column; line-height:1.15;}
+  .brand-name b{font-family:'Playfair Display',serif; font-weight:700; font-size:18px; letter-spacing:0.02em; color:var(--paper);}
+  .brand-name span{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-light);}
+  nav{display:flex; align-items:center; gap:32px;}
   nav a{
-    color:var(--paper); opacity:0.78; font-size:13px; letter-spacing:0.08em;
-    text-transform:uppercase; font-weight:500; transition:opacity .2s, color .2s;
-    position:relative; padding:4px 0;
+    color:rgba(250,249,246,0.78); font-size:13.5px; font-weight:500;
+    transition:color .2s; position:relative;
   }
-  nav a:hover{opacity:1; color:var(--gold-light);}
+  nav a:hover{color:var(--gold-light);}
   .nav-cta{
-    border:1px solid var(--gold); color:var(--gold) !important;
-    padding:9px 18px; border-radius:2px; opacity:1 !important;
-    font-family:'JetBrains Mono',monospace; letter-spacing:0.03em;
+    border:1px solid var(--gold); color:var(--gold-light) !important;
+    padding:9px 20px; border-radius:2px;
+    font-size:13px; font-weight:600;
   }
   .nav-cta:hover{background:var(--gold); color:var(--ink) !important;}
   .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
@@ -93,297 +85,283 @@
 
   /* ---------- hero ---------- */
   .hero{
-    position:relative; min-height:100svh;
-    background:
-      radial-gradient(1100px 620px at 82% -10%, rgba(47,111,237,0.16), transparent 60%),
-      linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+    position:relative; min-height:92vh;
+    background:linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
     color:var(--paper);
     display:flex; align-items:center;
-    padding-top:78px;
-    overflow:hidden;
+    padding-top:76px;
   }
   .hero::before{
     content:"";
     position:absolute; inset:0;
     background-image:
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 88px),
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 88px);
-    mask-image:radial-gradient(700px 500px at 78% 40%, black, transparent 75%);
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.028) 0 1px, transparent 1px 96px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.028) 0 1px, transparent 1px 96px);
+    mask-image:radial-gradient(760px 520px at 80% 45%, black, transparent 72%);
     pointer-events:none;
   }
   .hero-grid{
-    display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px;
-    align-items:center; width:100%;
-    position:relative; z-index:2;
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:64px;
+    align-items:center; width:100%; position:relative; z-index:2;
   }
   .eyebrow{
     display:inline-flex; align-items:center; gap:10px;
-    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em;
-    color:var(--gold-light); text-transform:uppercase; margin-bottom:22px;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.14em;
+    color:var(--gold-light); text-transform:uppercase; margin-bottom:20px;
   }
-  .eyebrow::before{content:""; width:26px; height:1px; background:var(--gold);}
+  .eyebrow::before{content:""; width:24px; height:1px; background:var(--gold);}
   .hero h1{
-    font-size:clamp(42px,6.2vw,84px);
-    color:var(--paper);
+    font-size:clamp(34px,4.4vw,56px); color:var(--paper); font-weight:600;
+    max-width:15ch;
   }
-  .hero h1 em{
-    font-style:normal; color:var(--gold);
-    background:linear-gradient(90deg,var(--gold-light),var(--gold));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
+  .hero h1 em{font-style:normal; color:var(--gold-light);}
   .hero-sub{
-    max-width:520px; margin-top:22px; color:rgba(255,255,255,0.72);
-    font-size:17px; line-height:1.7;
+    max-width:520px; margin-top:22px; color:rgba(250,249,246,0.72);
+    font-size:16.5px; line-height:1.75;
   }
-  .hero-actions{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+  .hero-actions{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
   .btn{
     display:inline-flex; align-items:center; gap:10px;
-    padding:15px 26px; font-family:'JetBrains Mono',monospace;
-    font-size:13px; letter-spacing:0.04em; text-transform:uppercase;
-    border-radius:2px; transition:all .25s ease; cursor:pointer; border:1px solid transparent;
+    padding:14px 26px; font-family:'Inter',sans-serif; font-weight:600;
+    font-size:14px; border-radius:2px; transition:all .25s ease; cursor:pointer; border:1px solid transparent;
   }
-  .btn-primary{background:var(--gold); color:var(--ink); font-weight:500;}
-  .btn-primary:hover{background:var(--gold-light); transform:translateY(-2px);}
-  .btn-ghost{border-color:rgba(255,255,255,0.35); color:var(--paper);}
-  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-light); transform:translateY(-2px);}
+  .btn-primary{background:var(--gold); color:var(--ink);}
+  .btn-primary:hover{background:var(--gold-light);}
+  .btn-ghost{border-color:rgba(250,249,246,0.32); color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-light);}
 
-  .hero-stats{display:flex; gap:34px; margin-top:56px; flex-wrap:wrap;}
-  .stat b{display:block; font-family:'Oswald',sans-serif; font-size:30px; color:var(--gold-light);}
-  .stat span{font-size:12px; color:rgba(255,255,255,0.55); letter-spacing:0.05em; text-transform:uppercase;}
+  .hero-stats{display:flex; gap:40px; margin-top:52px; flex-wrap:wrap; border-top:1px solid var(--line-light); padding-top:28px;}
+  .stat b{display:block; font-family:'Playfair Display',serif; font-size:28px; color:var(--gold-light); font-weight:600; min-width:1ch;}
+  .stat span{font-size:12px; color:rgba(250,249,246,0.55); letter-spacing:0.03em;}
 
-  /* seal */
-  .seal-wrap{display:flex; justify-content:center; position:relative;}
-  .seal{
-    width:min(340px, 80vw); aspect-ratio:1; border-radius:50%;
-    border:1.5px solid var(--gold); position:relative;
-    display:flex; align-items:center; justify-content:center;
-    animation:spin 46s linear infinite;
+  /* emblem plate */
+  .plate-wrap{display:flex; justify-content:center;}
+  .plate{
+    width:min(320px, 74vw); aspect-ratio:1; border-radius:50%;
+    position:relative; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 1px rgba(184,146,47,0.35), 0 30px 70px rgba(0,0,0,0.5);
   }
-  .seal::before{
-    content:"";
-    position:absolute; inset:14px; border-radius:50%;
-    border:1px dashed rgba(47,111,237,0.55);
+  .plate img{width:100%; height:100%; object-fit:cover; border-radius:50%;}
+  .plate-caption{
+    text-align:center; margin-top:22px; font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(250,249,246,0.4);
   }
-  .seal-text{position:absolute; inset:0;}
-  .seal-text svg{width:100%; height:100%;}
-  .seal-core{
-    position:absolute; width:58%; aspect-ratio:1; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #0a1830, var(--ink) 70%);
-    border:1px solid var(--gold-deep);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    animation:spin-rev 46s linear infinite;
-    box-shadow:inset 0 0 30px rgba(47,111,237,0.15);
-  }
-  .seal-core .jr{font-family:'Oswald',sans-serif; font-weight:700; font-size:44px; color:var(--gold-light); letter-spacing:0.02em;}
-  .seal-core small{font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.18em; color:var(--gold); margin-top:4px;}
-  @keyframes spin{to{transform:rotate(360deg);}}
-  @keyframes spin-rev{to{transform:rotate(-360deg);}}
 
-  .scroll-cue{
-    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
-    display:flex; flex-direction:column; align-items:center; gap:8px;
-    color:rgba(255,255,255,0.45); font-family:'JetBrains Mono',monospace; font-size:10px;
-    letter-spacing:0.15em; text-transform:uppercase; z-index:2;
-  }
-  .scroll-cue .line{width:1px; height:30px; background:linear-gradient(var(--gold), transparent); animation:pulse 2s ease infinite;}
-  @keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+  /* ---------- value bar ---------- */
+  .value-bar{background:var(--ink); padding:40px 0; border-bottom:1px solid var(--line-light);}
+  .value-grid{display:grid; grid-template-columns:repeat(4,1fr);}
+  .value-item{display:flex; align-items:center; gap:14px; padding:0 24px; border-right:1px solid var(--line-light);}
+  .value-item:last-child{border-right:none;}
+  .value-item svg{width:28px; height:28px; flex-shrink:0; color:var(--gold);}
+  .value-item span{font-size:13px; font-weight:600; color:rgba(250,249,246,0.86); line-height:1.35;}
 
   /* ---------- section shells ---------- */
-  section{padding:110px 0;}
-  .section-head{max-width:640px; margin-bottom:56px;}
+  section{padding:104px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
   .section-tag{
-    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.15em;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.14em;
     text-transform:uppercase; color:var(--gold-deep); display:flex; align-items:center; gap:10px; margin-bottom:14px;
   }
   .section-tag::before{content:""; width:22px; height:1px; background:var(--gold-deep);}
-  .section-head h2{font-size:clamp(30px,4vw,46px);}
-  .section-head p{margin-top:16px; color:var(--steel-soft); font-size:16px; max-width:540px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,42px);}
+  .section-head p{margin-top:16px; color:var(--steel-soft); font-size:15.5px; max-width:540px;}
   .light-on-dark .section-tag{color:var(--gold-light);}
 
-  /* ---------- about / proprietor ---------- */
-  .about{background:var(--paper);}
-  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:start;}
-  .leadership-stack{display:flex; flex-direction:column; gap:26px;}
-  .profile-card{
-    background:var(--ink); color:var(--paper); border-radius:4px;
-    padding:36px 32px; position:relative; box-shadow:var(--shadow);
-    border:1px solid rgba(47,111,237,0.3);
-  }
-  .profile-card.secondary{padding:28px 32px;}
-  .profile-card.secondary .profile-avatar{width:52px; height:52px; font-size:18px; margin-bottom:16px;}
-  .profile-card.secondary h3{font-size:20px;}
-  .profile-card.secondary .profile-quote{margin-top:18px; font-size:14px; padding-left:16px;}
-  .profile-card::after{
-    content:"JSIXRON"; position:absolute; top:16px; right:20px;
-    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em;
-    color:rgba(255,255,255,0.25);
-  }
-  .profile-avatar{
-    width:64px; height:64px; border-radius:50%; border:1px solid var(--gold);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Oswald',sans-serif; font-size:22px; color:var(--gold-light); font-weight:700;
-    margin-bottom:22px;
-  }
-  .profile-card h3{color:var(--paper); font-size:26px;}
-  .profile-role{color:var(--gold-light); font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; margin-top:6px;}
-  .profile-quote{margin-top:26px; font-size:15px; color:rgba(255,255,255,0.75); line-height:1.75; border-left:2px solid var(--gold); padding-left:18px;}
-  .profile-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:26px;}
-  .profile-tags span{
-    font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.05em;
-    border:1px solid rgba(255,255,255,0.22); padding:6px 10px; border-radius:2px; color:rgba(255,255,255,0.7);
-  }
-  .about-copy p{color:var(--steel); font-size:16.5px; line-height:1.85; margin-bottom:18px;}
-  .about-copy strong{color:var(--ink);}
-  .motto{
-    margin-top:30px; padding-top:26px; border-top:1px solid var(--line);
-    display:flex; gap:26px;
-  }
-  .motto div b{display:block; font-family:'Oswald',sans-serif; font-size:20px; text-transform:none; letter-spacing:0; color:var(--gold-deep); font-style:normal;}
-  .motto div span{font-size:13px; color:var(--steel-soft);}
+  /* ---------- company overview ---------- */
+  .company{background:var(--paper);}
+  .company-lede{font-family:'Playfair Display',serif; font-size:clamp(21px,2.2vw,27px); color:var(--ink); font-weight:500; line-height:1.5; max-width:800px; margin-bottom:26px;}
+  .company-copy{max-width:760px;}
+  .company-copy p{color:var(--steel-soft); font-size:16px; line-height:1.85; margin-bottom:16px;}
+  .company-copy strong{color:var(--ink);}
+  .registry-row{display:flex; gap:40px; flex-wrap:wrap; margin-top:36px; padding-top:32px; border-top:1px solid var(--line);}
+  .registry-item span{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel-soft); margin-bottom:6px;}
+  .registry-item b{font-family:'Playfair Display',serif; font-size:16px; color:var(--ink); font-weight:600;}
 
-  /* ---------- manifest / catalog ---------- */
-  .manifest{background:var(--ink); color:var(--paper);}
-  .manifest .section-head p{color:rgba(255,255,255,0.6);}
-  .manifest-head-row{
-    display:grid; grid-template-columns:90px 1fr 140px;
+  /* ---------- leadership ---------- */
+  .leadership{background:var(--paper-dim);}
+  .leadership-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); max-width:760px;}
+  .lead-card{background:var(--paper-dim); padding:32px 30px;}
+  .lead-avatar{
+    width:48px; height:48px; border-radius:50%; border:1px solid var(--gold-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display',serif; font-size:17px; color:var(--gold-deep); font-weight:600;
+    margin-bottom:18px;
+  }
+  .lead-card h4{font-size:19px; margin-bottom:5px;}
+  .lead-role{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:14px;}
+  .lead-card p{font-size:13.5px; color:var(--steel-soft); line-height:1.65;}
+
+  /* ---------- catalog / capabilities ---------- */
+  .catalog{background:var(--ink); color:var(--paper);}
+  .catalog .section-head p{color:rgba(250,249,246,0.6);}
+  .catalog-head-row{
+    display:grid; grid-template-columns:84px 1fr 130px;
     padding:0 22px 14px; border-bottom:1px solid var(--line-light);
-    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em;
-    text-transform:uppercase; color:rgba(255,255,255,0.4);
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em;
+    text-transform:uppercase; color:rgba(250,249,246,0.4);
   }
-  .category-block{margin-bottom:56px;}
-  .category-title{
-    display:flex; align-items:baseline; gap:16px; margin-bottom:6px;
+  .category-block{margin-bottom:54px;}
+  .category-banner{
+    aspect-ratio:21/7; border-radius:4px; overflow:hidden; margin-bottom:22px;
+    position:relative; border:1px solid var(--line-light);
   }
-  .category-title h3{font-size:22px; color:var(--gold-light);}
-  .category-title .count{font-family:'JetBrains Mono',monospace; font-size:12px; color:rgba(255,255,255,0.4);}
+  .category-banner img{width:100%; height:100%; object-fit:cover; filter:saturate(0.9) brightness(0.72);}
+  .category-banner::after{
+    content:attr(data-caption);
+    position:absolute; left:18px; bottom:14px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em;
+    text-transform:uppercase; color:rgba(250,249,246,0.75);
+    background:rgba(11,12,14,0.5); padding:5px 10px; border-radius:2px;
+  }
+  .category-title{display:flex; align-items:baseline; gap:16px; margin-bottom:4px;}
+  .category-title h3{font-size:21px; color:var(--paper); font-weight:600;}
+  .category-title .count{font-family:'IBM Plex Mono',monospace; font-size:11px; color:rgba(250,249,246,0.4);}
   .ledger{border-top:1px solid var(--line-light);}
   .ledger-row{
-    display:grid; grid-template-columns:90px 1fr 140px;
-    align-items:center; padding:18px 22px;
-    border-bottom:1px solid var(--line-light);
-    transition:background .25s ease;
+    display:grid; grid-template-columns:84px 1fr 130px; align-items:center;
+    padding:17px 22px; border-bottom:1px solid var(--line-light);
+    transition:background .2s ease;
   }
-  .ledger-row:hover{background:rgba(47,111,237,0.06);}
-  .ledger-code{font-family:'JetBrains Mono',monospace; color:var(--gold); font-size:13px; letter-spacing:0.03em;}
-  .ledger-name{font-size:16px; color:var(--paper); font-weight:500;}
-  .ledger-status{
-    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.06em;
-    text-transform:uppercase; color:rgba(255,255,255,0.4); text-align:right;
-  }
-  .ledger-status::before{content:"● "; color:var(--gold); font-size:9px;}
+  .ledger-row:hover{background:rgba(184,146,47,0.06);}
+  .ledger-code{font-family:'IBM Plex Mono',monospace; color:var(--gold-light); font-size:12.5px;}
+  .ledger-name{font-size:15.5px; color:var(--paper); font-weight:500;}
+  .ledger-status{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:rgba(250,249,246,0.4); text-align:right;}
+  .ledger-status::before{content:"● "; color:var(--gold); font-size:8px;}
 
-  /* ---------- projects / proof of work ---------- */
-  .projects{background:var(--paper-dim);}
-  .projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
-  .project-card{
-    background:var(--paper); border:1px solid var(--line); border-radius:6px; overflow:hidden;
-    transition:transform .3s ease, box-shadow .3s ease;
-  }
-  .project-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
-  .project-photo{
-    aspect-ratio:4/3; background:
-      repeating-linear-gradient(45deg, rgba(11,31,58,0.035) 0 12px, transparent 12px 24px),
-      var(--paper-dim);
+  /* ---------- completed work ---------- */
+  .work{background:var(--paper);}
+  .work-photo{
+    aspect-ratio:4/3; background:repeating-linear-gradient(45deg, rgba(11,12,14,0.03) 0 12px, transparent 12px 24px), var(--paper-dim);
     border-bottom:1px solid var(--line);
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
     position:relative; overflow:hidden;
   }
-  .project-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
-  .photo-pending-icon{
-    width:46px; height:46px; border-radius:50%; border:1.5px dashed var(--steel-soft);
-    display:flex; align-items:center; justify-content:center; color:var(--steel-soft); font-size:20px;
+  .work-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .photo-pending-icon{width:42px; height:42px; border-radius:50%; border:1.5px dashed var(--steel-soft); display:flex; align-items:center; justify-content:center; color:var(--steel-soft); font-size:18px;}
+  .photo-pending-text{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel-soft);}
+  .work-body{padding:22px 24px;}
+  .work-tag{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:8px; display:block;}
+  .work-body h4{font-size:16.5px; margin-bottom:6px;}
+  .work-body p{font-size:13.5px; color:var(--steel-soft); line-height:1.6;}
+  /* ---------- completed work carousel ---------- */
+  .work-carousel{position:relative;}
+  .work-track{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    scrollbar-width:none; -ms-overflow-style:none;
+    border:1px solid var(--line); border-radius:4px; background:var(--paper);
   }
-  .photo-pending-text{
-    font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--steel-soft);
+  .work-track::-webkit-scrollbar{display:none;}
+  .work-slide{
+    flex:0 0 100%; scroll-snap-align:start;
+    display:grid; grid-template-columns:1.15fr 0.85fr; min-height:360px;
   }
-  .project-body{padding:22px 24px;}
-  .project-tag{
-    font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--gold-deep); margin-bottom:8px; display:block;
+  .work-slide .work-photo{aspect-ratio:auto; height:100%; border-bottom:none; border-right:1px solid var(--line);}
+  .work-slide .work-body{padding:40px 44px; display:flex; flex-direction:column; justify-content:center;}
+  .work-slide .work-body h4{font-size:23px; margin-bottom:10px;}
+  .work-slide .work-body p{font-size:14.5px;}
+  .carousel-btn{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:42px; height:42px; border-radius:50%; background:var(--paper);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; box-shadow:var(--shadow); font-size:16px; color:var(--ink); z-index:3;
   }
-  .project-body h4{font-size:17px; margin-bottom:6px;}
-  .project-body p{font-size:13.5px; color:var(--steel-soft); line-height:1.6;}
-  .projects-note{
-    margin-top:34px; padding:18px 22px; border:1px dashed var(--line);
-    border-radius:6px; font-size:13.5px; color:var(--steel-soft); display:flex; gap:12px; align-items:flex-start;
-  }
-  .projects-note b{color:var(--ink);}
+  .carousel-btn:hover{background:var(--gold); color:var(--paper); border-color:var(--gold);}
+  .carousel-prev{left:-20px;}
+  .carousel-next{right:-20px;}
+  .carousel-dots{display:flex; justify-content:center; gap:8px; margin-top:22px;}
+  .carousel-dots button{width:7px; height:7px; border-radius:50%; background:var(--line); border:none; cursor:pointer; padding:0;}
+  .carousel-dots button.active{background:var(--gold-deep); width:20px; border-radius:4px; transition:width .25s ease;}
+
+  .work-note{margin-top:28px; padding:16px 20px; border:1px dashed var(--line); border-radius:4px; font-size:13px; color:var(--steel-soft); display:flex; gap:10px; align-items:flex-start;}
+  .work-note b{color:var(--ink);}
 
 
-  .why{background:var(--paper);}
-  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .why-card{background:var(--paper); padding:36px 28px;}
-  .why-card .num{font-family:'JetBrains Mono',monospace; color:var(--gold-deep); font-size:12px; margin-bottom:18px; display:block;}
-  .why-card h4{font-size:18px; margin-bottom:10px;}
-  .why-card p{font-size:14.5px; color:var(--steel-soft); line-height:1.7;}
-
-  /* ---------- process strip ---------- */
-  .process{background:var(--paper-dim);}
-  .process-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:36px;}
-  .process-step{position:relative; padding-top:26px;}
-  .process-step::before{
-    content:attr(data-n); position:absolute; top:-6px; left:0;
-    font-family:'Oswald',sans-serif; font-size:46px; font-weight:700;
-    color:transparent; -webkit-text-stroke:1px var(--gold);
+  /* ---------- why us ---------- */
+  .why{background:var(--paper-dim);}
+  .why-layout{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;}
+  .why-intro h2{font-size:clamp(27px,3.4vw,40px); max-width:9ch;}
+  .why-intro p{margin-top:16px; color:var(--steel-soft); font-size:15px; max-width:340px; line-height:1.7;}
+  .why-list{list-style:none;}
+  .why-list li{display:flex; gap:18px; padding:22px 0; border-bottom:1px solid var(--line);}
+  .why-list li:first-child{padding-top:0;}
+  .why-check{
+    width:28px; height:28px; border-radius:50%; border:1px solid var(--gold-deep);
+    color:var(--gold-deep); display:flex; align-items:center; justify-content:center;
+    font-size:13px; flex-shrink:0; margin-top:2px;
   }
-  .process-step h4{font-size:16.5px; margin-bottom:8px;}
-  .process-step p{font-size:14px; color:var(--steel-soft); line-height:1.65;}
+  .why-list li b{display:block; font-family:'Playfair Display',serif; font-size:17.5px; color:var(--ink); font-weight:600; margin-bottom:4px;}
+  .why-list li span{font-size:13.5px; color:var(--steel-soft);}
+
+  /* ---------- process ---------- */
+  .process{background:var(--paper);}
+  .timeline{position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; margin-top:8px;}
+  .timeline::before{content:""; position:absolute; top:14px; left:0; right:0; height:1px; background:var(--line); z-index:0;}
+  .timeline-step{position:relative; z-index:1;}
+  .timeline-dot{
+    width:29px; height:29px; border-radius:50%; background:var(--paper);
+    border:1.5px solid var(--gold-deep); display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display',serif; font-size:13px; color:var(--gold-deep); font-weight:700; margin-bottom:22px;
+  }
+  .timeline-step h4{font-size:16px; margin-bottom:7px;}
+  .timeline-step p{font-size:13.5px; color:var(--steel-soft); line-height:1.6;}
 
   /* ---------- contact ---------- */
   .contact{background:var(--ink); color:var(--paper);}
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start;}
-  .contact-list{margin-top:34px;}
-  .contact-item{
-    display:flex; gap:18px; padding:20px 0; border-bottom:1px solid var(--line-light);
-  }
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  .contact-list{margin-top:30px;}
+  .contact-item{display:flex; gap:18px; padding:19px 0; border-bottom:1px solid var(--line-light);}
   .contact-item .ic{
-    width:40px; height:40px; border:1px solid var(--gold); border-radius:50%;
+    width:38px; height:38px; border:1px solid var(--gold-deep); border-radius:50%;
     display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    color:var(--gold-light); font-family:'JetBrains Mono',monospace; font-size:14px;
+    color:var(--gold-light); font-family:'IBM Plex Mono',monospace; font-size:13px;
   }
-  .contact-item b{display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:4px;}
-  .contact-item a, .contact-item span.val{font-size:16px; color:var(--paper);}
+  .contact-item b{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,249,246,0.45); margin-bottom:4px;}
+  .contact-item a, .contact-item span.val{font-size:15.5px; color:var(--paper);}
   .contact-item a:hover{color:var(--gold-light);}
-  .card-visual{
-    border-radius:6px; overflow:hidden; border:1px solid rgba(47,111,237,0.35);
-    box-shadow:var(--shadow); transform:rotate(1.2deg); transition:transform .4s ease;
-  }
-  .card-visual:hover{transform:rotate(0deg) scale(1.015);}
-  .card-caption{
-    text-align:center; margin-top:16px; font-family:'JetBrains Mono',monospace;
-    font-size:11px; letter-spacing:0.1em; color:rgba(255,255,255,0.4); text-transform:uppercase;
-  }
+  .card-visual{border-radius:4px; overflow:hidden; border:1px solid var(--line-light);}
+  .card-caption{text-align:center; margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:rgba(250,249,246,0.4); text-transform:uppercase;}
 
   /* ---------- footer ---------- */
-  footer{background:var(--ink); border-top:1px solid var(--line-light); padding:38px 0;}
-  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
-  .footer-row p{color:rgba(255,255,255,0.4); font-size:13px;}
-  .footer-row .brand-name{font-size:16px;}
+  footer{background:var(--ink); border-top:1px solid var(--line-light); padding:56px 0 30px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; padding-bottom:36px; border-bottom:1px solid var(--line-light);}
+  .footer-brand{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .footer-brand b{font-family:'Playfair Display',serif; font-size:18px; color:var(--paper); font-weight:700;}
+  .footer-col p{color:rgba(250,249,246,0.55); font-size:13.5px; line-height:1.8; max-width:280px;}
+  .footer-col h5{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,249,246,0.45); margin-bottom:16px;}
+  .footer-col a{display:block; color:rgba(250,249,246,0.7); font-size:13.5px; margin-bottom:10px;}
+  .footer-col a:hover{color:var(--gold-light);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding-top:26px;}
+  .footer-bottom p{color:rgba(250,249,246,0.4); font-size:12.5px;}
 
   /* ---------- responsive ---------- */
   @media (max-width:920px){
-    nav{position:fixed; top:78px; left:0; right:0; background:var(--ink); flex-direction:column; align-items:flex-start; padding:24px 32px; gap:20px; transform:translateY(-140%); transition:transform .35s ease; border-bottom:1px solid var(--line-light);}
+    nav{position:fixed; top:76px; left:0; right:0; background:var(--ink); flex-direction:column; align-items:flex-start; padding:24px 32px; gap:18px; transform:translateY(-140%); transition:transform .35s ease; border-bottom:1px solid var(--line-light);}
     nav.open{transform:translateY(0);}
     .burger{display:flex;}
-    .hero-grid{grid-template-columns:1fr; text-align:left;}
-    .seal-wrap{margin-top:50px;}
-    .about-grid{grid-template-columns:1fr;}
-    .why-grid{grid-template-columns:1fr 1fr;}
-    .process-grid{grid-template-columns:1fr 1fr;}
+    .hero-grid{grid-template-columns:1fr;}
+    .plate-wrap{margin-top:48px;}
+    .leadership-grid{grid-template-columns:1fr; max-width:420px;}
+    .work-slide{grid-template-columns:1fr;}
+    .work-slide .work-photo{aspect-ratio:4/3; border-right:none; border-bottom:1px solid var(--line);}
+    .carousel-prev{left:8px;}
+    .carousel-next{right:8px;}
+    .why-layout{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:1fr; gap:0;}
+    .timeline::before{display:none;}
+    .timeline-step{padding-left:36px; padding-bottom:26px; border-left:1px solid var(--line);}
+    .timeline-dot{position:absolute; left:-15px; top:-2px; margin-bottom:0; background:var(--paper);}
     .contact-grid{grid-template-columns:1fr;}
-    .projects-grid{grid-template-columns:1fr 1fr;}
-    .manifest-head-row{display:none;}
+    .footer-grid{grid-template-columns:1fr; gap:28px;}
+    .catalog-head-row{display:none;}
+    .value-grid{grid-template-columns:1fr 1fr; row-gap:22px;}
+    .value-item{border-right:none; padding:0 8px;}
   }
   @media (max-width:560px){
     .wrap{padding:0 20px;}
-    .why-grid{grid-template-columns:1fr;}
-    .process-grid{grid-template-columns:1fr;}
-    .projects-grid{grid-template-columns:1fr;}
-    .ledger-row{grid-template-columns:60px 1fr; row-gap:6px;}
-    .ledger-status{grid-column:1 / -1; text-align:left; padding-left:60px;}
-    .hero-stats{gap:24px;}
-    section{padding:76px 0;}
+    .ledger-row{grid-template-columns:56px 1fr; row-gap:6px;}
+    .ledger-status{grid-column:1 / -1; text-align:left; padding-left:56px;}
+    section{padding:72px 0;}
+    .hero-stats{gap:26px;}
   }
 </style>
 </head>
@@ -392,16 +370,15 @@
 <header>
   <div class="wrap">
     <a href="#top" class="brand">
-      <span class="brand-mark">JR</span>
-      <span class="brand-name">JSIX<span>RON</span></span>
+      <span class="brand-mark"><img src="assets/logo-mark.png" alt="JSIXRON logo"></span>
+      <span class="brand-name"><b>JSIXRON</b><span>Consumer Products &amp; Merchandise</span></span>
     </a>
     <nav id="nav">
-      <a href="#about">Leadership</a>
-      <a href="#catalog">Catalog</a>
-      <a href="#projects">Projects</a>
-      <a href="#why">Why Us</a>
-      <a href="#process">Process</a>
-      <a href="#contact" class="nav-cta">Get a Quote</a>
+      <a href="#company">Company</a>
+      <a href="#catalog">Capabilities</a>
+      <a href="#work">Completed Work</a>
+      <a href="#leadership">Founders</a>
+      <a href="#contact" class="nav-cta">Request a Quote</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -412,92 +389,100 @@
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="reveal in">
-      <div class="eyebrow">Binondo, Manila &nbsp;·&nbsp; General Trading &amp; Industrial Supply</div>
-      <h1>Whatever you<br>need supplied, <em>we<br>commit to it.</em></h1>
-      <p class="hero-sub">JSIXRON Consumer Products &amp; Merchandise sources, prints, hauls and imports for businesses across Metro Manila — from tires and PPE to uniforms, branding and IT services, run personally by proprietor Ronald "Ron" Diola.</p>
+      <div class="eyebrow">General Trading &amp; Industrial Supply · Manila</div>
+      <h1>General merchandise, industrial supply, and corporate solutions — under one roof.</h1>
+      <p class="hero-sub">Tires. Safety gear. Uniforms. Printing. Hauling. Importation. One company, one call.</p>
       <div class="hero-actions">
         <a href="tel:+639763992008" class="btn btn-primary">Call 0976-399-2008</a>
-        <a href="#catalog" class="btn btn-ghost">View Full Catalog</a>
+        <a href="#catalog" class="btn btn-ghost">View Capabilities</a>
       </div>
       <div class="hero-stats">
-        <div class="stat"><b>20+</b><span>Product &amp; Service Lines</span></div>
-        <div class="stat"><b>1</b><span>Point of Contact — Ron</span></div>
+        <div class="stat"><b data-count="20" data-suffix="+">0</b><span>Product &amp; Service Lines</span></div>
+        <div class="stat"><b data-count="3" data-suffix="">0</b><span>Core Divisions</span></div>
         <div class="stat"><b>Manila</b><span>Based &amp; Delivering</span></div>
       </div>
     </div>
-    <div class="seal-wrap">
-      <div class="seal">
-        <div class="seal-text">
-          <svg viewBox="0 0 340 340">
-            <defs><path id="circlePath" d="M 170,170 m -140,0 a 140,140 0 1,1 280,0 a 140,140 0 1,1 -280,0"/></defs>
-            <text font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="4" fill="#6fa0ff">
-              <textPath href="#circlePath" startOffset="0%">YOUR DEMAND, OUR COMMITMENT · YOUR DEMAND, OUR COMMITMENT ·</textPath>
-            </text>
-          </svg>
-        </div>
-        <div class="seal-core">
-          <span class="jr">JR</span>
-          <small>SIXRON&nbsp;·&nbsp;EST. MANILA</small>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
-</section>
-
-<section class="about" id="about">
-  <div class="wrap about-grid">
-    <div class="leadership-stack">
-      <div class="profile-card reveal">
-        <div class="profile-avatar">RD</div>
-        <h3>Ronald "Ron" Diola</h3>
-        <div class="profile-role">Proprietor &amp; General Manager</div>
-        <p class="profile-quote">"Clients don't call five suppliers when one can be trusted to handle tires, uniforms and hauling in the same week. That's the job I built JSIXRON to do."</p>
-        <div class="profile-tags">
-          <span>Direct Contact</span>
-          <span>Sourcing</span>
-          <span>Importation</span>
-          <span>Manila-based</span>
-        </div>
-      </div>
-      <div class="profile-card secondary reveal">
-        <div class="profile-avatar">JS</div>
-        <h3>Jerald Satina</h3>
-        <div class="profile-role">Operations Manager</div>
-        <p class="profile-quote">"Once Ron confirms the order, my job is making sure sourcing, production, and delivery actually happen on schedule."</p>
-        <div class="profile-tags">
-          <span>Fulfillment</span>
-          <span>Production</span>
-          <span>Logistics</span>
-        </div>
-      </div>
-    </div>
-    <div class="about-copy reveal">
-      <div class="section-tag">About JSIXRON</div>
-      <h2 style="font-size:clamp(28px,3.4vw,40px); margin-bottom:22px;">One supplier for the things that keep a business running.</h2>
-      <p>JSIXRON Consumer Products &amp; Merchandise operates out of <strong>208 Bagong Pagasa, Delpan, Binondo, Manila</strong> — the trading heart of the city — as a single-window supplier for general merchandise, industrial materials, corporate branding, and logistics support.</p>
-      <p>Instead of routing every requirement through a different vendor, clients bring it straight to <strong>Ron</strong>, who sources, quotes, and coordinates fulfillment personally, while <strong>Jerald</strong> runs day-to-day operations — production timelines, hauling schedules, and delivery — so orders move from confirmed to completed without stalling.</p>
-      <div class="motto">
-        <div><b>"Your Demand"</b><span>What you tell us you need</span></div>
-        <div><b>"Our Commitment"</b><span>What we deliver, on schedule</span></div>
+    <div class="plate-wrap">
+      <div>
+        <div class="plate"><img src="assets/logo-mark.png" alt="JSIXRON — Consumer Products &amp; Merchandise"></div>
+        <p class="plate-caption">"Your Demand, Our Commitment"</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="manifest" id="catalog">
+<div class="value-bar">
+  <div class="wrap value-grid">
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4l-4.8 2.5.9-5.4L4.2 7.7l5.4-.8L12 2z"/><path d="M9 12.5l1.8 1.8L15 10" stroke-width="1.4"/></svg>
+      <span>Quality Products</span>
+    </div>
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12l4-3 3 2 3-4 3 3 4-3 3 3"/><path d="M2 12v3l4 3 3-2 3 3 3-2 4 3 3-3v-2"/></svg>
+      <span>Reliable Service</span>
+    </div>
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+      <span>Wide Range of Products</span>
+    </div>
+    <div class="value-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="18" cy="9" r="2.3"/><path d="M15.5 14.2c2.6.3 4.5 2.4 4.5 5.3"/></svg>
+      <span>Customer Satisfaction</span>
+    </div>
+  </div>
+</div>
+
+<section class="company" id="company">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">The Company</div>
+      <h2>One supplier. Every category you actually need.</h2>
+    </div>
+    <p class="company-lede reveal">Manila-based general trading company — industrial supply, corporate branding, and logistics, under one roof.</p>
+    <div class="registry-row reveal">
+      <div class="registry-item"><span>Location</span><b>Delpan, Binondo, Manila</b></div>
+      <div class="registry-item"><span>Operating Since</span><b>General Trading Division</b></div>
+      <div class="registry-item"><span>Coverage</span><b>Metro Manila &amp; Nationwide by Arrangement</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="leadership" id="leadership">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Founded and led by</h2>
+    </div>
+    <div class="leadership-grid reveal">
+      <div class="lead-card">
+        <div class="lead-avatar">RD</div>
+        <h4>Ronald Diola</h4>
+        <div class="lead-role">Founder &amp; General Manager</div>
+        <p>Sourcing &amp; client accounts</p>
+      </div>
+      <div class="lead-card">
+        <div class="lead-avatar">JS</div>
+        <h4>Jerald Satina</h4>
+        <div class="lead-role">Co-Founder &amp; Operations Manager</div>
+        <p>Production &amp; fulfillment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catalog" id="catalog">
   <div class="wrap">
     <div class="section-head light-on-dark reveal">
-      <div class="section-tag">The Catalog</div>
-      <h2>Full supply manifest</h2>
-      <p>Every line JSIXRON stocks, prints, ships or arranges — organized the way a shipment would leave the warehouse.</p>
+      <div class="section-tag">Capabilities</div>
+      <h2>Products &amp; services</h2>
+      <p>Organized by division.</p>
     </div>
 
-    <div class="manifest-head-row">
-      <span>Code</span><span>Item / Service</span><span>Status</span>
-    </div>
+    <div class="catalog-head-row"><span>Code</span><span>Item / Service</span><span>Status</span></div>
 
     <div class="category-block reveal">
+      <div class="category-banner" data-caption="Representative image — tires &amp; industrial stock">
+        <img src="https://images.unsplash.com/photo-1765446004204-aa52f4c11167?w=1400&q=70&auto=format&fit=crop" alt="Stacked tires and wheels, representative of premium tire supply" loading="lazy">
+      </div>
       <div class="category-title"><h3>General Merchandise &amp; Industrial Supplies</h3><span class="count">07 lines</span></div>
       <div class="ledger">
         <div class="ledger-row"><span class="ledger-code">GM-01</span><span class="ledger-name">Premium Tires — various brands &amp; sizes</span><span class="ledger-status">In Stock</span></div>
@@ -511,6 +496,9 @@
     </div>
 
     <div class="category-block reveal">
+      <div class="category-banner" data-caption="Representative image — embroidery &amp; textile work">
+        <img src="https://images.unsplash.com/photo-1745095034955-1019067b7ce4?w=1400&q=70&auto=format&fit=crop" alt="Close-up embroidery and textile detail, representative of corporate branding work" loading="lazy">
+      </div>
       <div class="category-title"><h3>Corporate &amp; Promotional Solutions</h3><span class="count">10 lines</span></div>
       <div class="ledger">
         <div class="ledger-row"><span class="ledger-code">CP-01</span><span class="ledger-name">Sublimation Printing Services</span><span class="ledger-status">Made to Order</span></div>
@@ -527,6 +515,9 @@
     </div>
 
     <div class="category-block reveal">
+      <div class="category-banner" data-caption="Representative image — hauling &amp; logistics">
+        <img src="https://images.unsplash.com/photo-1720811559395-3ed8d1b16649?w=1400&q=70&auto=format&fit=crop" alt="Truck on the road, representative of hauling and logistics services" loading="lazy">
+      </div>
       <div class="category-title"><h3>Other Services</h3><span class="count">04 lines</span></div>
       <div class="ledger">
         <div class="ledger-row"><span class="ledger-code">OS-01</span><span class="ledger-name">Hauling Services</span><span class="ledger-status">Scheduled</span></div>
@@ -538,144 +529,77 @@
   </div>
 </section>
 
-<section class="projects" id="projects">
+<section class="work" id="work">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-tag">Proof of Work</div>
-      <h2>Projects delivered</h2>
-      <p>A running record of completed orders across categories. Replace each panel below with an actual site or delivery photo as jobs are completed.</p>
+      <h2>Completed work</h2>
+      <p>Delivered, by category.</p>
     </div>
-    <div class="projects-grid reveal">
-      <!-- To add a real photo: change the div.project-photo below to
-           <div class="project-photo"><img src="assets/your-photo.jpg" alt="..."></div> -->
-      <div class="project-card">
-        <div class="project-photo">
-          <div class="photo-pending-icon">+</div>
-          <span class="photo-pending-text">Photo Pending</span>
+    <div class="work-carousel reveal">
+      <!-- To add a real photo: change the div.work-photo below to
+           <div class="work-photo"><img src="assets/your-photo.jpg" alt="..."></div> -->
+      <button class="carousel-btn carousel-prev" id="workPrev" aria-label="Previous">‹</button>
+      <button class="carousel-btn carousel-next" id="workNext" aria-label="Next">›</button>
+      <div class="work-track" id="workTrack">
+        <div class="work-slide">
+          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-body"><span class="work-tag">GM-01 · Tires</span><h4>Fleet Tire Supply</h4><p>Bulk tires, delivered.</p></div>
         </div>
-        <div class="project-body">
-          <span class="project-tag">GM-01 · Tires</span>
-          <h4>Fleet tire supply — [Client name]</h4>
-          <p>Bulk delivery of premium tires for a commercial fleet. Add project details and photo once documented.</p>
+        <div class="work-slide">
+          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-body"><span class="work-tag">CP-03 · Uniforms</span><h4>Company Uniform Rollout</h4><p>Uniforms, embroidered.</p></div>
         </div>
-      </div>
-      <div class="project-card">
-        <div class="project-photo">
-          <div class="photo-pending-icon">+</div>
-          <span class="photo-pending-text">Photo Pending</span>
+        <div class="work-slide">
+          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-body"><span class="work-tag">CP-10 · Signage</span><h4>Sticker &amp; Signage Installation</h4><p>Designed, printed, installed.</p></div>
         </div>
-        <div class="project-body">
-          <span class="project-tag">CP-03 · Uniforms</span>
-          <h4>Company uniform rollout — [Client name]</h4>
-          <p>Full staff uniform production with embroidery. Add project details and photo once documented.</p>
+        <div class="work-slide">
+          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-body"><span class="work-tag">GM-06 · Steel &amp; Construction</span><h4>Construction Materials Supply</h4><p>Steel, delivered on-site.</p></div>
         </div>
-      </div>
-      <div class="project-card">
-        <div class="project-photo">
-          <div class="photo-pending-icon">+</div>
-          <span class="photo-pending-text">Photo Pending</span>
+        <div class="work-slide">
+          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-body"><span class="work-tag">OS-01 · Hauling</span><h4>Scheduled Hauling Job</h4><p>Hauled, on schedule.</p></div>
         </div>
-        <div class="project-body">
-          <span class="project-tag">CP-10 · Signage</span>
-          <h4>Sticker &amp; signage installation — [Client name]</h4>
-          <p>On-site design, printing, and installation. Add project details and photo once documented.</p>
+        <div class="work-slide">
+          <div class="work-photo"><div class="photo-pending-icon">+</div><span class="photo-pending-text">Photo Pending</span></div>
+          <div class="work-body"><span class="work-tag">GM-02 · PPE</span><h4>Safety Gear Deployment</h4><p>PPE, site-wide.</p></div>
         </div>
       </div>
-      <div class="project-card">
-        <div class="project-photo">
-          <div class="photo-pending-icon">+</div>
-          <span class="photo-pending-text">Photo Pending</span>
-        </div>
-        <div class="project-body">
-          <span class="project-tag">GM-06 · Steel &amp; Construction</span>
-          <h4>Construction materials supply — [Client name]</h4>
-          <p>Bulk steel and industrial material delivery to a project site. Add project details and photo once documented.</p>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-photo">
-          <div class="photo-pending-icon">+</div>
-          <span class="photo-pending-text">Photo Pending</span>
-        </div>
-        <div class="project-body">
-          <span class="project-tag">OS-01 · Hauling</span>
-          <h4>Scheduled hauling job — [Client name]</h4>
-          <p>Multi-load hauling completed on schedule. Add project details and photo once documented.</p>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-photo">
-          <div class="photo-pending-icon">+</div>
-          <span class="photo-pending-text">Photo Pending</span>
-        </div>
-        <div class="project-body">
-          <span class="project-tag">GM-02 · PPE</span>
-          <h4>Safety gear deployment — [Client name]</h4>
-          <p>PPE stock supplied for a site-wide safety rollout. Add project details and photo once documented.</p>
-        </div>
-      </div>
+      <div class="carousel-dots" id="workDots"></div>
     </div>
-    <div class="projects-note reveal">
+    <div class="work-note reveal">
       <span>ℹ</span>
-      <span><b>Note:</b> these six panels are placeholders. Send the actual delivery photos (with client names removed or approved for use) and they'll be dropped in — real project photos are what make this section carry weight with new clients.</span>
+      <span><b>Note:</b> placeholders — real photos coming soon.</span>
     </div>
   </div>
 </section>
 
 <section class="why" id="why">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="section-tag">Why JSIXRON</div>
-      <h2>Built for buyers who are tired of juggling suppliers</h2>
+  <div class="wrap why-layout">
+    <div class="why-intro reveal">
+      <h2>Most suppliers cover one category.</h2>
+      <p>JSIXRON was built to cover the ones that usually don't overlap.</p>
     </div>
-    <div class="why-grid reveal">
-      <div class="why-card">
-        <span class="num">01</span>
-        <h4>Single Point of Contact</h4>
-        <p>One conversation with Ron covers sourcing, pricing, and delivery — no getting passed between departments.</p>
-      </div>
-      <div class="why-card">
-        <span class="num">02</span>
-        <h4>Cross-Category Reach</h4>
-        <p>Industrial supplies and corporate branding under one roof, so mixed orders don't mean multiple vendors.</p>
-      </div>
-      <div class="why-card">
-        <span class="num">03</span>
-        <h4>Manila-Based Logistics</h4>
-        <p>Operating from Binondo puts sourcing, printing partners, and hauling routes within easy reach.</p>
-      </div>
-      <div class="why-card">
-        <span class="num">04</span>
-        <h4>Import-Ready</h4>
-        <p>Importation consultation for clients who need to bring in stock beyond what's locally available.</p>
-      </div>
-    </div>
+    <ul class="why-list reveal">
+      <li><span class="why-check">✓</span><div><b>Single Point of Contact</b><span>One process. No hand-offs.</span></div></li>
+      <li><span class="why-check">✓</span><div><b>Cross-Category Reach</b><span>Supplies and branding, one vendor.</span></div></li>
+      <li><span class="why-check">✓</span><div><b>Manila-Based Logistics</b><span>Binondo-based, close to everything.</span></div></li>
+      <li><span class="why-check">✓</span><div><b>Import-Ready</b><span>Consultation for import needs.</span></div></li>
+    </ul>
   </div>
 </section>
 
 <section class="process" id="process">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-tag">How It Works</div>
-      <h2>From demand to delivery</h2>
+      <h2>From requirement to delivery</h2>
     </div>
-    <div class="process-grid reveal">
-      <div class="process-step" data-n="01">
-        <h4>Send Your Requirement</h4>
-        <p>Message or call with the item, quantity, or service you need — no formal RFQ required.</p>
-      </div>
-      <div class="process-step" data-n="02">
-        <h4>Get a Direct Quote</h4>
-        <p>Ron sources pricing and lead time personally, so quotes come back fast and accurate.</p>
-      </div>
-      <div class="process-step" data-n="03">
-        <h4>Confirm &amp; Produce</h4>
-        <p>Stock is pulled or production begins — printing, embroidery, and sourcing run in parallel where possible.</p>
-      </div>
-      <div class="process-step" data-n="04">
-        <h4>Deliver or Haul</h4>
-        <p>Completed orders are delivered, or scheduled for pickup alongside hauling and scrap arrangements.</p>
-      </div>
+    <div class="timeline reveal">
+      <div class="timeline-step"><span class="timeline-dot">1</span><h4>Send the Requirement</h4><p>Tell us what you need.</p></div>
+      <div class="timeline-step"><span class="timeline-dot">2</span><h4>Receive a Quote</h4><p>Fast, accurate pricing.</p></div>
+      <div class="timeline-step"><span class="timeline-dot">3</span><h4>Confirm &amp; Produce</h4><p>Sourced or produced.</p></div>
+      <div class="timeline-step"><span class="timeline-dot">4</span><h4>Deliver or Haul</h4><p>Delivered or hauled.</p></div>
     </div>
   </div>
 </section>
@@ -684,39 +608,49 @@
   <div class="wrap contact-grid">
     <div class="reveal">
       <div class="section-tag light-on-dark">Get In Touch</div>
-      <h2 style="font-size:clamp(28px,3.4vw,40px);">Tell us the demand.<br>We'll commit to it.</h2>
+      <h2 style="font-size:clamp(26px,3.2vw,36px);">Request a quote</h2>
       <div class="contact-list">
-        <div class="contact-item">
-          <span class="ic">☎</span>
-          <div><b>Phone</b><a href="tel:+639763992008">0976-399-2008</a></div>
-        </div>
-        <div class="contact-item">
-          <span class="ic">✉</span>
-          <div><b>Email</b><a href="mailto:rondiola84@gmail.com">rondiola84@gmail.com</a></div>
-        </div>
-        <div class="contact-item">
-          <span class="ic">f</span>
-          <div><b>Facebook</b><a href="https://facebook.com/rondiola" target="_blank" rel="noopener">Ron Diola</a></div>
-        </div>
-        <div class="contact-item">
-          <span class="ic">⌖</span>
-          <div><b>Address</b><span class="val">208 Bagong Pagasa, Delpan, Binondo, Manila</span></div>
-        </div>
+        <div class="contact-item"><span class="ic">☎</span><div><b>Phone</b><a href="tel:+639763992008">0976-399-2008</a></div></div>
+        <div class="contact-item"><span class="ic">✉</span><div><b>Email</b><a href="mailto:rondiola84@gmail.com">rondiola84@gmail.com</a></div></div>
+        <div class="contact-item"><span class="ic">f</span><div><b>Facebook</b><a href="https://www.facebook.com/profile.php?id=61553961980286" target="_blank" rel="noopener">JSIXRON Consumer Products &amp; Merchandise</a></div></div>
+        <div class="contact-item"><span class="ic">⌖</span><div><b>Address</b><span class="val">Delpan, Binondo, Manila</span></div></div>
       </div>
     </div>
     <div class="reveal">
-      <div class="card-visual">
-        <img src="assets/business-card.jpg" alt="JSIXRON business card for Ronald Diola, Proprietor and General Manager">
-      </div>
+      <div class="card-visual"><img src="assets/business-card.jpg" alt="JSIXRON business card"></div>
       <p class="card-caption">Save this card — it's all you need to reach us</p>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap footer-row">
-    <span class="brand-name">JSIX<span style="color:var(--gold);">RON</span></span>
-    <p>&copy; <span id="year"></span> JSIXRON Consumer Products &amp; Merchandise · Binondo, Manila · "Your Demand, Our Commitment"</p>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <span class="brand-mark"><img src="assets/logo-mark.png" alt="JSIXRON logo"></span>
+          <b>JSIXRON</b>
+        </div>
+        <p>General trading, Manila-based.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#company">Company Overview</a>
+        <a href="#catalog">Capabilities</a>
+        <a href="#work">Completed Work</a>
+        <a href="#leadership">Founders</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="tel:+639763992008">0976-399-2008</a>
+        <a href="mailto:rondiola84@gmail.com">rondiola84@gmail.com</a>
+        <a href="https://www.facebook.com/profile.php?id=61553961980286" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-brand" style="margin:0;"><b style="font-size:15px;">JSIXRON</b></span>
+      <p>&copy; <span id="year"></span> JSIXRON Consumer Products &amp; Merchandise · Delpan, Binondo, Manila · "Your Demand, Our Commitment"</p>
+    </div>
   </div>
 </footer>
 
@@ -727,8 +661,7 @@
   const nav = document.getElementById('nav');
   burger.addEventListener('click', () => {
     nav.classList.toggle('open');
-    const expanded = nav.classList.contains('open');
-    burger.setAttribute('aria-expanded', expanded);
+    burger.setAttribute('aria-expanded', nav.classList.contains('open'));
   });
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
@@ -736,6 +669,53 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countEls = document.querySelectorAll('[data-count]');
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      if (reduceMotion) { el.textContent = target + suffix; countIo.unobserve(el); return; }
+      const duration = 1000;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIo.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  countEls.forEach(el => countIo.observe(el));
+
+  /* completed-work carousel */
+  const track = document.getElementById('workTrack');
+  const dotsWrap = document.getElementById('workDots');
+  const slides = track.querySelectorAll('.work-slide');
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    if (i === 0) b.classList.add('active');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', () => track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' }));
+    dotsWrap.appendChild(b);
+  });
+  const dots = dotsWrap.querySelectorAll('button');
+  function updateDots(){
+    const i = Math.round(track.scrollLeft / track.clientWidth);
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  }
+  track.addEventListener('scroll', () => { window.requestAnimationFrame(updateDots); }, { passive: true });
+  document.getElementById('workPrev').addEventListener('click', () => {
+    track.scrollTo({ left: Math.max(0, track.scrollLeft - track.clientWidth), behavior: 'smooth' });
+  });
+  document.getElementById('workNext').addEventListener('click', () => {
+    track.scrollTo({ left: Math.min(track.scrollWidth, track.scrollLeft + track.clientWidth), behavior: 'smooth' });
+  });
 </script>
 
 </body>
