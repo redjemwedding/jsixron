@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="JSIXRON Consumer Products &amp; Merchandise">
 <meta property="og:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
-<meta property="og:image" content="https://jsixron.redjemie.com/assets/banner.jpg">
+<meta property="og:image" content="https://jsixron.redjemie.com/assets/logo-mark.png">
 <meta property="og:url" content="https://jsixron.redjemie.com/">
 <meta property="og:site_name" content="JSIXRON Consumer Products &amp; Merchandise">
 
@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="JSIXRON Consumer Products &amp; Merchandise">
 <meta name="twitter:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
-<meta name="twitter:image" content="https://jsixron.redjemie.com/assets/banner.jpg">
+<meta name="twitter:image" content="https://jsixron.redjemie.com/assets/logo-mark.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,6 +129,10 @@
     color:var(--gold-light); text-transform:uppercase; margin-bottom:20px;
   }
   .eyebrow::before{content:""; width:24px; height:1px; background:var(--gold);}
+  .hero-banner{
+    width:100%; max-width:480px; border-radius:4px; margin-bottom:24px;
+    border:1px solid rgba(184,146,47,0.35); box-shadow:0 16px 40px rgba(0,0,0,0.35);
+  }
   .hero h1{
     font-size:clamp(34px,4.4vw,56px); color:var(--paper); font-weight:600;
     max-width:15ch;
@@ -227,13 +231,6 @@
     position:relative; border:1px solid var(--line-light);
   }
   .category-banner img{width:100%; height:100%; object-fit:cover; filter:saturate(0.9) brightness(0.72);}
-  .category-banner::after{
-    content:attr(data-caption);
-    position:absolute; left:18px; bottom:14px;
-    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em;
-    text-transform:uppercase; color:rgba(250,249,246,0.75);
-    background:rgba(11,12,14,0.5); padding:5px 10px; border-radius:2px;
-  }
   .category-title{display:flex; align-items:baseline; gap:16px; margin-bottom:4px;}
   .category-title h3{font-size:21px; color:var(--paper); font-weight:600;}
   .category-title .count{font-family:'IBM Plex Mono',monospace; font-size:11px; color:rgba(250,249,246,0.4);}
@@ -380,11 +377,34 @@
     .value-item{border-right:none; padding:0 8px;}
   }
   @media (max-width:560px){
-    .wrap{padding:0 20px;}
+    .wrap{padding:0 18px;}
     .ledger-row{grid-template-columns:56px 1fr; row-gap:6px;}
     .ledger-status{grid-column:1 / -1; text-align:left; padding-left:56px;}
-    section{padding:72px 0;}
-    .hero-stats{gap:26px;}
+    section{padding:64px 0;}
+    .hero-stats{gap:22px; row-gap:18px;}
+    .hero-banner{max-width:100%;}
+    .category-banner{aspect-ratio:16/9;}
+    .lead-card{padding:24px 20px; gap:14px;}
+    .lead-avatar{width:64px; height:64px; font-size:19px;}
+    .lead-card h4{font-size:17px;}
+    .work-slide .work-body{padding:28px 24px;}
+    .work-slide .work-body h4{font-size:19px;}
+    .value-grid{grid-template-columns:1fr; row-gap:18px;}
+    .value-item{justify-content:flex-start;}
+    .footer-grid{gap:32px;}
+    .footer-bottom{flex-direction:column; align-items:flex-start;}
+    .plate{width:min(240px, 70vw);}
+    .contact-plate{width:min(200px, 55vw);}
+    .btn{padding:13px 20px; font-size:13px;}
+    .hero-actions{gap:12px;}
+  }
+  @media (max-width:360px){
+    .wrap{padding:0 14px;}
+    .hero h1{font-size:28px;}
+    .brand-name b{font-size:15px;}
+    .brand-name span{font-size:8.5px;}
+    .hero-stats{gap:16px;}
+    .stat b{font-size:22px;}
   }
 </style>
 </head>
@@ -413,6 +433,7 @@
   <div class="wrap hero-grid">
     <div class="reveal in">
       <div class="eyebrow">General Trading &amp; Industrial Supply · Manila</div>
+      <img src="assets/banner.jpg" alt="JSIXRON Consumer Products &amp; Merchandise" class="hero-banner">
       <h1>General merchandise, industrial supply, and corporate solutions — under one roof.</h1>
       <p class="hero-sub">Tires. Safety gear. Uniforms. Printing. Hauling. Importation. One company, one call.</p>
       <div class="hero-actions">
@@ -509,7 +530,7 @@
     <div class="catalog-head-row"><span>Code</span><span>Item / Service</span><span>Status</span></div>
 
     <div class="category-block reveal">
-      <div class="category-banner" data-caption="Representative image — tires &amp; industrial stock">
+      <div class="category-banner">
         <img src="https://images.unsplash.com/photo-1765446004204-aa52f4c11167?w=1400&q=70&auto=format&fit=crop" alt="Stacked tires and wheels, representative of premium tire supply" loading="lazy">
       </div>
       <div class="category-title"><h3>General Merchandise &amp; Industrial Supplies</h3><span class="count">07 lines</span></div>
@@ -525,7 +546,7 @@
     </div>
 
     <div class="category-block reveal">
-      <div class="category-banner" data-caption="Representative image — embroidery &amp; textile work">
+      <div class="category-banner">
         <img src="https://images.unsplash.com/photo-1745095034955-1019067b7ce4?w=1400&q=70&auto=format&fit=crop" alt="Close-up embroidery and textile detail, representative of corporate branding work" loading="lazy">
       </div>
       <div class="category-title"><h3>Corporate &amp; Promotional Solutions</h3><span class="count">10 lines</span></div>
@@ -544,7 +565,7 @@
     </div>
 
     <div class="category-block reveal">
-      <div class="category-banner" data-caption="Representative image — hauling &amp; logistics">
+      <div class="category-banner">
         <img src="https://images.unsplash.com/photo-1720811559395-3ed8d1b16649?w=1400&q=70&auto=format&fit=crop" alt="Truck on the road, representative of hauling and logistics services" loading="lazy">
       </div>
       <div class="category-title"><h3>Other Services</h3><span class="count">04 lines</span></div>
