@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="JSIXRON Consumer Products &amp; Merchandise">
 <meta property="og:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
-<meta property="og:image" content="https://jsixron.redjemie.com/assets/banner.jpeg">
+<meta property="og:image" content="https://jsixron.redjemie.com/assets/banner.jpg">
 <meta property="og:url" content="https://jsixron.redjemie.com/">
 <meta property="og:site_name" content="JSIXRON Consumer Products &amp; Merchandise">
 
@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="JSIXRON Consumer Products &amp; Merchandise">
 <meta name="twitter:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
-<meta name="twitter:image" content="https://jsixron.redjemie.com/assets/banner.jpeg">
+<meta name="twitter:image" content="https://jsixron.redjemie.com/assets/banner.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -199,13 +199,15 @@
   /* ---------- leadership ---------- */
   .leadership{background:var(--paper-dim);}
   .leadership-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); max-width:760px;}
-  .lead-card{background:var(--paper-dim); padding:32px 30px;}
+  .lead-card{background:var(--paper-dim); padding:32px 30px; display:flex; gap:20px; align-items:flex-start;}
   .lead-avatar{
-    width:48px; height:48px; border-radius:50%; border:1px solid var(--gold-deep);
+    width:86px; height:86px; border-radius:50%; border:1px solid var(--gold-deep);
+    overflow:hidden; flex-shrink:0; background:var(--paper);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Playfair Display',serif; font-size:17px; color:var(--gold-deep); font-weight:600;
-    margin-bottom:18px;
+    font-family:'Playfair Display',serif; font-size:24px; color:var(--gold-deep); font-weight:600;
   }
+  .lead-avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .lead-info{flex:1; min-width:0; padding-top:2px;}
   .lead-card h4{font-size:19px; margin-bottom:5px;}
   .lead-role{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:14px;}
   .lead-card p{font-size:13.5px; color:var(--steel-soft); line-height:1.65;}
@@ -334,8 +336,13 @@
   .contact-item b{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(250,249,246,0.45); margin-bottom:4px;}
   .contact-item a, .contact-item span.val{font-size:15.5px; color:var(--paper);}
   .contact-item a:hover{color:var(--gold-light);}
-  .card-visual{border-radius:4px; overflow:hidden; border:1px solid var(--line-light);}
-  .card-caption{text-align:center; margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:rgba(250,249,246,0.4); text-transform:uppercase;}
+  .contact-plate{
+    width:min(280px, 60vw); aspect-ratio:1; border-radius:50%; margin:0 auto;
+    overflow:hidden; border:1px solid rgba(184,146,47,0.4);
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  }
+  .contact-plate img{width:100%; height:100%; object-fit:cover;}
+  .card-caption{text-align:center; margin-top:20px; font-family:'Playfair Display',serif; font-size:15px; font-style:italic; color:rgba(250,249,246,0.6);}
 
   /* ---------- footer ---------- */
   footer{background:var(--ink); border-top:1px solid var(--line-light); padding:56px 0 30px;}
@@ -466,20 +473,26 @@
 <section class="leadership" id="leadership">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2> </h2>
+      <h2>Founded and led by</h2>
     </div>
     <div class="leadership-grid reveal">
+      <!-- To add a real photo: replace the div.lead-avatar content below with
+           <img src="assets/team/ron.jpg" alt="Ronald Diola"> -->
       <div class="lead-card">
         <div class="lead-avatar">RD</div>
-        <h4>Ronald Diola</h4>
-        <div class="lead-role"General Manager</div>
-        <p>Sourcing &amp; client accounts</p>
+        <div class="lead-info">
+          <h4>Ronald Diola</h4>
+          <div class="lead-role">Founder &amp; General Manager</div>
+          <p>Sourcing &amp; client accounts</p>
+        </div>
       </div>
       <div class="lead-card">
         <div class="lead-avatar">JS</div>
-        <h4>Jerald Satina</h4>
-        <div class="lead-role">Operations Manager</div>
-        <p>Production &amp; fulfillment</p>
+        <div class="lead-info">
+          <h4>Jerald Satina</h4>
+          <div class="lead-role">Co-Founder &amp; Operations Manager</div>
+          <p>Production &amp; fulfillment</p>
+        </div>
       </div>
     </div>
   </div>
@@ -496,8 +509,8 @@
     <div class="catalog-head-row"><span>Code</span><span>Item / Service</span><span>Status</span></div>
 
     <div class="category-block reveal">
-      <div class="category-banner" data-caption="tires &amp; industrial stock">
-        <img src="https://images.unsplash.com/photo-1765446004204-aa52f4c11167?w=1400&q=70&auto=format&fit=crop" alt="Stacked tires and wheels,premium tire supply" loading="lazy">
+      <div class="category-banner" data-caption="Representative image — tires &amp; industrial stock">
+        <img src="https://images.unsplash.com/photo-1765446004204-aa52f4c11167?w=1400&q=70&auto=format&fit=crop" alt="Stacked tires and wheels, representative of premium tire supply" loading="lazy">
       </div>
       <div class="category-title"><h3>General Merchandise &amp; Industrial Supplies</h3><span class="count">07 lines</span></div>
       <div class="ledger">
@@ -512,8 +525,8 @@
     </div>
 
     <div class="category-block reveal">
-      <div class="category-banner" data-caption="textile work">
-        <img src="https://images.unsplash.com/photo-1745095034955-1019067b7ce4?w=1400&q=70&auto=format&fit=crop" alt="Close-up embroidery and textile detail, Corporate branding work" loading="lazy">
+      <div class="category-banner" data-caption="Representative image — embroidery &amp; textile work">
+        <img src="https://images.unsplash.com/photo-1745095034955-1019067b7ce4?w=1400&q=70&auto=format&fit=crop" alt="Close-up embroidery and textile detail, representative of corporate branding work" loading="lazy">
       </div>
       <div class="category-title"><h3>Corporate &amp; Promotional Solutions</h3><span class="count">10 lines</span></div>
       <div class="ledger">
@@ -532,7 +545,7 @@
 
     <div class="category-block reveal">
       <div class="category-banner" data-caption="Representative image — hauling &amp; logistics">
-        <img src="https://images.unsplash.com/photo-1720811559395-3ed8d1b16649?w=1400&q=70&auto=format&fit=crop" alt="Truck on the road, Hauling and logistics services" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1720811559395-3ed8d1b16649?w=1400&q=70&auto=format&fit=crop" alt="Truck on the road, representative of hauling and logistics services" loading="lazy">
       </div>
       <div class="category-title"><h3>Other Services</h3><span class="count">04 lines</span></div>
       <div class="ledger">
@@ -558,7 +571,7 @@
       <button class="carousel-btn carousel-next" id="workNext" aria-label="Next">›</button>
       <div class="work-track" id="workTrack">
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/work/tires-delivery-1.jpg" alt="JSIXRON team delivering premium tires to a client warehouse" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/tires-delivery-1.jpg" alt="JSIXRON team delivering premium tires to a client warehouse" loading="lazy"></div>
           <div class="work-body"><span class="work-tag">GM-01 · Tires</span><h4>Fleet Tire Supply</h4><p>Bulk tires, delivered.</p></div>
         </div>
         <div class="work-slide">
@@ -578,11 +591,11 @@
           <div class="work-body"><span class="work-tag">OS-01 · Hauling</span><h4>Scheduled Hauling Job</h4><p>Hauled, on schedule.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/work/ppe-boots-delivery.jpg" alt="JSIXRON team delivering safety boots and PPE stock to a construction client" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/ppe-boots-delivery.jpg" alt="JSIXRON team delivering safety boots and PPE stock to a construction client" loading="lazy"></div>
           <div class="work-body"><span class="work-tag">GM-02 · PPE</span><h4>Safety Gear Deployment</h4><p>PPE, site-wide.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/work/cones-delivery-1.jpg" alt="JSIXRON team delivering traffic safety cones to an aviation ground support client" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/cones-delivery-1.jpg" alt="JSIXRON team delivering traffic safety cones to an aviation ground support client" loading="lazy"></div>
           <div class="work-body"><span class="work-tag">GM-02 · Safety Gear</span><h4>Traffic Cone Supply</h4><p>Delivered, ready for site.</p></div>
         </div>
       </div>
@@ -633,8 +646,10 @@
       </div>
     </div>
     <div class="reveal">
-      <div class="card-visual"><img src="assets/business-card.jpg" alt="JSIXRON business card"></div>
-      <p class="card-caption">Save this card — it's all you need to reach us</p>
+      <div class="contact-plate">
+        <img src="assets/logo-mark.png" alt="JSIXRON Consumer Products &amp; Merchandise logo">
+      </div>
+      <p class="card-caption">"Your Demand, Our Commitment"</p>
     </div>
   </div>
 </section>
