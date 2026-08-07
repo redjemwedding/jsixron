@@ -628,6 +628,22 @@
     transition:background .2s ease;
   }
   .lightbox-close:hover{background:rgba(255,255,255,0.16);}
+  .lightbox-nav{
+    position:fixed; top:50%; transform:translateY(-50%); z-index:401;
+    width:46px; height:46px; border-radius:50%;
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);
+    color:var(--paper); font-size:20px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s ease;
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,0.16);}
+  .lightbox-prev{left:22px;}
+  .lightbox-next{right:22px;}
+  .lightbox-counter{
+    position:fixed; top:24px; left:0; right:0; text-align:center; z-index:401;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em;
+    color:rgba(250,249,246,0.55); pointer-events:none;
+  }
   .lightbox-caption{
     position:fixed; bottom:24px; left:0; right:0; text-align:center;
     font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em;
@@ -636,6 +652,9 @@
   @media (max-width:560px){
     .lightbox{padding:40px 16px;}
     .lightbox-close{top:14px; right:14px; width:38px; height:38px;}
+    .lightbox-nav{width:40px; height:40px; font-size:17px;}
+    .lightbox-prev{left:10px;}
+    .lightbox-next{right:10px;}
   }
 </style>
 </head>
@@ -1059,14 +1078,19 @@
 </div>
 
 <!-- ============================================================
-     LIGHTBOX
+     LIGHTBOX (gallery mode)
      Any image marked with the data-lightbox attribute opens here
-     full-screen on click. Close via the X button, clicking the
-     dark backdrop, or pressing Escape, returns to the page exactly
-     as it was, no page scroll or layout shift.
+     full-screen on click. While open: swipe left/right on touch
+     devices, or use the arrow buttons / keyboard arrow keys, to
+     move between all lightbox photos without closing first. Close
+     via the X button, the dark backdrop, or Escape, returns to the
+     page exactly as it was, no scroll jump.
      ============================================================ -->
 <button class="lightbox-close" id="lightboxClose" aria-label="Close full-screen image" style="display:none;">✕</button>
+<button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image" style="display:none;">‹</button>
+<button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image" style="display:none;">›</button>
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Full-screen image view">
+  <p class="lightbox-counter" id="lightboxCounter"></p>
   <div class="lightbox-img-wrap">
     <img id="lightboxImg" src="" alt="">
   </div>
@@ -1241,52 +1265,81 @@
     });
   })();
 
-  /* lightbox */
+  /* lightbox with gallery navigation (arrows + swipe) */
   (function(){
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCounter = document.getElementById('lightboxCounter');
     const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
     if (!lightbox || !lightboxImg) return;
 
+    const items = Array.from(document.querySelectorAll('img[data-lightbox]'));
+    let currentIndex = 0;
     let scrollLockY = 0;
 
-    function openLightbox(src, caption){
+    function render(){
+      const img = items[currentIndex];
+      lightboxImg.src = img.currentSrc || img.src;
+      const caption = img.getAttribute('data-caption') || '';
+      lightboxImg.alt = caption;
+      lightboxCaption.textContent = caption;
+      lightboxCounter.textContent = (currentIndex + 1) + ' / ' + items.length;
+    }
+
+    function openLightbox(index){
+      currentIndex = index;
       scrollLockY = window.scrollY;
-      lightboxImg.src = src;
-      lightboxImg.alt = caption || '';
-      lightboxCaption.textContent = caption || '';
+      render();
       lightbox.classList.add('open');
       closeBtn.style.display = 'flex';
+      if (items.length > 1) {
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+      }
       document.body.style.position = 'fixed';
       document.body.style.top = '-' + scrollLockY + 'px';
       document.body.style.width = '100%';
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleKeydown);
     }
 
     function closeLightbox(){
       lightbox.classList.remove('open');
       closeBtn.style.display = 'none';
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
       window.scrollTo(0, scrollLockY);
-      document.removeEventListener('keydown', handleEscape);
-      // Clear the image slightly after the fade completes to avoid a flash
+      document.removeEventListener('keydown', handleKeydown);
       setTimeout(() => { if (!lightbox.classList.contains('open')) lightboxImg.src = ''; }, 200);
     }
 
-    function handleEscape(e){
-      if (e.key === 'Escape') closeLightbox();
+    function showNext(){
+      currentIndex = (currentIndex + 1) % items.length;
+      render();
+    }
+    function showPrev(){
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      render();
     }
 
-    document.querySelectorAll('img[data-lightbox]').forEach(img => {
-      img.addEventListener('click', () => {
-        openLightbox(img.currentSrc || img.src, img.getAttribute('data-caption'));
-      });
+    function handleKeydown(e){
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    }
+
+    items.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
     });
 
     closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
 
     // Click the dark backdrop (not the image itself) to close, same as a real app
     lightbox.addEventListener('click', (e) => {
@@ -1294,6 +1347,24 @@
         closeLightbox();
       }
     });
+
+    // Swipe left/right to move between photos while full-screen
+    let touchStartX = 0;
+    let touchStartY = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      const dy = e.changedTouches[0].screenY - touchStartY;
+      const SWIPE_THRESHOLD = 45;
+      // Ignore mostly-vertical gestures so a scroll attempt doesn't get mistaken for a swipe
+      if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) showNext(); else showPrev();
+      }
+    }, { passive: true });
   })();
 </script>
 
