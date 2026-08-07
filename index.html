@@ -123,6 +123,22 @@
     filter:blur(70px) saturate(0.55) brightness(0.5);
     opacity:0.4;
     mix-blend-mode:soft-light;
+    animation:smokeDrift1 42s ease-in-out infinite;
+    will-change:transform;
+  }
+  .smoke-layer.smoke-2{ animation-name:smokeDrift2; animation-duration:54s; }
+  @keyframes smokeDrift1{
+    0%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(2.5%,-2%) scale(1.06);}
+    100%{transform:translate(0,0) scale(1);}
+  }
+  @keyframes smokeDrift2{
+    0%{transform:translate(0,0) scale(1.04);}
+    50%{transform:translate(-2%,2.5%) scale(1);}
+    100%{transform:translate(0,0) scale(1.04);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .smoke-layer{animation:none;}
   }
   .smoke-layer.smoke-1{
     background-image:url('assets/bg1.jpg');
