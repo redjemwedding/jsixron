@@ -179,10 +179,12 @@
     color:var(--gold-light); text-transform:uppercase; margin-bottom:20px;
   }
   .eyebrow::before{content:""; width:24px; height:1px; background:var(--gold);}
-  .hero-banner{
-    width:100%; max-width:480px; border-radius:4px; margin-bottom:24px;
+  .hero-banner-wrap{
+    width:100%; max-width:480px; aspect-ratio:21/9; margin-bottom:24px;
+    border-radius:4px; overflow:hidden;
     border:1px solid rgba(184,146,47,0.35); box-shadow:0 16px 40px rgba(0,0,0,0.35);
   }
+  .hero-banner{width:100%; height:100%; object-fit:cover; display:block;}
   .hero h1{
     font-size:clamp(34px,4.4vw,56px); color:var(--paper); font-weight:600;
     max-width:22ch;
@@ -365,6 +367,16 @@
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
     position:relative; overflow:hidden;
   }
+  .work-photo img[data-lightbox]{cursor:zoom-in;}
+  .zoom-hint{
+    position:absolute; bottom:12px; right:12px; z-index:2;
+    width:32px; height:32px; border-radius:50%;
+    background:rgba(11,12,14,0.55); backdrop-filter:blur(2px);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; transition:opacity .2s ease; pointer-events:none;
+  }
+  .work-photo:hover .zoom-hint{opacity:1;}
+  .zoom-hint svg{width:15px; height:15px; color:var(--paper);}
   .work-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
   .photo-pending-icon{width:42px; height:42px; border-radius:50%; border:1.5px dashed var(--steel-soft); display:flex; align-items:center; justify-content:center; color:var(--steel-soft); font-size:18px;}
   .photo-pending-text{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel-soft);}
@@ -561,7 +573,7 @@
     .ledger-status{grid-column:1 / -1; text-align:left; padding-left:56px;}
     section{padding:64px 0;}
     .hero-stats{gap:22px; row-gap:18px;}
-    .hero-banner{max-width:100%;}
+    .hero-banner-wrap{max-width:100%;}
     .category-banner{aspect-ratio:16/9;}
     .category-title{padding:16px 16px;}
     .category-title h3{font-size:17px;}
@@ -586,6 +598,44 @@
     .brand-name span{font-size:8.5px;}
     .hero-stats{gap:16px;}
     .stat b{font-size:22px;}
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:400;
+    background:rgba(6,6,7,0.94);
+    display:flex; align-items:center; justify-content:center;
+    padding:56px 24px;
+    opacity:0; pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .lightbox.open{opacity:1; pointer-events:auto;}
+  .lightbox-img-wrap{
+    max-width:min(1100px, 92vw); max-height:88vh;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-img-wrap img{
+    max-width:100%; max-height:88vh; width:auto; height:auto;
+    object-fit:contain; border-radius:4px;
+    box-shadow:0 30px 70px rgba(0,0,0,0.55);
+  }
+  .lightbox-close{
+    position:fixed; top:22px; right:26px; z-index:401;
+    width:42px; height:42px; border-radius:50%;
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18);
+    color:var(--paper); font-size:18px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s ease;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.16);}
+  .lightbox-caption{
+    position:fixed; bottom:24px; left:0; right:0; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em;
+    color:rgba(250,249,246,0.6); pointer-events:none;
+  }
+  @media (max-width:560px){
+    .lightbox{padding:40px 16px;}
+    .lightbox-close{top:14px; right:14px; width:38px; height:38px;}
   }
 </style>
 </head>
@@ -617,7 +667,7 @@
   <div class="wrap hero-grid">
     <div class="reveal in">
       <div class="eyebrow">General Trading &amp; Industrial Supply · Manila</div>
-      <img src="assets/banner.jpg" alt="JSIXRON Consumer Products &amp; Merchandise" class="hero-banner">
+      <div class="hero-banner-wrap"><img src="assets/banner.jpg" alt="JSIXRON Consumer Products &amp; Merchandise" class="hero-banner"></div>
       <h1>General merchandise, industrial supply, and corporate solutions, under one roof.</h1>
       <p class="hero-sub">Tires. Safety gear. Uniforms. Printing. Hauling. Importation. One company, one call.</p>
       <div class="hero-actions">
@@ -835,52 +885,53 @@
     </div>
     <div class="work-carousel reveal">
       <!-- To add a real photo: change the div.work-photo below to
-           <div class="work-photo"><img src="assets/your-photo.jpg" alt="..."></div> -->
+           <div class="work-photo"><img src="assets/your-photo.jpg" alt="..."></div>
+           (lightbox zoom is added automatically via JS for any .work-photo img) -->
       <button class="carousel-btn carousel-prev" id="workPrev" aria-label="Previous">‹</button>
       <button class="carousel-btn carousel-next" id="workNext" aria-label="Next">›</button>
       <div class="work-track" id="workTrack">
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/tires-delivery-1a.jpg" alt="JSIXRON team delivering premium tires to a client warehouse" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/tires-delivery-1a.jpg" data-lightbox data-caption="JSIXRON team delivering premium tires to a client warehouse" alt="JSIXRON team delivering premium tires to a client warehouse" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">GM-01 · Tires</span><h4>Fleet Tire Supply</h4><p>Bulk tires, delivered.</p></div>
         </div>
 <div class="work-slide">
-          <div class="work-photo"><img src="assets/uniforms-jerseys.jpg" alt="Customized JSIXRON team jerseys, representative of company uniform work" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/uniforms-jerseys.jpg" data-lightbox data-caption="Customized JSIXRON team jerseys, representative of company uniform work" alt="Customized JSIXRON team jerseys, representative of company uniform work" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">CP-03 · Uniforms</span><h4>Company Uniform Rollout</h4><p>Uniforms, embroidered.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/signage-installation.jpg" alt="JSIXRON team installing large-format signage on-site" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/signage-installation.jpg" data-lightbox data-caption="JSIXRON team installing large-format signage on-site" alt="JSIXRON team installing large-format signage on-site" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">CP-10 · Signage</span><h4>Sticker &amp; Signage Installation</h4><p>Designed, printed, installed.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/construction-materials.jpg" alt="Cement and construction materials ready for delivery" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/construction-materials.jpg" data-lightbox data-caption="Cement and construction materials ready for delivery" alt="Cement and construction materials ready for delivery" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">GM-06 · Steel &amp; Construction</span><h4>Construction Materials Supply</h4><p>Steel, delivered on-site.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/hauling-truck.jpg" alt="JSIXRON hauling truck lifting a vehicle for transport" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/hauling-truck.jpg" data-lightbox data-caption="JSIXRON hauling truck lifting a vehicle for transport" alt="JSIXRON hauling truck lifting a vehicle for transport" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">OS-01 · Hauling</span><h4>Scheduled Hauling Job</h4><p>Hauled, on schedule.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/ppe-boots-delivery.jpg" alt="JSIXRON team delivering safety boots and PPE stock to a construction client" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/ppe-boots-delivery.jpg" data-lightbox data-caption="JSIXRON team delivering safety boots and PPE stock to a construction client" alt="JSIXRON team delivering safety boots and PPE stock to a construction client" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">GM-02 · PPE</span><h4>Safety Gear Deployment</h4><p>PPE, site-wide.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/cones-delivery-1.jpg" alt="JSIXRON team delivering traffic safety cones to an aviation ground support client" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/cones-delivery-1.jpg" data-lightbox data-caption="JSIXRON team delivering traffic safety cones to an aviation ground support client" alt="JSIXRON team delivering traffic safety cones to an aviation ground support client" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">GM-02 · Safety Gear</span><h4>Traffic Cone Supply</h4><p>Delivered, ready for site.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/stickersamp.jpg" alt="Sample of JSIXRON custom sticker and signage work" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/stickersamp.jpg" data-lightbox data-caption="Sample of JSIXRON custom sticker and signage work" alt="Sample of JSIXRON custom sticker and signage work" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">CP-10 · Signage</span><h4>Custom Sticker Production</h4><p>Cut, printed, applied.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/printingoffice.jpg" alt="JSIXRON printing and production workspace" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/printingoffice.jpg" data-lightbox data-caption="JSIXRON printing and production workspace" alt="JSIXRON printing and production workspace" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">CP-09 · Printing</span><h4>In-House Printing Setup</h4><p>Where the branding work happens.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/cctv.jpg" alt="CCTV and security camera system supplied and installed by JSIXRON" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/cctv.jpg" data-lightbox data-caption="CCTV and security camera system supplied and installed by JSIXRON" alt="CCTV and security camera system supplied and installed by JSIXRON" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">OS-04 · IT Services</span><h4>CCTV Installation</h4><p>Supplied and set up on-site.</p></div>
         </div>
         <div class="work-slide">
-          <div class="work-photo"><img src="assets/airchock.jpg" alt="Aviation ground support wheel chocks supplied by JSIXRON" loading="lazy"></div>
+          <div class="work-photo"><img src="assets/airchock.jpg" data-lightbox data-caption="Aviation ground support wheel chocks supplied by JSIXRON" alt="Aviation ground support wheel chocks supplied by JSIXRON" loading="lazy"><span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span></div>
           <div class="work-body"><span class="work-tag">GM-05 · Aviation Ground Support</span><h4>Aircraft Wheel Chock Supply</h4><p>Ground support gear, delivered.</p></div>
         </div>
       </div>
@@ -1005,6 +1056,21 @@
     </a>
     <p class="chat-popup-note">Delpan, Binondo, Manila · 0976-399-2008</p>
   </div>
+</div>
+
+<!-- ============================================================
+     LIGHTBOX
+     Any image marked with the data-lightbox attribute opens here
+     full-screen on click. Close via the X button, clicking the
+     dark backdrop, or pressing Escape, returns to the page exactly
+     as it was, no page scroll or layout shift.
+     ============================================================ -->
+<button class="lightbox-close" id="lightboxClose" aria-label="Close full-screen image" style="display:none;">✕</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Full-screen image view">
+  <div class="lightbox-img-wrap">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
 <script>
@@ -1172,6 +1238,61 @@
       document.querySelectorAll('.category-block.open .ledger-wrapper').forEach(w => {
         w.style.maxHeight = w.scrollHeight + 'px';
       });
+    });
+  })();
+
+  /* lightbox */
+  (function(){
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeBtn = document.getElementById('lightboxClose');
+    if (!lightbox || !lightboxImg) return;
+
+    let scrollLockY = 0;
+
+    function openLightbox(src, caption){
+      scrollLockY = window.scrollY;
+      lightboxImg.src = src;
+      lightboxImg.alt = caption || '';
+      lightboxCaption.textContent = caption || '';
+      lightbox.classList.add('open');
+      closeBtn.style.display = 'flex';
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + scrollLockY + 'px';
+      document.body.style.width = '100%';
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      closeBtn.style.display = 'none';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollLockY);
+      document.removeEventListener('keydown', handleEscape);
+      // Clear the image slightly after the fade completes to avoid a flash
+      setTimeout(() => { if (!lightbox.classList.contains('open')) lightboxImg.src = ''; }, 200);
+    }
+
+    function handleEscape(e){
+      if (e.key === 'Escape') closeLightbox();
+    }
+
+    document.querySelectorAll('img[data-lightbox]').forEach(img => {
+      img.addEventListener('click', () => {
+        openLightbox(img.currentSrc || img.src, img.getAttribute('data-caption'));
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Click the dark backdrop (not the image itself) to close, same as a real app
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-img-wrap')) {
+        closeLightbox();
+      }
     });
   })();
 </script>
