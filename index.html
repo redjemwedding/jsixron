@@ -141,6 +141,33 @@
   @media (prefers-reduced-motion: reduce){
     .smoke-layer{animation:none;}
   }
+
+  /* ---------- scroll parallax silhouettes ----------
+     Faint gold line-art icons echoing the catalog (crate, truck, tire,
+     shield) drifting slowly as the page scrolls. Kept extremely low
+     opacity so it reads as texture, never competes with copy on top. */
+  .parallax-icon{
+    position:absolute; z-index:0; pointer-events:none;
+    will-change:transform;
+  }
+  .parallax-icon svg{width:100%; height:100%; display:block;}
+  .company .parallax-icon{color:var(--gold-deep); opacity:0.07;}
+  .catalog .parallax-icon{color:var(--gold-light); opacity:0.06;}
+  .why .parallax-icon{color:var(--gold-deep); opacity:0.06;}
+  .contact .parallax-icon{color:var(--gold-light); opacity:0.07;}
+  .pi-crate{width:340px; height:340px; right:-60px; top:10%;}
+  .pi-gear{width:420px; height:420px; left:-90px; top:8%;}
+  .pi-shield{width:300px; height:300px; right:-40px; bottom:-40px;}
+  .pi-truck{width:380px; height:380px; left:-70px; bottom:-30px;}
+  @media (max-width:760px){
+    .pi-crate{width:220px; height:220px;}
+    .pi-gear{width:260px; height:260px;}
+    .pi-shield{width:190px; height:190px;}
+    .pi-truck{width:230px; height:230px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .parallax-icon{transform:none !important;}
+  }
   .smoke-layer.smoke-1{
     background-image:url('assets/bg1.jpg');
     mask-image:radial-gradient(ellipse 65% 55% at 12% 18%, black 0%, transparent 72%);
@@ -243,7 +270,7 @@
   .light-on-dark .section-tag{color:var(--gold-light);}
 
   /* ---------- company overview ---------- */
-  .company{background:var(--paper);}
+  .company{background:var(--paper); position:relative; overflow:hidden;}
   .company-lede{font-family:'Playfair Display',serif; font-size:clamp(21px,2.2vw,27px); color:var(--ink); font-weight:500; line-height:1.5; max-width:800px; margin-bottom:26px;}
   .company-copy{max-width:760px;}
   .company-copy p{color:var(--steel-soft); font-size:16px; line-height:1.85; margin-bottom:16px;}
@@ -309,7 +336,7 @@
   .lead-role{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-deep);}
 
   /* ---------- catalog / capabilities ---------- */
-  .catalog{background:var(--ink); color:var(--paper);}
+  .catalog{background:var(--ink); color:var(--paper); position:relative; overflow:hidden;}
   .catalog .section-head p{color:rgba(250,249,246,0.6);}
   .catalog-head-row{
     display:grid; grid-template-columns:84px 1fr 130px;
@@ -415,7 +442,7 @@
 
 
   /* ---------- why us ---------- */
-  .why{background:var(--paper-dim);}
+  .why{background:var(--paper-dim); position:relative; overflow:hidden;}
   .why-layout{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;}
   .why-intro h2{font-size:clamp(27px,3.4vw,40px); max-width:13ch;}
   .why-intro p{margin-top:16px; color:var(--steel-soft); font-size:15px; max-width:340px; line-height:1.7;}
@@ -730,6 +757,9 @@
 </div>
 
 <section class="company" id="company">
+  <div class="parallax-icon pi-crate" data-speed="0.06" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/><path d="M16.5 5.5l-9 5"/></svg>
+  </div>
   <div class="wrap">
     <div class="section-head reveal">
       <div class="section-tag">The Company</div>
@@ -816,6 +846,9 @@
 </section>
 
 <section class="catalog" id="catalog">
+  <div class="parallax-icon pi-gear" data-speed="-0.08" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.9 4.9l1.85 1.85M17.25 17.25l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.9 19.1l1.85-1.85M17.25 6.75l1.85-1.85"/></svg>
+  </div>
   <div class="wrap">
     <div class="section-head light-on-dark reveal">
       <div class="section-tag">Capabilities</div>
@@ -960,6 +993,9 @@
 </section>
 
 <section class="why" id="why">
+  <div class="parallax-icon pi-shield" data-speed="0.09" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7.5 3.2v5.4c0 4.7-3.1 8.7-7.5 10.4-4.4-1.7-7.5-5.7-7.5-10.4V5.7L12 2.5z"/><path d="M8.7 12.1l2.3 2.3 4.3-4.6"/></svg>
+  </div>
   <div class="wrap why-layout">
     <div class="why-intro reveal">
       <h2>Most suppliers cover one category.</h2>
@@ -990,6 +1026,9 @@
 </section>
 
 <section class="contact" id="contact">
+  <div class="parallax-icon pi-truck" data-speed="-0.07" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h11v8H2z"/><path d="M13 11h4l4 3v2h-8z"/><circle cx="6.5" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+  </div>
   <div class="smoke-layer smoke-1"></div>
   <div class="smoke-layer smoke-2"></div>
   <div class="wrap contact-grid">
@@ -1365,6 +1404,39 @@
         if (dx < 0) showNext(); else showPrev();
       }
     }, { passive: true });
+  })();
+
+  /* scroll parallax silhouettes */
+  (function(){
+    const icons = Array.from(document.querySelectorAll('.parallax-icon'));
+    if (!icons.length) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    let ticking = false;
+    function update(){
+      const viewportCenter = window.innerHeight / 2;
+      icons.forEach(icon => {
+        const speed = parseFloat(icon.getAttribute('data-speed')) || 0.08;
+        const rect = icon.getBoundingClientRect();
+        const elementCenter = rect.top + rect.height / 2;
+        // Distance from viewport centre drives the offset, so the icon sits
+        // near its natural spot when its section first comes into view and
+        // drifts gently as the user keeps scrolling past it
+        const distance = viewportCenter - elementCenter;
+        icon.style.transform = 'translateY(' + (distance * speed) + 'px)';
+      });
+      ticking = false;
+    }
+    function onScroll(){
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
   })();
 </script>
 
