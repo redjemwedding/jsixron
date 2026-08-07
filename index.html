@@ -115,6 +115,34 @@
     display:flex; align-items:center;
     padding-top:76px;
   }
+  /* Faded, elegant background blend using real jobsite photos, kept soft
+     so it never competes with the copy sitting on top of it */
+  .smoke-layer{
+    position:absolute; inset:-8%; z-index:1; pointer-events:none;
+    background-size:cover; background-position:center;
+    filter:blur(70px) saturate(0.55) brightness(0.5);
+    opacity:0.4;
+    mix-blend-mode:soft-light;
+  }
+  .smoke-layer.smoke-1{
+    background-image:url('assets/bg1.jpg');
+    mask-image:radial-gradient(ellipse 65% 55% at 12% 18%, black 0%, transparent 72%);
+    -webkit-mask-image:radial-gradient(ellipse 65% 55% at 12% 18%, black 0%, transparent 72%);
+  }
+  .smoke-layer.smoke-2{
+    background-image:url('assets/bg2.jpg');
+    mask-image:radial-gradient(ellipse 65% 55% at 88% 82%, black 0%, transparent 72%);
+    -webkit-mask-image:radial-gradient(ellipse 65% 55% at 88% 82%, black 0%, transparent 72%);
+  }
+  .contact .smoke-layer{opacity:0.28;}
+  .contact .smoke-layer.smoke-1{
+    mask-image:radial-gradient(ellipse 55% 60% at 90% 15%, black 0%, transparent 70%);
+    -webkit-mask-image:radial-gradient(ellipse 55% 60% at 90% 15%, black 0%, transparent 70%);
+  }
+  .contact .smoke-layer.smoke-2{
+    mask-image:radial-gradient(ellipse 55% 60% at 8% 90%, black 0%, transparent 70%);
+    -webkit-mask-image:radial-gradient(ellipse 55% 60% at 8% 90%, black 0%, transparent 70%);
+  }
   .hero::before{
     content:"";
     position:absolute; inset:0;
@@ -126,7 +154,7 @@
   }
   .hero-grid{
     display:grid; grid-template-columns:1.2fr 0.8fr; gap:64px;
-    align-items:center; width:100%; position:relative; z-index:2;
+    align-items:center; width:100%; position:relative; z-index:3;
   }
   .eyebrow{
     display:inline-flex; align-items:center; gap:10px;
@@ -387,8 +415,8 @@
   .timeline-step p{font-size:13.5px; color:var(--steel-soft); line-height:1.6;}
 
   /* ---------- contact ---------- */
-  .contact{background:var(--ink); color:var(--paper);}
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  .contact{background:var(--ink); color:var(--paper); position:relative; overflow:hidden;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; position:relative; z-index:2;}
   .contact-list{margin-top:30px;}
   .contact-item{display:flex; gap:18px; padding:19px 0; border-bottom:1px solid var(--line-light);}
   .contact-item .ic{
@@ -567,6 +595,8 @@
 </header>
 
 <section class="hero" id="top">
+  <div class="smoke-layer smoke-1"></div>
+  <div class="smoke-layer smoke-2"></div>
   <div class="wrap hero-grid">
     <div class="reveal in">
       <div class="eyebrow">General Trading &amp; Industrial Supply · Manila</div>
@@ -676,14 +706,20 @@
       <!-- To add a real photo: replace the div.initials placeholder below with
            <img src="assets/team/ron.jpg" alt="Ronald Diola, General Manager"> -->
       <div class="lead-card">
-        <div class="lead-photo"><span class="initials">RD</span></div>
+        <div class="lead-photo">
+          <img src="assets/founderron.jpg" alt="Ronald Diola, General Manager" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="initials" style="display:none;">RD</span>
+        </div>
         <div class="lead-info">
           <h4>Ronald Diola</h4>
           <div class="lead-role">General Manager</div>
         </div>
       </div>
       <div class="lead-card">
-        <div class="lead-photo"><span class="initials">JS</span></div>
+        <div class="lead-photo">
+          <img src="assets/founderjerald.jpg" alt="Jerald Satina, Operations Manager" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="initials" style="display:none;">JS</span>
+        </div>
         <div class="lead-info">
           <h4>Jerald Satina</h4>
           <div class="lead-role">Operations Manager</div>
@@ -814,6 +850,14 @@
           <div class="work-photo"><img src="assets/cones-delivery-1.jpg" alt="JSIXRON team delivering traffic safety cones to an aviation ground support client" loading="lazy"></div>
           <div class="work-body"><span class="work-tag">GM-02 · Safety Gear</span><h4>Traffic Cone Supply</h4><p>Delivered, ready for site.</p></div>
         </div>
+        <div class="work-slide">
+          <div class="work-photo"><img src="assets/stickersamp.jpg" alt="Sample of JSIXRON custom sticker and signage work" loading="lazy"></div>
+          <div class="work-body"><span class="work-tag">CP-10 · Signage</span><h4>Custom Sticker Production</h4><p>Cut, printed, applied.</p></div>
+        </div>
+        <div class="work-slide">
+          <div class="work-photo"><img src="assets/printingoffice.jpg" alt="JSIXRON printing and production workspace" loading="lazy"></div>
+          <div class="work-body"><span class="work-tag">CP-09 · Printing</span><h4>In-House Printing Setup</h4><p>Where the branding work happens.</p></div>
+        </div>
       </div>
       <div class="carousel-dots" id="workDots"></div>
     </div>
@@ -851,6 +895,8 @@
 </section>
 
 <section class="contact" id="contact">
+  <div class="smoke-layer smoke-1"></div>
+  <div class="smoke-layer smoke-2"></div>
   <div class="wrap contact-grid">
     <div class="reveal">
       <div class="section-tag light-on-dark">Get In Touch</div>
