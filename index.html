@@ -13,7 +13,7 @@
 <!-- Facebook / Open Graph share preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="JSIXRON Consumer Products &amp; Merchandise">
-<meta property="og:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof. PhilGEPS-registered.">
+<meta property="og:description" content="Manila-based general trading company: tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof. PhilGEPS-registered.">
 <meta property="og:image" content="https://jsixron.redjemie.com/assets/logo-mark.png">
 <meta property="og:image:secure_url" content="https://jsixron.redjemie.com/assets/logo-mark.png">
 <meta property="og:image:type" content="image/png">
@@ -26,7 +26,7 @@
 <!-- Twitter / X share preview -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="JSIXRON Consumer Products &amp; Merchandise">
-<meta name="twitter:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
+<meta name="twitter:description" content="Manila-based general trading company: tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
 <meta name="twitter:image" content="https://jsixron.redjemie.com/assets/logo-mark.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -243,19 +243,23 @@
 
   /* ---------- leadership ---------- */
   .leadership{background:var(--paper);}
-  .leadership-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); max-width:760px;}
-  .lead-card{background:var(--paper); padding:32px 30px; display:flex; gap:20px; align-items:flex-start;}
-  .lead-avatar{
-    width:86px; height:86px; border-radius:50%; border:1px solid var(--gold-deep);
-    overflow:hidden; flex-shrink:0; background:var(--paper-dim);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Playfair Display',serif; font-size:24px; color:var(--gold-deep); font-weight:600;
+  .leadership-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; max-width:640px;}
+  .lead-card{
+    background:var(--paper-dim); border:1px solid var(--line); border-radius:8px;
+    overflow:hidden; text-align:center; transition:box-shadow .2s ease, border-color .2s ease;
   }
-  .lead-avatar img{width:100%; height:100%; object-fit:cover; display:block;}
-  .lead-info{flex:1; min-width:0; padding-top:2px;}
-  .lead-card h4{font-size:19px; margin-bottom:5px;}
-  .lead-role{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:14px;}
-  .lead-card p{font-size:13.5px; color:var(--steel-soft); line-height:1.65;}
+  .lead-card:hover{box-shadow:0 8px 20px rgba(11,12,14,0.1); border-color:var(--gold-deep);}
+  .lead-photo{
+    width:100%; aspect-ratio:1; background:var(--ink); position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .lead-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .lead-photo .initials{
+    font-family:'Playfair Display',serif; font-size:44px; font-weight:600; color:var(--gold-light);
+  }
+  .lead-info{padding:20px 16px 24px;}
+  .lead-card h4{font-size:18px; margin-bottom:6px;}
+  .lead-role{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-deep);}
 
   /* ---------- catalog / capabilities ---------- */
   .catalog{background:var(--ink); color:var(--paper);}
@@ -266,15 +270,35 @@
     font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em;
     text-transform:uppercase; color:rgba(250,249,246,0.4);
   }
-  .category-block{margin-bottom:54px;}
-  .category-banner{
-    aspect-ratio:21/7; border-radius:4px; overflow:hidden; margin-bottom:22px;
-    position:relative; border:1px solid var(--line-light);
+  .category-block{margin-bottom:26px; border:1px solid var(--line-light); border-radius:6px; overflow:hidden;}
+  .category-toggle{
+    width:100%; background:none; border:none; padding:0; margin:0; cursor:pointer;
+    text-align:left; display:block; color:inherit; font:inherit;
   }
-  .category-banner img{width:100%; height:100%; object-fit:cover; filter:saturate(0.9) brightness(0.72);}
-  .category-title{display:flex; align-items:baseline; gap:16px; margin-bottom:4px;}
+  .category-banner{
+    aspect-ratio:21/7; overflow:hidden; margin-bottom:0;
+    position:relative;
+  }
+  .category-banner img{width:100%; height:100%; object-fit:cover; filter:saturate(0.9) brightness(0.72); transition:filter .2s ease;}
+  .category-toggle:hover .category-banner img{filter:saturate(0.95) brightness(0.8);}
+  .category-title{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:20px 22px; background:rgba(255,255,255,0.02);
+    transition:background .2s ease;
+  }
+  .category-toggle:hover .category-title{background:rgba(184,146,47,0.07);}
+  .category-title-left{display:flex; align-items:baseline; gap:16px;}
   .category-title h3{font-size:21px; color:var(--paper); font-weight:600;}
   .category-title .count{font-family:'IBM Plex Mono',monospace; font-size:11px; color:rgba(250,249,246,0.4);}
+  .category-chevron{
+    width:30px; height:30px; border-radius:50%; border:1px solid rgba(184,146,47,0.5);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:transform .3s ease, background .2s ease;
+  }
+  .category-chevron svg{width:14px; height:14px; color:var(--gold-light);}
+  .category-block.open .category-chevron{transform:rotate(180deg); background:var(--gold-deep);}
+  .category-block.open .category-chevron svg{color:var(--ink);}
+  .ledger-wrapper{max-height:0; overflow:hidden; transition:max-height .28s cubic-bezier(0.4,0,0.2,1);}
   .ledger{border-top:1px solid var(--line-light);}
   .ledger-row{
     display:grid; grid-template-columns:84px 1fr 130px; align-items:center;
@@ -282,6 +306,7 @@
     transition:background .2s ease;
   }
   .ledger-row:hover{background:rgba(184,146,47,0.06);}
+  .ledger-row:last-child{border-bottom:none;}
   .ledger-code{font-family:'IBM Plex Mono',monospace; color:var(--gold-light); font-size:12.5px;}
   .ledger-name{font-size:15.5px; color:var(--paper); font-weight:500;}
   .ledger-status{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:rgba(250,249,246,0.4); text-align:right;}
@@ -397,6 +422,71 @@
   .footer-badge img{width:34px; height:34px; object-fit:contain; border-radius:4px; background:var(--paper); padding:3px;}
   .footer-badge span{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(250,249,246,0.5);}
 
+  /* ---------- messenger chat widget ---------- */
+  .chat-launcher{
+    position:fixed; right:24px; bottom:24px; z-index:200;
+    width:58px; height:58px; border-radius:50%;
+    background:linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+    border:none; cursor:pointer; box-shadow:0 12px 28px rgba(11,12,14,0.35);
+    display:flex; align-items:center; justify-content:center;
+    transition:box-shadow .2s ease;
+  }
+  .chat-launcher:hover{box-shadow:0 14px 32px rgba(11,12,14,0.45);}
+  .chat-launcher svg{width:27px; height:27px; color:var(--ink);}
+  .chat-badge{
+    position:absolute; top:-2px; right:-2px; width:18px; height:18px; border-radius:50%;
+    background:#e0432b; color:#fff; font-family:'IBM Plex Mono',monospace; font-size:10px;
+    display:flex; align-items:center; justify-content:center; font-weight:600;
+    border:2px solid var(--paper);
+  }
+  @media (prefers-reduced-motion: reduce){ .chat-badge{animation:none;} }
+
+  .chat-popup{
+    position:fixed; right:24px; bottom:96px; z-index:200;
+    width:300px; max-width:calc(100vw - 48px);
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    box-shadow:0 20px 50px rgba(11,12,14,0.28);
+    opacity:0; transform:translateY(8px); pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+    overflow:hidden;
+  }
+  .chat-popup.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+  .chat-popup-head{
+    background:var(--ink); padding:16px 18px; display:flex; align-items:center; gap:12px; position:relative;
+  }
+  .chat-popup-avatar{
+    width:36px; height:36px; border-radius:50%; overflow:hidden; flex-shrink:0;
+    border:1px solid rgba(184,146,47,0.5); background:var(--ink-soft);
+  }
+  .chat-popup-avatar img{width:100%; height:100%; object-fit:cover;}
+  .chat-popup-head-text b{display:block; color:var(--paper); font-family:'Inter',sans-serif; font-size:13.5px; font-weight:600;}
+  .chat-popup-head-text span{display:flex; align-items:center; gap:5px; font-size:11px; color:rgba(250,249,246,0.55);}
+  .chat-popup-head-text span::before{content:""; width:6px; height:6px; border-radius:50%; background:#3fc571;}
+  .chat-popup-close{
+    position:absolute; top:10px; right:10px; width:24px; height:24px; border-radius:50%;
+    background:transparent; border:none; color:rgba(250,249,246,0.55); cursor:pointer;
+    font-size:15px; display:flex; align-items:center; justify-content:center;
+  }
+  .chat-popup-close:hover{color:var(--paper);}
+  .chat-popup-body{padding:18px;}
+  .chat-bubble{
+    background:var(--paper-dim); border-radius:10px 10px 10px 2px; padding:12px 14px;
+    font-size:13.5px; color:var(--steel); line-height:1.6; margin-bottom:14px;
+  }
+  .chat-popup-cta{
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    width:100%; padding:12px 16px; border-radius:6px; border:none; cursor:pointer;
+    background:var(--gold); color:var(--ink); font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px;
+    transition:background .2s ease;
+  }
+  .chat-popup-cta:hover{background:var(--gold-light);}
+  .chat-popup-cta svg{width:17px; height:17px;}
+  .chat-popup-note{margin-top:10px; text-align:center; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.04em; color:var(--steel-soft);}
+  @media (max-width:560px){
+    .chat-launcher{right:16px; bottom:16px; width:52px; height:52px;}
+    .chat-popup{right:16px; bottom:82px; width:calc(100vw - 32px);}
+  }
+
   /* ---------- responsive ---------- */
   @media (max-width:920px){
     nav{position:fixed; top:76px; left:0; right:0; background:var(--ink); flex-direction:column; align-items:flex-start; padding:24px 32px; gap:18px; transform:translateY(-140%); transition:transform .35s ease; border-bottom:1px solid var(--line-light);}
@@ -404,7 +494,7 @@
     .burger{display:flex;}
     .hero-grid{grid-template-columns:1fr;}
     .plate-wrap{margin-top:48px;}
-    .leadership-grid{grid-template-columns:1fr; max-width:420px;}
+    .leadership-grid{grid-template-columns:1fr 1fr; max-width:420px; gap:16px;}
     .work-slide{grid-template-columns:1fr;}
     .work-slide .work-photo{aspect-ratio:4/3; border-right:none; border-bottom:1px solid var(--line);}
     .carousel-prev{left:8px;}
@@ -428,6 +518,8 @@
     .hero-stats{gap:22px; row-gap:18px;}
     .hero-banner{max-width:100%;}
     .category-banner{aspect-ratio:16/9;}
+    .category-title{padding:16px 16px;}
+    .category-title h3{font-size:17px;}
     .lead-card{padding:24px 20px; gap:14px;}
     .lead-avatar{width:64px; height:64px; font-size:19px;}
     .lead-card h4{font-size:17px;}
@@ -479,7 +571,7 @@
     <div class="reveal in">
       <div class="eyebrow">General Trading &amp; Industrial Supply · Manila</div>
       <img src="assets/banner.jpg" alt="JSIXRON Consumer Products &amp; Merchandise" class="hero-banner">
-      <h1>General merchandise, industrial supply, and corporate solutions — under one roof.</h1>
+      <h1>General merchandise, industrial supply, and corporate solutions, under one roof.</h1>
       <p class="hero-sub">Tires. Safety gear. Uniforms. Printing. Hauling. Importation. One company, one call.</p>
       <div class="hero-actions">
         <a href="tel:+639763992008" class="btn btn-primary">Call 0976-399-2008</a>
@@ -493,7 +585,7 @@
     </div>
     <div class="plate-wrap">
       <div>
-        <div class="plate"><img src="assets/logo-mark.png" alt="JSIXRON — Consumer Products &amp; Merchandise"></div>
+        <div class="plate"><img src="assets/logo-mark.png" alt="JSIXRON, Consumer Products &amp; Merchandise"></div>
         <p class="plate-caption">"Your Demand, Our Commitment"</p>
       </div>
     </div>
@@ -504,19 +596,19 @@
   <div class="wrap value-grid">
     <div class="value-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4l-4.8 2.5.9-5.4L4.2 7.7l5.4-.8L12 2z"/><path d="M9 12.5l1.8 1.8L15 10" stroke-width="1.4"/></svg>
-      <span>Quality Products</span>
+      <span>Straight from Binondo, no middleman markup</span>
     </div>
     <div class="value-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12l4-3 3 2 3-4 3 3 4-3 3 3"/><path d="M2 12v3l4 3 3-2 3 3 3-2 4 3 3-3v-2"/></svg>
-      <span>Reliable Service</span>
+      <span>Same-day quotes, most requests</span>
     </div>
     <div class="value-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
-      <span>Wide Range of Products</span>
+      <span>One PO, multiple categories</span>
     </div>
     <div class="value-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="18" cy="9" r="2.3"/><path d="M15.5 14.2c2.6.3 4.5 2.4 4.5 5.3"/></svg>
-      <span>Customer Satisfaction</span>
+      <span>You deal directly with the owners</span>
     </div>
   </div>
 </div>
@@ -527,7 +619,7 @@
       <div class="section-tag">The Company</div>
       <h2>One supplier. Every category you actually need.</h2>
     </div>
-    <p class="company-lede reveal">Manila-based general trading company — industrial supply, corporate branding, and logistics, under one roof.</p>
+    <p class="company-lede reveal">We started as a tire and hardware supplier in Binondo. Clients kept asking if we could also handle uniforms, printing, hauling, so we built the network to say yes. That's JSIXRON today: one contact, several suppliers behind the scenes, one invoice.</p>
     <div class="registry-row reveal">
       <div class="registry-item"><span>Location</span><b>Delpan, Binondo, Manila</b></div>
       <div class="registry-item"><span>Operating Since</span><b>General Trading Division</b></div>
@@ -542,7 +634,7 @@
      assets/philgeps.png (recommended: clean scan or screenshot of the
      certificate, ideally a transparent or white background, min. 800px wide).
      Once the file exists at that path, the placeholder block below is
-     replaced automatically — no other edits needed.
+     replaced automatically, no other edits needed.
      ============================================================ -->
 <section class="accreditation" id="accreditation">
   <div class="wrap">
@@ -553,7 +645,7 @@
     <div class="accred-card reveal">
       <div class="accred-badge">
         <!-- Replace the block below with:
-             <img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier — JSIXRON Consumer Products & Merchandise">
+             <img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier, JSIXRON Consumer Products & Merchandise">
              once assets/philgeps.png is uploaded. -->
         <div class="accred-badge-pending">
           <span class="ic">⌖</span>
@@ -581,17 +673,17 @@
       <h2>Founders</h2>
     </div>
     <div class="leadership-grid reveal">
-      <!-- To add a real photo: replace the div.lead-avatar content below with
-           <img src="assets/team/ron.jpg" alt="Ronald Diola"> -->
+      <!-- To add a real photo: replace the div.initials placeholder below with
+           <img src="assets/team/ron.jpg" alt="Ronald Diola, General Manager"> -->
       <div class="lead-card">
-        <div class="lead-avatar">RD</div>
+        <div class="lead-photo"><span class="initials">RD</span></div>
         <div class="lead-info">
           <h4>Ronald Diola</h4>
           <div class="lead-role">General Manager</div>
         </div>
       </div>
       <div class="lead-card">
-        <div class="lead-avatar">JS</div>
+        <div class="lead-photo"><span class="initials">JS</span></div>
         <div class="lead-info">
           <h4>Jerald Satina</h4>
           <div class="lead-role">Operations Manager</div>
@@ -609,53 +701,74 @@
       <p>Organized by division.</p>
     </div>
 
-    <div class="catalog-head-row"><span>Code</span><span>Item / Service</span><span>Status</span></div>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(250,249,246,0.4); margin-bottom:22px;">Tap a category to see the full list</p>
 
-    <div class="category-block reveal">
-      <div class="category-banner">
-        <img src="https://images.unsplash.com/photo-1765446004204-aa52f4c11167?w=1400&q=70&auto=format&fit=crop" alt="Stacked tires and wheels, representative of premium tire supply" loading="lazy">
-      </div>
-      <div class="category-title"><h3>General Merchandise &amp; Industrial Supplies</h3><span class="count">07 lines</span></div>
-      <div class="ledger">
-        <div class="ledger-row"><span class="ledger-code">GM-01</span><span class="ledger-name">Premium Tires — various brands &amp; sizes</span><span class="ledger-status">In Stock</span></div>
-        <div class="ledger-row"><span class="ledger-code">GM-02</span><span class="ledger-name">Safety Gear &amp; Personal Protective Equipment (PPE)</span><span class="ledger-status">In Stock</span></div>
-        <div class="ledger-row"><span class="ledger-code">GM-03</span><span class="ledger-name">Office Supplies &amp; Corporate Essentials</span><span class="ledger-status">In Stock</span></div>
-        <div class="ledger-row"><span class="ledger-code">GM-04</span><span class="ledger-name">Storage &amp; Material Handling Equipment</span><span class="ledger-status">On Request</span></div>
-        <div class="ledger-row"><span class="ledger-code">GM-05</span><span class="ledger-name">Aircraft &amp; Aviation Ground Support Supplies</span><span class="ledger-status">On Request</span></div>
-        <div class="ledger-row"><span class="ledger-code">GM-06</span><span class="ledger-name">Steel Construction Materials &amp; Industrial Supplies</span><span class="ledger-status">In Stock</span></div>
-        <div class="ledger-row"><span class="ledger-code">GM-07</span><span class="ledger-name">Bulk &amp; Project-Based Sourcing</span><span class="ledger-status">On Request</span></div>
+    <div class="category-block open reveal" data-category>
+      <button class="category-toggle" type="button" aria-expanded="true">
+        <div class="category-banner">
+          <img src="https://images.unsplash.com/photo-1765446004204-aa52f4c11167?w=1400&q=70&auto=format&fit=crop" alt="Stacked tires and wheels, representative of premium tire supply" loading="lazy">
+        </div>
+        <div class="category-title">
+          <div class="category-title-left"><h3>General Merchandise &amp; Industrial Supplies</h3><span class="count">07 lines</span></div>
+          <span class="category-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+      </button>
+      <div class="ledger-wrapper">
+        <div class="ledger">
+          <div class="ledger-row"><span class="ledger-code">GM-01</span><span class="ledger-name">Premium Tires, various brands &amp; sizes</span><span class="ledger-status">In Stock</span></div>
+          <div class="ledger-row"><span class="ledger-code">GM-02</span><span class="ledger-name">Safety Gear &amp; Personal Protective Equipment (PPE)</span><span class="ledger-status">In Stock</span></div>
+          <div class="ledger-row"><span class="ledger-code">GM-03</span><span class="ledger-name">Office Supplies &amp; Corporate Essentials</span><span class="ledger-status">In Stock</span></div>
+          <div class="ledger-row"><span class="ledger-code">GM-04</span><span class="ledger-name">Storage &amp; Material Handling Equipment</span><span class="ledger-status">On Request</span></div>
+          <div class="ledger-row"><span class="ledger-code">GM-05</span><span class="ledger-name">Aircraft &amp; Aviation Ground Support Supplies</span><span class="ledger-status">On Request</span></div>
+          <div class="ledger-row"><span class="ledger-code">GM-06</span><span class="ledger-name">Steel Construction Materials &amp; Industrial Supplies</span><span class="ledger-status">In Stock</span></div>
+          <div class="ledger-row"><span class="ledger-code">GM-07</span><span class="ledger-name">Bulk &amp; Project-Based Sourcing</span><span class="ledger-status">On Request</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="category-block reveal">
-      <div class="category-banner">
-        <img src="https://images.unsplash.com/photo-1745095034955-1019067b7ce4?w=1400&q=70&auto=format&fit=crop" alt="Close-up embroidery and textile detail, representative of corporate branding work" loading="lazy">
-      </div>
-      <div class="category-title"><h3>Corporate &amp; Promotional Solutions</h3><span class="count">10 lines</span></div>
-      <div class="ledger">
-        <div class="ledger-row"><span class="ledger-code">CP-01</span><span class="ledger-name">Sublimation Printing Services</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-02</span><span class="ledger-name">Corporate Jackets &amp; Branded Apparel</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-03</span><span class="ledger-name">Company Uniforms</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-04</span><span class="ledger-name">Fraternity &amp; Organization Uniforms</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-05</span><span class="ledger-name">Sports Jerseys &amp; Teamwear</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-06</span><span class="ledger-name">Customized Long Sleeve Shirts</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-07</span><span class="ledger-name">Professional Embroidery Services</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-08</span><span class="ledger-name">Customized Promotional Merchandise</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-09</span><span class="ledger-name">Corporate Branding, Printing &amp; Marketing Materials</span><span class="ledger-status">Made to Order</span></div>
-        <div class="ledger-row"><span class="ledger-code">CP-10</span><span class="ledger-name">Sticker Design, Printing &amp; Installation</span><span class="ledger-status">Made to Order</span></div>
+    <div class="category-block reveal" data-category>
+      <button class="category-toggle" type="button" aria-expanded="false">
+        <div class="category-banner">
+          <img src="https://images.unsplash.com/photo-1745095034955-1019067b7ce4?w=1400&q=70&auto=format&fit=crop" alt="Close-up embroidery and textile detail, representative of corporate branding work" loading="lazy">
+        </div>
+        <div class="category-title">
+          <div class="category-title-left"><h3>Corporate &amp; Promotional Solutions</h3><span class="count">10 lines</span></div>
+          <span class="category-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+      </button>
+      <div class="ledger-wrapper">
+        <div class="ledger">
+          <div class="ledger-row"><span class="ledger-code">CP-01</span><span class="ledger-name">Sublimation Printing Services</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-02</span><span class="ledger-name">Corporate Jackets &amp; Branded Apparel</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-03</span><span class="ledger-name">Company Uniforms</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-04</span><span class="ledger-name">Fraternity &amp; Organization Uniforms</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-05</span><span class="ledger-name">Sports Jerseys &amp; Teamwear</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-06</span><span class="ledger-name">Customized Long Sleeve Shirts</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-07</span><span class="ledger-name">Professional Embroidery Services</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-08</span><span class="ledger-name">Customized Promotional Merchandise</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-09</span><span class="ledger-name">Corporate Branding, Printing &amp; Marketing Materials</span><span class="ledger-status">Made to Order</span></div>
+          <div class="ledger-row"><span class="ledger-code">CP-10</span><span class="ledger-name">Sticker Design, Printing &amp; Installation</span><span class="ledger-status">Made to Order</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="category-block reveal">
-      <div class="category-banner">
-        <img src="https://images.unsplash.com/photo-1720811559395-3ed8d1b16649?w=1400&q=70&auto=format&fit=crop" alt="Truck on the road, representative of hauling and logistics services" loading="lazy">
-      </div>
-      <div class="category-title"><h3>Other Services</h3><span class="count">04 lines</span></div>
-      <div class="ledger">
-        <div class="ledger-row"><span class="ledger-code">OS-01</span><span class="ledger-name">Hauling Services</span><span class="ledger-status">Scheduled</span></div>
-        <div class="ledger-row"><span class="ledger-code">OS-02</span><span class="ledger-name">Scrap Buying &amp; Disposal</span><span class="ledger-status">Scheduled</span></div>
-        <div class="ledger-row"><span class="ledger-code">OS-03</span><span class="ledger-name">Importation Consultation</span><span class="ledger-status">By Appointment</span></div>
-        <div class="ledger-row"><span class="ledger-code">OS-04</span><span class="ledger-name">Information Technology Services</span><span class="ledger-status">By Appointment</span></div>
+    <div class="category-block reveal" data-category>
+      <button class="category-toggle" type="button" aria-expanded="false">
+        <div class="category-banner">
+          <img src="https://images.unsplash.com/photo-1720811559395-3ed8d1b16649?w=1400&q=70&auto=format&fit=crop" alt="Truck on the road, representative of hauling and logistics services" loading="lazy">
+        </div>
+        <div class="category-title">
+          <div class="category-title-left"><h3>Other Services</h3><span class="count">04 lines</span></div>
+          <span class="category-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+      </button>
+      <div class="ledger-wrapper">
+        <div class="ledger">
+          <div class="ledger-row"><span class="ledger-code">OS-01</span><span class="ledger-name">Hauling Services</span><span class="ledger-status">Scheduled</span></div>
+          <div class="ledger-row"><span class="ledger-code">OS-02</span><span class="ledger-name">Scrap Buying &amp; Disposal</span><span class="ledger-status">Scheduled</span></div>
+          <div class="ledger-row"><span class="ledger-code">OS-03</span><span class="ledger-name">Importation Consultation</span><span class="ledger-status">By Appointment</span></div>
+          <div class="ledger-row"><span class="ledger-code">OS-04</span><span class="ledger-name">Information Technology Services</span><span class="ledger-status">By Appointment</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -795,6 +908,34 @@
   </div>
 </footer>
 
+<!-- ============================================================
+     MESSENGER CHAT WIDGET
+     Floating launcher (bottom-right) opens a small greeting card that
+     hands the visitor straight to Facebook Messenger. No backend needed,
+     it just deep-links to m.me using the page's numeric ID, falling back
+     to the Facebook page itself.
+     ============================================================ -->
+<button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.89 1.46 5.47 3.74 7.15V22l3.42-1.88c.91.25 1.87.39 2.84.39 5.52 0 10-4.13 10-9.2S17.52 2 12 2zm.99 12.4l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/></svg>
+  <span class="chat-badge" id="chatBadge">1</span>
+</button>
+
+<div class="chat-popup" id="chatPopup" role="dialog" aria-label="Message JSIXRON on Messenger">
+  <div class="chat-popup-head">
+    <span class="chat-popup-avatar"><img src="assets/logo-mark.png" alt="JSIXRON"></span>
+    <span class="chat-popup-head-text"><b>JSIXRON</b><span>Typically replies within a day</span></span>
+    <button class="chat-popup-close" id="chatClose" aria-label="Close">✕</button>
+  </div>
+  <div class="chat-popup-body">
+    <div class="chat-bubble">Good day. How may we help you? Send us your requirements (item, quantity, and delivery area) and we'll get back to you with a quote.</div>
+    <a class="chat-popup-cta" href="https://m.me/61553961980286" target="_blank" rel="noopener" id="chatCta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.89 1.46 5.47 3.74 7.15V22l3.42-1.88c.91.25 1.87.39 2.84.39 5.52 0 10-4.13 10-9.2S17.52 2 12 2zm.99 12.4l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/></svg>
+      Message us on Facebook
+    </a>
+    <p class="chat-popup-note">Delpan, Binondo, Manila · 0976-399-2008</p>
+  </div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -864,10 +1005,103 @@
     if (!badge) return;
     const test = new Image();
     test.onload = function(){
-      badge.innerHTML = '<img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier — JSIXRON Consumer Products & Merchandise">';
+      badge.innerHTML = '<img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier, JSIXRON Consumer Products & Merchandise">';
     };
     test.onerror = function(){ /* keep pending state */ };
     test.src = 'assets/philgeps.png';
+  })();
+
+  /* messenger chat widget */
+  (function(){
+    const launcher = document.getElementById('chatLauncher');
+    const popup = document.getElementById('chatPopup');
+    const closeBtn = document.getElementById('chatClose');
+    const badge = document.getElementById('chatBadge');
+    const cta = document.getElementById('chatCta');
+    if (!launcher || !popup) return;
+
+    const DISMISSED_KEY = 'jsixronChatDismissed';
+    const alreadyDismissed = sessionStorage.getItem(DISMISSED_KEY) === '1';
+
+    function openPopup(){
+      popup.classList.add('open');
+      if (badge) badge.style.display = 'none';
+      document.addEventListener('click', handleOutsideClick);
+      document.addEventListener('keydown', handleEscape);
+    }
+    function closePopup(){
+      popup.classList.remove('open');
+      sessionStorage.setItem(DISMISSED_KEY, '1');
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleEscape);
+    }
+    function handleOutsideClick(e){
+      if (!popup.contains(e.target) && !launcher.contains(e.target)) {
+        closePopup();
+      }
+    }
+    function handleEscape(e){
+      if (e.key === 'Escape') closePopup();
+    }
+
+    launcher.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.contains('open') ? closePopup() : openPopup();
+    });
+    closeBtn.addEventListener('click', closePopup);
+    popup.addEventListener('click', (e) => e.stopPropagation());
+
+    // Auto-greet new visitors once, a few seconds after landing
+    if (!alreadyDismissed) {
+      setTimeout(openPopup, 3200);
+    } else if (badge) {
+      badge.style.display = 'none';
+    }
+
+    // m.me deep-link works only for Pages; fall back to the Facebook profile
+    // page itself if the app isn't available (mainly matters on some in-app browsers)
+    cta.addEventListener('click', function(e){
+      const fallback = 'https://www.facebook.com/profile.php?id=61553961980286';
+      const win = window.open('https://m.me/61553961980286', '_blank');
+      setTimeout(() => {
+        if (!win || win.closed) window.open(fallback, '_blank');
+      }, 600);
+    });
+  })();
+
+  /* capabilities accordion */
+  (function(){
+    const blocks = document.querySelectorAll('[data-category]');
+    blocks.forEach(block => {
+      const toggle = block.querySelector('.category-toggle');
+      const wrapper = block.querySelector('.ledger-wrapper');
+      if (!toggle || !wrapper) return;
+
+      if (block.classList.contains('open')) {
+        wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+      }
+
+      toggle.addEventListener('click', () => {
+        const isOpen = block.classList.contains('open');
+
+        if (isOpen) {
+          wrapper.style.maxHeight = '0px';
+          block.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+          block.classList.add('open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Keep open panel sized correctly if window is resized
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.category-block.open .ledger-wrapper').forEach(w => {
+        w.style.maxHeight = w.scrollHeight + 'px';
+      });
+    });
   })();
 </script>
 
