@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSIXRON Consumer Products &amp; Merchandise | General Trading &amp; Industrial Supply - Manila</title>
-<meta name="description" content="JSIXRON Consumer Products &amp; Merchandise is a Manila-based general trading company supplying tires, industrial materials, PPE, corporate branding, uniforms, hauling, scrap disposal, importation consulting and IT services.">
+<meta name="description" content="JSIXRON Consumer Products &amp; Merchandise is a Manila-based general trading company supplying tires, industrial materials, PPE, corporate branding, uniforms, hauling, scrap disposal, importation consulting and IT services. PhilGEPS-registered supplier.">
 
 <!-- Browser tab icon -->
 <link rel="icon" type="image/png" href="assets/logo-mark.png">
@@ -13,7 +13,7 @@
 <!-- Facebook / Open Graph share preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="JSIXRON Consumer Products &amp; Merchandise">
-<meta property="og:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
+<meta property="og:description" content="Manila-based general trading company — tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof. PhilGEPS-registered.">
 <meta property="og:image" content="https://jsixron.redjemie.com/assets/logo-mark.png">
 <meta property="og:image:secure_url" content="https://jsixron.redjemie.com/assets/logo-mark.png">
 <meta property="og:image:type" content="image/png">
@@ -205,13 +205,49 @@
   .registry-item span{display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel-soft); margin-bottom:6px;}
   .registry-item b{font-family:'Playfair Display',serif; font-size:16px; color:var(--ink); font-weight:600;}
 
+  /* ---------- accreditations ---------- */
+  .accreditation{background:var(--paper-dim);}
+  .accred-card{
+    display:grid; grid-template-columns:220px 1fr; gap:44px; align-items:center;
+    background:var(--paper); border:1px solid var(--line); border-radius:6px;
+    padding:40px; box-shadow:var(--shadow);
+  }
+  .accred-badge{
+    width:100%; aspect-ratio:1; border-radius:6px; overflow:hidden;
+    border:1px solid var(--line); background:var(--paper-dim);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .accred-badge img{width:100%; height:100%; object-fit:contain; padding:14px;}
+  .accred-badge-pending{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    color:var(--steel-soft); text-align:center; padding:20px;
+  }
+  .accred-badge-pending .ic{
+    width:40px; height:40px; border-radius:50%; border:1.5px dashed var(--steel-soft);
+    display:flex; align-items:center; justify-content:center; font-size:17px;
+  }
+  .accred-badge-pending span{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase;}
+  .accred-copy .accred-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--gold-deep); margin-bottom:10px; display:block;
+  }
+  .accred-copy h3{font-size:23px; margin-bottom:12px;}
+  .accred-copy p{color:var(--steel-soft); font-size:15px; line-height:1.75; max-width:560px;}
+  .accred-list{display:flex; gap:28px; flex-wrap:wrap; margin-top:22px; padding-top:22px; border-top:1px solid var(--line);}
+  .accred-list div span{display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel-soft); margin-bottom:5px;}
+  .accred-list div b{font-family:'Playfair Display',serif; font-size:15px; color:var(--ink); font-weight:600;}
+  @media (max-width:760px){
+    .accred-card{grid-template-columns:1fr; padding:28px;}
+    .accred-badge{max-width:180px; margin:0 auto;}
+  }
+
   /* ---------- leadership ---------- */
-  .leadership{background:var(--paper-dim);}
+  .leadership{background:var(--paper);}
   .leadership-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); max-width:760px;}
-  .lead-card{background:var(--paper-dim); padding:32px 30px; display:flex; gap:20px; align-items:flex-start;}
+  .lead-card{background:var(--paper); padding:32px 30px; display:flex; gap:20px; align-items:flex-start;}
   .lead-avatar{
     width:86px; height:86px; border-radius:50%; border:1px solid var(--gold-deep);
-    overflow:hidden; flex-shrink:0; background:var(--paper);
+    overflow:hidden; flex-shrink:0; background:var(--paper-dim);
     display:flex; align-items:center; justify-content:center;
     font-family:'Playfair Display',serif; font-size:24px; color:var(--gold-deep); font-weight:600;
   }
@@ -357,6 +393,9 @@
   .footer-col a:hover{color:var(--gold-light);}
   .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding-top:26px;}
   .footer-bottom p{color:rgba(250,249,246,0.4); font-size:12.5px;}
+  .footer-badge{display:flex; align-items:center; gap:10px;}
+  .footer-badge img{width:34px; height:34px; object-fit:contain; border-radius:4px; background:var(--paper); padding:3px;}
+  .footer-badge span{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(250,249,246,0.5);}
 
   /* ---------- responsive ---------- */
   @media (max-width:920px){
@@ -423,6 +462,7 @@
     </a>
     <nav id="nav">
       <a href="#company">Company</a>
+      <a href="#accreditation">Accreditations</a>
       <a href="#catalog">Capabilities</a>
       <a href="#work">Completed Work</a>
       <a href="#leadership">Founders</a>
@@ -496,8 +536,50 @@
   </div>
 </section>
 
+<!-- ============================================================
+     ACCREDITATIONS & REGISTRATION
+     To activate: place the PhilGEPS certificate/registration image at
+     assets/philgeps.png (recommended: clean scan or screenshot of the
+     certificate, ideally a transparent or white background, min. 800px wide).
+     Once the file exists at that path, the placeholder block below is
+     replaced automatically — no other edits needed.
+     ============================================================ -->
+<section class="accreditation" id="accreditation">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">Accreditations &amp; Registration</div>
+      <h2>Registered to transact with government &amp; private clients</h2>
+    </div>
+    <div class="accred-card reveal">
+      <div class="accred-badge">
+        <!-- Replace the block below with:
+             <img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier — JSIXRON Consumer Products & Merchandise">
+             once assets/philgeps.png is uploaded. -->
+        <div class="accred-badge-pending">
+          <span class="ic">⌖</span>
+          <span>PhilGEPS Certificate<br>Pending Upload</span>
+        </div>
+      </div>
+      <div class="accred-copy">
+        <span class="accred-tag">Government Procurement</span>
+        <h3>PhilGEPS-Registered Supplier</h3>
+        <p>JSIXRON is registered with the Philippine Government Electronic Procurement System (PhilGEPS), enabling us to participate in government bids and supply contracts alongside our private-sector clients. This registration reflects our commitment to transparent, compliant, and properly documented transactions.</p>
+        <div class="accred-list">
+          <div><span>Status</span><b>Registered Supplier</b></div>
+          <div><span>Scope</span><b>Goods &amp; General Merchandise</b></div>
+          <div><span>Coverage</span><b>Government &amp; Private Sector</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="leadership" id="leadership">
   <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-tag">The Team</div>
+      <h2>Founders</h2>
+    </div>
     <div class="leadership-grid reveal">
       <!-- To add a real photo: replace the div.lead-avatar content below with
            <img src="assets/team/ron.jpg" alt="Ronald Diola"> -->
@@ -635,6 +717,7 @@
       <li><span class="why-check">✓</span><div><b>Single Point of Contact</b><span>One process. No hand-offs.</span></div></li>
       <li><span class="why-check">✓</span><div><b>Cross-Category Reach</b><span>Supplies and branding, one vendor.</span></div></li>
       <li><span class="why-check">✓</span><div><b>Manila-Based Logistics</b><span>Binondo-based, close to everything.</span></div></li>
+      <li><span class="why-check">✓</span><div><b>PhilGEPS-Registered</b><span>Ready for government transactions.</span></div></li>
       <li><span class="why-check">✓</span><div><b>Import-Ready</b><span>Consultation for import needs.</span></div></li>
     </ul>
   </div>
@@ -684,10 +767,16 @@
           <b>JSIXRON</b>
         </div>
         <p>General trading, Manila-based.</p>
+        <!-- Footer accreditation badge: shows once assets/philgeps.png exists -->
+        <div class="footer-badge" style="margin-top:16px;">
+          <img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier" onerror="this.parentElement.style.display='none'">
+          <span>PhilGEPS Registered Supplier</span>
+        </div>
       </div>
       <div class="footer-col">
         <h5>Company</h5>
         <a href="#company">Company Overview</a>
+        <a href="#accreditation">Accreditations</a>
         <a href="#catalog">Capabilities</a>
         <a href="#work">Completed Work</a>
         <a href="#leadership">Founders</a>
@@ -768,6 +857,18 @@
   document.getElementById('workNext').addEventListener('click', () => {
     track.scrollTo({ left: Math.min(track.scrollWidth, track.scrollLeft + track.clientWidth), behavior: 'smooth' });
   });
+
+  /* accreditation badge: swap pending state for real image once assets/philgeps.png exists */
+  (function(){
+    const badge = document.querySelector('.accred-badge');
+    if (!badge) return;
+    const test = new Image();
+    test.onload = function(){
+      badge.innerHTML = '<img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier — JSIXRON Consumer Products & Merchandise">';
+    };
+    test.onerror = function(){ /* keep pending state */ };
+    test.src = 'assets/philgeps.png';
+  })();
 </script>
 
 </body>
