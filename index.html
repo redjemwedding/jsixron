@@ -1181,11 +1181,12 @@
 
 <!-- ============================================================
      ACTIVITIES, EVENTS, SERVICES & PRODUCTS GALLERY
-     To activate a card: replace its .gallery-pending block with
-     <img src="assets/gallery/your-photo.jpg" data-lightbox
-          data-caption="Description here" alt="Description here">
-     Add or remove <div class="gallery-card">...</div> blocks freely,
-     the carousel and lightbox pick up any card automatically.
+     Fully automatic: this section pulls its photos live from
+     https://github.com/redjemwedding/jsixron/tree/main/assets/events
+     via the GitHub API. Uploading a new image to that folder makes
+     it appear here on the next page load, no HTML/JS edits needed.
+     If the fetch fails (rate limit, offline, empty folder) it falls
+     back to a friendly "check back soon" message instead of breaking.
      ============================================================ -->
 <section class="gallery" id="gallery">
   <div class="wrap">
@@ -1196,41 +1197,11 @@
     </div>
     <div class="gallery-carousel reveal">
       <div class="gallery-track" id="galleryTrack">
-        <div class="gallery-card">
+        <div class="gallery-card" id="galleryLoadingCard">
           <div class="gallery-photo">
-            <div class="gallery-pending"><span class="ic">⌖</span><span>Photo Pending</span></div>
+            <div class="gallery-pending"><span class="ic">⌖</span><span>Loading photos</span></div>
           </div>
-          <div class="gallery-body"><span class="gallery-tag">Activity</span><h4>Slot 1</h4><p>Awaiting photo upload.</p></div>
-        </div>
-        <div class="gallery-card">
-          <div class="gallery-photo">
-            <div class="gallery-pending"><span class="ic">⌖</span><span>Photo Pending</span></div>
-          </div>
-          <div class="gallery-body"><span class="gallery-tag">Event</span><h4>Slot 2</h4><p>Awaiting photo upload.</p></div>
-        </div>
-        <div class="gallery-card">
-          <div class="gallery-photo">
-            <div class="gallery-pending"><span class="ic">⌖</span><span>Photo Pending</span></div>
-          </div>
-          <div class="gallery-body"><span class="gallery-tag">Service</span><h4>Slot 3</h4><p>Awaiting photo upload.</p></div>
-        </div>
-        <div class="gallery-card">
-          <div class="gallery-photo">
-            <div class="gallery-pending"><span class="ic">⌖</span><span>Photo Pending</span></div>
-          </div>
-          <div class="gallery-body"><span class="gallery-tag">Product</span><h4>Slot 4</h4><p>Awaiting photo upload.</p></div>
-        </div>
-        <div class="gallery-card">
-          <div class="gallery-photo">
-            <div class="gallery-pending"><span class="ic">⌖</span><span>Photo Pending</span></div>
-          </div>
-          <div class="gallery-body"><span class="gallery-tag">Activity</span><h4>Slot 5</h4><p>Awaiting photo upload.</p></div>
-        </div>
-        <div class="gallery-card">
-          <div class="gallery-photo">
-            <div class="gallery-pending"><span class="ic">⌖</span><span>Photo Pending</span></div>
-          </div>
-          <div class="gallery-body"><span class="gallery-tag">Event</span><h4>Slot 6</h4><p>Awaiting photo upload.</p></div>
+          <div class="gallery-body"><span class="gallery-tag">Gallery</span><h4>Fetching from repository</h4><p>This updates automatically, no code changes needed.</p></div>
         </div>
       </div>
       <div class="gallery-nav">
@@ -1537,6 +1508,61 @@
     nextBtn.addEventListener('click', () => scrollByCard(1));
   })();
 
+  /* gallery: fetch the photo list live from the GitHub repo folder.
+     Anything dropped into assets/events on GitHub shows up here
+     automatically, no further code changes needed. */
+  (function(){
+    const track = document.getElementById('galleryTrack');
+    if (!track) return;
+    const OWNER = 'redjemwedding';
+    const REPO = 'jsixron';
+    const PATH = 'assets/events';
+    const IMAGE_EXT = /\.(jpe?g|png|webp|gif)$/i;
+
+    function zoomHintSVG(){
+      return '<span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>';
+    }
+
+    function buildCard(file){
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      card.innerHTML =
+        '<div class="gallery-photo">' +
+          '<img src="' + file.download_url + '" data-lightbox data-caption="JSIXRON, activities and services" alt="JSIXRON activities and services" loading="lazy">' +
+          zoomHintSVG() +
+        '</div>' +
+        '<div class="gallery-body"><span class="gallery-tag">Gallery</span><h4>JSIXRON</h4><p>From our activities, events, and services.</p></div>';
+      return card;
+    }
+
+    function showEmptyState(message){
+      track.innerHTML =
+        '<div class="gallery-card">' +
+          '<div class="gallery-photo"><div class="gallery-pending"><span class="ic">⌖</span><span>' + message + '</span></div></div>' +
+          '<div class="gallery-body"><span class="gallery-tag">Gallery</span><h4>Check back soon</h4><p>New photos are added regularly.</p></div>' +
+        '</div>';
+    }
+
+    fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + PATH)
+      .then(res => {
+        if (!res.ok) throw new Error('GitHub API responded ' + res.status);
+        return res.json();
+      })
+      .then(files => {
+        const images = (Array.isArray(files) ? files : [])
+          .filter(f => f.type === 'file' && IMAGE_EXT.test(f.name));
+        if (!images.length) {
+          showEmptyState('No Photos Yet');
+          return;
+        }
+        track.innerHTML = '';
+        images.forEach(file => track.appendChild(buildCard(file)));
+      })
+      .catch(() => {
+        showEmptyState('Gallery Unavailable');
+      });
+  })();
+
   /* capabilities accordion */
   (function(){
     const blocks = document.querySelectorAll('[data-category]');
@@ -1583,9 +1609,16 @@
     const nextBtn = document.getElementById('lightboxNext');
     if (!lightbox || !lightboxImg) return;
 
-    const items = Array.from(document.querySelectorAll('img[data-lightbox]'));
+    // Re-queried on every open/click rather than captured once, so images
+    // added later (like the gallery, which loads asynchronously from
+    // GitHub) are included without any extra wiring
+    let items = [];
     let currentIndex = 0;
     let scrollLockY = 0;
+
+    function refreshItems(){
+      items = Array.from(document.querySelectorAll('img[data-lightbox]'));
+    }
 
     function render(){
       const img = items[currentIndex];
@@ -1640,8 +1673,14 @@
       if (e.key === 'ArrowLeft') showPrev();
     }
 
-    items.forEach((img, index) => {
-      img.addEventListener('click', () => openLightbox(index));
+    // Event delegation: one listener on the document catches clicks on
+    // any current or future img[data-lightbox], no per-image binding needed
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('img[data-lightbox]');
+      if (!img) return;
+      refreshItems();
+      const index = items.indexOf(img);
+      if (index !== -1) openLightbox(index);
     });
 
     closeBtn.addEventListener('click', closeLightbox);
