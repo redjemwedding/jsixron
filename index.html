@@ -977,6 +977,51 @@
     pointer-events:none;
   }
 
+  /* ---------- gallery grid modal ---------- */
+  .grid-modal{
+    position:fixed;inset:0;z-index:390;
+    background:rgba(6,6,7,0.97);
+    opacity:0;pointer-events:none;
+    transition:opacity .2s ease;
+    display:flex;flex-direction:column;
+  }
+  .grid-modal.open{opacity:1;pointer-events:auto;}
+  .grid-modal-head{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-shrink:0;
+    padding:calc(16px + env(safe-area-inset-top,0)) 20px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .grid-modal-title{color:#fff;font-size:15px;font-weight:600;letter-spacing:0.01em;}
+  .grid-modal-close{
+    width:40px;height:40px;border-radius:50%;flex-shrink:0;
+    background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+    color:#fff;font-size:18px;cursor:pointer;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .grid-modal-close:hover{background:rgba(255,255,255,0.18);}
+  .grid-modal-body{
+    flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:16px 16px calc(24px + env(safe-area-inset-bottom,0));
+    display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+  }
+  @media (min-width:520px){
+    .grid-modal-body{grid-template-columns:repeat(3,1fr);gap:14px;padding:20px 20px calc(28px + env(safe-area-inset-bottom,0));}
+  }
+  @media (min-width:900px){
+    .grid-modal-body{grid-template-columns:repeat(4,1fr);gap:16px;max-width:1040px;margin:0 auto;width:100%;}
+  }
+  .grid-modal-item{
+    aspect-ratio:1;border-radius:6px;overflow:hidden;cursor:zoom-in;
+    background:rgba(255,255,255,0.04);
+  }
+  .grid-modal-item img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .2s ease;
+  }
+  .grid-modal-item:hover img{transform:scale(1.06);}
+
   .fade-in-img{opacity:0;transition:opacity .5s ease;}
   .fade-in-img.loaded{opacity:1;}
 </style>
@@ -1467,6 +1512,14 @@
   </div>
 </div>
 
+<div class="grid-modal" id="gridModal" role="dialog" aria-label="Photo gallery">
+  <div class="grid-modal-head">
+    <span class="grid-modal-title" id="gridModalTitle">Gallery</span>
+    <button class="grid-modal-close" id="gridModalClose" aria-label="Close">×</button>
+  </div>
+  <div class="grid-modal-body" id="gridModalBody"></div>
+</div>
+
 <button class="lightbox-close" id="lightboxClose" aria-label="Close" style="display:none;">×</button>
 <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous" style="display:none;">‹</button>
 <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next" style="display:none;">›</button>
@@ -1774,7 +1827,7 @@
       .catch(() => empty('Business logos are temporarily unavailable.'));
   })();
 
-  /* lightbox */
+  /* photo grid + lightbox */
   (function(){
     const lb = document.getElementById('lightbox');
     const img = document.getElementById('lightboxImg');
@@ -1783,16 +1836,72 @@
     const closeBtn = document.getElementById('lightboxClose');
     const prev = document.getElementById('lightboxPrev');
     const next = document.getElementById('lightboxNext');
-    if (!lb || !img) return;
+    const gridModal = document.getElementById('gridModal');
+    const gridTitle = document.getElementById('gridModalTitle');
+    const gridBody = document.getElementById('gridModalBody');
+    const gridClose = document.getElementById('gridModalClose');
+    if (!lb || !img || !gridModal) return;
 
     let items = [];
     let idx = 0;
     let lockY = 0;
+    let modalOpen = false;
+
+    const GROUP_LABELS = { gallery: 'Gallery', work: 'Completed Work' };
+
+    function enterModal(){
+      if (modalOpen) return;
+      modalOpen = true;
+      lockY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + lockY + 'px';
+      document.body.style.width = '100%';
+      document.addEventListener('keydown', onKey);
+    }
+    function exitModal(){
+      modalOpen = false;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, lockY);
+      document.removeEventListener('keydown', onKey);
+    }
 
     function refresh(group){
       const selector = group ? 'img[data-lightbox][data-lightbox-group="' + group + '"]' : 'img[data-lightbox]:not([data-lightbox-group])';
       items = Array.from(document.querySelectorAll(selector));
     }
+
+    function renderGrid(group){
+      gridTitle.textContent = GROUP_LABELS[group] || 'Photos';
+      gridBody.innerHTML = '';
+      items.forEach((el, i) => {
+        const cell = document.createElement('div');
+        cell.className = 'grid-modal-item';
+        const im = document.createElement('img');
+        im.src = el.currentSrc || el.src;
+        im.alt = el.getAttribute('data-caption') || el.alt || '';
+        im.loading = 'lazy';
+        cell.appendChild(im);
+        cell.addEventListener('click', () => {
+          gridModal.classList.remove('open');
+          openAt(i);
+        });
+        gridBody.appendChild(cell);
+      });
+    }
+    function openGrid(group){
+      refresh(group);
+      if (!items.length) return;
+      enterModal();
+      renderGrid(group);
+      gridModal.classList.add('open');
+    }
+    function closeGrid(){
+      gridModal.classList.remove('open');
+      exitModal();
+    }
+
     function render(){
       const el = items[idx];
       img.src = el.currentSrc || el.src;
@@ -1803,40 +1912,35 @@
     }
     function openAt(i){
       idx = i;
-      lockY = window.scrollY;
+      enterModal();
       render();
       lb.classList.add('open');
       closeBtn.style.display = 'flex';
       if (items.length > 1){ prev.style.display = 'flex'; next.style.display = 'flex'; }
-      document.body.style.position = 'fixed';
-      document.body.style.top = '-' + lockY + 'px';
-      document.body.style.width = '100%';
-      document.addEventListener('keydown', onKey);
     }
     function shut(){
       lb.classList.remove('open');
       closeBtn.style.display = prev.style.display = next.style.display = 'none';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, lockY);
-      document.removeEventListener('keydown', onKey);
+      exitModal();
       setTimeout(() => { if (!lb.classList.contains('open')) img.src = ''; }, 200);
     }
     function go(n){ idx = (idx + n + items.length) % items.length; render(); }
     function onKey(e){
-      if (e.key === 'Escape') shut();
-      if (e.key === 'ArrowRight') go(1);
-      if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'Escape') { lb.classList.contains('open') ? shut() : closeGrid(); }
+      if (lb.classList.contains('open')) {
+        if (e.key === 'ArrowRight') go(1);
+        if (e.key === 'ArrowLeft') go(-1);
+      }
     }
 
     document.addEventListener('click', e => {
       const el = e.target.closest('img[data-lightbox]');
       if (!el) return;
-      refresh(el.getAttribute('data-lightbox-group'));
-      const i = items.indexOf(el);
-      if (i !== -1) openAt(i);
+      openGrid(el.getAttribute('data-lightbox-group'));
     });
+    gridClose.addEventListener('click', closeGrid);
+    gridModal.addEventListener('click', e => { if (e.target === gridModal) closeGrid(); });
+
     closeBtn.addEventListener('click', shut);
     next.addEventListener('click', () => go(1));
     prev.addEventListener('click', () => go(-1));
