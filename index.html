@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>JSIXRON Consumer Products &amp; Merchandise | General Trading &amp; Industrial Supply — Manila</title>
+<title>JSIXRON Consumer Products &amp; Merchandise | General Trading &amp; Industrial Supply, Manila</title>
 <meta name="description" content="JSIXRON Consumer Products & Merchandise is a Manila-based general trading company supplying tires, industrial materials, PPE, corporate branding, uniforms, hauling, scrap disposal, importation consulting and IT services. PhilGEPS-registered supplier.">
 
 <link rel="icon" type="image/png" href="assets/logo-mark.png">
@@ -270,17 +270,23 @@
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold-light);}
 
   .hero-stats{
-    display:grid;grid-template-columns:1fr;gap:14px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
     padding-top:24px;border-top:1px solid var(--line-dark);
   }
   @media (min-width:520px){
-    .hero-stats{grid-template-columns:repeat(3,1fr);gap:20px;}
+    .hero-stats{gap:20px;}
   }
   .hero-stat b{
-    display:block;font-size:22px;font-weight:600;color:#fff;
+    display:block;font-size:20px;font-weight:600;color:#fff;
     font-variant-numeric:tabular-nums;line-height:1.1;margin-bottom:4px;
   }
-  .hero-stat span{font-size:12px;color:rgba(255,255,255,0.5);}
+  @media (min-width:400px){
+    .hero-stat b{font-size:22px;}
+  }
+  .hero-stat span{font-size:11px;color:rgba(255,255,255,0.5);}
+  @media (min-width:400px){
+    .hero-stat span{font-size:12px;}
+  }
 
   .hero-banner{
     background:var(--paper);
@@ -351,19 +357,22 @@
   /* ---------- accreditation ---------- */
   .accreditation{background:var(--paper-dim);}
   .accred-strip{
-    display:grid;gap:20px;align-items:center;
+    display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;
     background:var(--white);border:1px solid var(--line);
-    border-radius:var(--radius);padding:24px;
+    border-radius:var(--radius);padding:18px;
     box-shadow:var(--shadow);
   }
   @media (min-width:640px){
-    .accred-strip{grid-template-columns:auto 1fr auto;gap:28px;padding:28px 32px;}
+    .accred-strip{gap:28px;padding:28px 32px;}
   }
   .accred-mark{
-    width:80px;height:80px;border-radius:var(--radius);
+    width:56px;height:56px;border-radius:var(--radius);
     background:var(--paper-dim);border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;
-    overflow:hidden;flex-shrink:0;padding:10px;
+    overflow:hidden;flex-shrink:0;padding:8px;
+  }
+  @media (min-width:640px){
+    .accred-mark{width:80px;height:80px;padding:10px;}
   }
   .accred-mark img{width:100%;height:100%;object-fit:contain;}
   .accred-mark-pending{
@@ -372,17 +381,39 @@
     font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;line-height:1.3;
   }
   .accred-mark-pending svg{width:22px;height:22px;color:var(--gold-deep);opacity:0.6;}
-  .accred-copy h3{font-size:17px;margin-bottom:6px;}
-  .accred-copy p{font-size:14px;color:var(--steel-soft);line-height:1.65;max-width:60ch;}
-  .accred-status{
-    display:inline-flex;align-items:center;gap:7px;
-    background:var(--ink);color:var(--gold-light);
-    font-size:12px;font-weight:600;letter-spacing:0.03em;
-    padding:8px 14px;border-radius:var(--radius);
-    white-space:nowrap;
-    justify-self:start;
+  .accred-copy h3{font-size:15.5px;margin-bottom:6px;}
+  @media (min-width:640px){
+    .accred-copy h3{font-size:17px;}
   }
-  .accred-status svg{width:13px;height:13px;}
+  .accred-check{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:18px;height:18px;border-radius:50%;
+    background:var(--gold-deep);color:#fff;
+    vertical-align:middle;margin-left:2px;
+  }
+  .accred-check svg{width:10px;height:10px;}
+  @media (min-width:640px){
+    .accred-check{width:20px;height:20px;}
+    .accred-check svg{width:11px;height:11px;}
+  }
+  .accred-copy p{font-size:13px;color:var(--steel-soft);line-height:1.6;max-width:60ch;}
+  @media (min-width:640px){
+    .accred-copy p{font-size:14px;line-height:1.65;}
+  }
+  .accred-status{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--ink);color:var(--gold-light);
+    font-size:10.5px;font-weight:600;letter-spacing:0.03em;
+    padding:4px 10px;border-radius:var(--radius);
+    white-space:nowrap;
+  }
+  @media (min-width:640px){
+    .accred-status{font-size:12px;padding:5px 12px;}
+  }
+  .accred-status svg{width:11px;height:11px;}
+  @media (min-width:640px){
+    .accred-status svg{width:13px;height:13px;}
+  }
 
   /* ---------- leadership ---------- */
   .people{display:grid;gap:20px;}
@@ -596,7 +627,7 @@
   }
 
   /* ============================================================
-     CLIENTS — full color, no grayscale filter
+     CLIENTS: full color, no grayscale filter
      ============================================================ */
   .clients{background:var(--paper);}
   .clients-marquee{
@@ -639,7 +670,7 @@
   }
 
   /* ============================================================
-     BUSINESSES — single column on mobile, centered, full color.
+     BUSINESSES: single column on mobile, centered, full color.
      Each logo displays one per row on phone so nothing is cramped
      or cut off.
      ============================================================ */
@@ -679,7 +710,7 @@
   }
   .business-card img{
     width:100%;height:100%;object-fit:contain;
-    /* No grayscale — logos show in full color right away */
+    /* No grayscale: logos show in full color right away */
   }
 
   .businesses-empty{
@@ -1087,7 +1118,7 @@
     <div class="wrap">
       <span class="hero-eyebrow">Manila · General Trading</span>
       <h1>General merchandise, industrial supply, and corporate solutions, under one roof.</h1>
-      <p class="hero-sub">Tires, safety gear, uniforms, printing, hauling, and importation — handled by one team, billed on one invoice.</p>
+      <p class="hero-sub">Tires, safety gear, uniforms, printing, hauling, and importation, handled by one team, billed on one invoice.</p>
       <div class="hero-actions">
         <a href="tel:+639763992008" class="btn btn-primary">Call 0976 399 2008</a>
         <a href="#catalog" class="btn btn-ghost">View products</a>
@@ -1103,7 +1134,7 @@
   <!-- BANNER -->
   <section class="hero-banner">
     <div class="hero-banner-inner">
-      <img src="assets/banner.jpg" alt="JSIXRON Consumer Products &amp; Merchandise — Your Demand, Our Commitment">
+      <img src="assets/banner.jpg" alt="JSIXRON Consumer Products &amp; Merchandise: Your Demand, Our Commitment">
     </div>
   </section>
 
@@ -1145,13 +1176,9 @@
           </div>
         </div>
         <div class="accred-copy">
-          <h3>PhilGEPS-Registered Supplier</h3>
-          <p>Registered with the Philippine Government Electronic Procurement System — eligible for government bids and supply contracts.</p>
+          <h3>PhilGEPS-Registered Supplier <span class="accred-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span></h3>
+          <p>Registered with the Philippine Government Electronic Procurement System, eligible for government bids and supply contracts.</p>
         </div>
-        <span class="accred-status">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-          Active
-        </span>
       </div>
     </div>
   </section>
@@ -1387,7 +1414,7 @@
       <div class="why-intro reveal">
         <span class="section-tag">Why JSIXRON</span>
         <h2>Most suppliers cover one category.</h2>
-        <p>We cover the ones that usually don't overlap — so a single project doesn't need six vendors.</p>
+        <p>We cover the ones that usually don't overlap, so a single project doesn't need six vendors.</p>
       </div>
       <ul class="why-list reveal">
         <li><span class="why-num">01</span><div><b>One point of contact</b><span>Same team handles every order.</span></div></li>
@@ -1422,7 +1449,7 @@
       <div class="reveal">
         <span class="section-tag">Contact</span>
         <h2>Request a quote</h2>
-        <p class="contact-lede">Send your requirements and we'll reply with a quote — usually the same day.</p>
+        <p class="contact-lede">Send your requirements and we'll reply with a quote, usually the same day.</p>
 
         <ul class="contact-list">
           <li class="contact-item">
@@ -1502,7 +1529,7 @@
     <button class="chat-popup-close" id="chatClose" aria-label="Close">×</button>
   </div>
   <div class="chat-popup-body">
-    <div class="chat-bubble">Send your item, quantity, and delivery area — we'll reply with a quote.</div>
+    <div class="chat-bubble">Send your item, quantity, and delivery area. We'll reply with a quote.</div>
     <a class="chat-popup-cta" href="https://m.me/61553961980286" target="_blank" rel="noopener" id="chatCta">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.89 1.46 5.47 3.74 7.15V22l3.42-1.88c.91.25 1.87.39 2.84.39 5.52 0 10-4.13 10-9.2S17.52 2 12 2zm.99 12.4l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/></svg>
       Message us on Facebook
