@@ -1586,12 +1586,12 @@
       card.className = 'gallery-card';
       const img = document.createElement('img');
       img.className = 'fade-in-img';
-      img.src = file.download_url;
       img.alt = 'JSIXRON';
-      img.loading = 'lazy';
       img.setAttribute('data-lightbox', '');
       img.setAttribute('data-caption', 'JSIXRON, activities and services');
       img.addEventListener('load', () => img.classList.add('loaded'));
+      img.src = file.download_url;
+      if (img.complete) img.classList.add('loaded');
 
       const photo = document.createElement('div');
       photo.className = 'gallery-photo';
@@ -1635,10 +1635,10 @@
       card.className = 'client-card';
       const img = document.createElement('img');
       img.className = 'fade-in-img';
-      img.src = file.download_url;
       img.alt = file.name.replace(/\.[^/.]+$/, '');
-      img.loading = 'lazy';
       img.addEventListener('load', () => img.classList.add('loaded'));
+      img.src = file.download_url;
+      if (img.complete) img.classList.add('loaded');
       card.appendChild(img);
       return card;
     }
@@ -1681,10 +1681,10 @@
       card.className = 'business-card';
       const img = document.createElement('img');
       img.className = 'fade-in-img';
-      img.src = file.download_url;
       img.alt = file.name.replace(/\.[^/.]+$/, '').replace(/[-_]+/g, ' ');
-      img.loading = 'lazy';
       img.addEventListener('load', () => img.classList.add('loaded'));
+      img.src = file.download_url;
+      if (img.complete) img.classList.add('loaded');
       card.appendChild(img);
       return card;
     }
