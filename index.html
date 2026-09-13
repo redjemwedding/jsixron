@@ -1871,12 +1871,14 @@
     }
     function closeModal(){
       modal.classList.remove('open');
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, lockY);
       document.removeEventListener('keydown', onKey);
-      setTimeout(() => { if (!modal.classList.contains('open')) img.src = ''; }, 200);
+      setTimeout(() => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo({ top: lockY, left: 0, behavior: 'instant' });
+        img.src = '';
+      }, 220);
     }
 
     function refresh(group){
