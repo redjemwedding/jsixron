@@ -1728,54 +1728,126 @@
     else if (badge) badge.style.display = 'none';
   })();
 
-  /* shared: list every file in the repo once via jsDelivr's CDN (no GitHub
-     API rate limit involved), cached for 15 minutes so repeat page loads
-     don't refetch. Each section below filters this list to its own folder. */
-  const JSD_OWNER = 'redjemwedding';
-  const JSD_REPO = 'jsixron';
-  const JSD_BRANCH = 'main';
-  const JSD_CDN_BASE = 'https://cdn.jsdelivr.net/gh/' + JSD_OWNER + '/' + JSD_REPO + '@' + JSD_BRANCH;
+  /* shared: static list of current photos in each GitHub folder. Images are
+     served directly from GitHub's raw file CDN (no listing API involved, so
+     nothing here is rate-limited). When new photos are added to the repo,
+     these three arrays need to be refreshed to include them. */
+  const GALLERY_FILES = [
+    '08548491-3037-49eb-8648-4a8506bead8b.jpg',
+    '090c0238-68f1-4433-bf1c-8955240f7349.jpg',
+    '13373d7e-8047-4900-87bd-d9957db0ad53.jpg',
+    '1362e53e-3028-4648-8f44-d09fd4e284eb.jpg',
+    '22d6cbd8-c34b-4fd9-83bf-4e9a65b1db5b.jpg',
+    '237b1a29-bb50-4c15-bc53-98eb98efe009.jpg',
+    '2608292b-4024-4f9b-bb5e-2735020095b5.jpg',
+    '28adc09e-3f47-4eba-af0b-e0f5070f72c8.jpg',
+    '2961dc98-d662-43e2-922b-09dde5884985.jpg',
+    '307f565b-d431-4bb9-b130-9b1d41141746.jpg',
+    '318043f4-37f6-453a-b2c8-765132d79b1c (1).jpg',
+    '318043f4-37f6-453a-b2c8-765132d79b1c.jpg',
+    '35667372-4e2b-4985-9441-ee00f2d2c98d.jpg',
+    '39eca5d9-5608-4e83-9e8f-fb63793aac5b.jpg',
+    '409806f3-041b-4075-9f91-a353fbba4c65.jpg',
+    '428db94d-eebc-4d21-aa13-e5a848e06661.jpg',
+    '4458ad57-96f3-41d0-b853-55d2f250b87f.jpg',
+    '46423703-9b09-48c6-b68d-256c8d25cc84.jpg',
+    '4d366d6f-9b59-409b-b3ba-966ee90b17bd.jpg',
+    '4ea5eefc-e60b-42f7-b43c-8af76d58cb8d.jpg',
+    '52ab027f-95c4-4151-bf3d-9f5a4af3d95b.jpg',
+    '5610e08f-b7b9-4060-bc83-352d624ffb8f.jpg',
+    '594928e0-2c79-410f-99a0-ef054a1a26b0.jpg',
+    '5a7aeade-d33a-4a74-a7b1-b4a0e2c8f34e.jpg',
+    '5d3d2639-9010-44a6-be9d-863e2d7e7f9b.jpg',
+    '5f7707a8-5f30-48e3-82f5-6708f4c92115.jpg',
+    '607549fb-92bd-4c8e-91b3-1853fb6b6750.jpg',
+    '63051085-4473-42fd-ba9e-288589be39ef.jpg',
+    '635b43c6-b0fa-444a-a285-eac3b4d61872.jpg',
+    '665b07dd-4e7e-4644-88b1-959e291f922a.jpg',
+    '67fffdb0-3c86-4bfc-a148-af0d8a775ac3.jpg',
+    '6bdd1277-43f3-4c0f-a559-48cadb63bce6.jpg',
+    '6ee67b9e-f355-4b75-aa92-6ad8e0fcc6d4.jpg',
+    '728f65fb-d092-4b39-8a5f-444d95d40b45.jpg',
+    '736b2406-6863-45a0-be24-29d1d6e256ee.jpg',
+    '73a7d78c-28f3-4dca-8619-7b14997fe4d2.jpg',
+    '744a9255-369d-41c7-b5c9-3c421a8b3e76.jpg',
+    '77903a14-0128-4ba6-97a7-a121d9dd748b.jpg',
+    '78a4acf6-625e-47fe-b3de-ecb1f9080de5.jpg',
+    '79d2cb35-939d-456d-b795-719fac7f46c8.jpg',
+    '7ca21c19-db77-4a34-a5c0-c3b4cfba08f0.jpg',
+    '90f61b55-071b-4c5e-8873-1461fe6f3496.jpg',
+    '92c7d8b9-b5ec-40a4-abbc-4e72c793bf0b.jpg',
+    '93373e59-32fe-4d54-a898-6e0ad3a83d07.jpg',
+    '9e9bbe73-1b59-4191-b2b2-e7a7dadd4b80.jpg',
+    'a2db14e0-27d2-49d8-a847-4150b96d8224.jpg',
+    'a76236c5-0358-40a0-8476-8d7bcb857998.jpg',
+    'ac508d91-4d47-469f-bb03-0025aa9a46ee.jpg',
+    'aea2fdf8-0543-4fbf-97f3-c9c8ad015cda.jpg',
+    'b1ddc6d6-62da-4409-911a-eed8f32705d2.jpg',
+    'b32c8792-6716-4b0b-b430-b5fd6903a5d7.jpg',
+    'b6bd2297-bd03-418e-aa1a-5a205b48607d.jpg',
+    'b8b82482-7260-4fc6-b82f-8809a002899a.jpg',
+    'bda4157f-1fca-4230-9f14-9854b9fe864d.jpg',
+    'bdd134d0-ee80-43ab-96ee-ae0ea1e42f64.jpg',
+    'c78e5523-a4cc-4576-9b2f-f7994bcb950f (1).jpg',
+    'c78e5523-a4cc-4576-9b2f-f7994bcb950f.jpg',
+    'cdcf4b70-57a0-461e-a17f-91acefee0895.jpg',
+    'd05d4fa8-0368-4990-846a-4f86d53bc34e.jpg',
+    'da7a4711-d5ce-4b3a-89a6-283dbf1547fc (1).jpg',
+    'da7a4711-d5ce-4b3a-89a6-283dbf1547fc.jpg',
+    'debff7ef-3746-45b6-9cfe-e5fb7397c6c0.jpg',
+    'dee9d025-8c7f-42bf-b2f4-fde831e08fcf.jpg',
+    'dfbb1e33-e570-4e3a-bd86-e57de3b23cc5.jpg',
+    'e10cf2b1-4a38-4193-a091-59a88acdb149.jpg',
+    'e2b4943a-63d7-4b58-9a37-c56f509d9720.jpg',
+    'e7698850-132f-482d-ba76-cacfa8408f5a.jpg',
+    'e97ee323-92c8-47de-a848-c118b833348a.jpg',
+    'ebc00acf-0fcf-41b6-a53f-d08e1c693fdf.jpg',
+    'ed864694-b70e-4eff-8160-e3586ec2d159.jpg',
+    'efd6b60b-0eb5-4841-9bed-9d5af9cb3de9.jpg',
+    'egg2supply.png',
+    'f3892cf9-fd18-45ba-80ff-dd5f2bd95c02.jpg',
+    'f4c5502f-1bc8-40dd-8d95-1be9b3bbaad7.jpg',
+    'fd32d7a0-15c5-48e7-8ea0-c411e708e45a.jpg'
+  ];
 
-  function jsdelivrFileList(){
-    const CACHE_KEY = 'jsixron-jsdelivr-files-v1';
-    const CACHE_MS = 15 * 60 * 1000;
-    try {
-      const cached = sessionStorage.getItem(CACHE_KEY);
-      if (cached) {
-        const parsed = JSON.parse(cached);
-        if (Date.now() - parsed.ts < CACHE_MS) return Promise.resolve(parsed.data);
-      }
-    } catch (e) {}
-    return fetch('https://data.jsdelivr.com/v1/packages/gh/' + JSD_OWNER + '/' + JSD_REPO + '@' + JSD_BRANCH + '/flat')
-      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(data => {
-        const files = (data && Array.isArray(data.files)) ? data.files : [];
-        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: files, ts: Date.now() })); } catch (e) {}
-        return files;
-      });
-  }
+  const CLIENTS_FILES = [
+    'UPS.jpg',
+    'aero-k.jpg',
+    'airasia.jpg',
+    'aisiana.jpg',
+    'chinapost.jpg',
+    'clark.jpg',
+    'evaair.jpg',
+    'fedEx.jpg',
+    'ictsi.jpg',
+    'jeju.jpg',
+    'north.jpg',
+    'pal.jpg',
+    'qatarairways.jpg',
+    'royalair.jpg',
+    'tass.jpg',
+    'tianjin.jpg'
+  ];
 
-  /* returns files under a folder, shaped like { name, download_url, type }
-     to match what the section builders below already expect */
-  function jsdelivrFolder(folderPath){
-    const prefix = '/' + folderPath.replace(/^\/|\/$/g, '') + '/';
-    return jsdelivrFileList().then(files => {
-      return files
-        .filter(f => f.name.startsWith(prefix) && f.name.slice(prefix.length).indexOf('/') === -1)
-        .map(f => ({
-          type: 'file',
-          name: f.name.split('/').pop(),
-          download_url: JSD_CDN_BASE + f.name
-        }));
-    });
+  const BUSINESS_FILES = [
+    '0298856a-f66e-4733-9139-f93cb73b0d18.jpg',
+    '1a6b4b95-e165-415c-98f3-db4d288bc1e6.jpg',
+    '6c6fd072-516d-4b2a-b5c4-1d54e6535816.jpg',
+    '720ef0e7-71a5-4d1d-87e2-19ee34d85c43.jpg',
+    '995c7c0b-0fc5-4d94-ab4e-5415ba627e44.jpg',
+    'c6369078-6d51-458a-9e2d-8c1db1442558.jpg',
+    'e6a3cdb0-1704-4365-94b9-671581620d4a.jpg'
+  ];
+
+  const RAW_BASE = 'https://raw.githubusercontent.com/redjemwedding/jsixron/main';
+  function rawUrl(folder, filename){
+    return RAW_BASE + '/assets/' + folder + '/' + encodeURIComponent(filename);
   }
 
   /* GALLERY */
   (function(){
     const track = document.getElementById('galleryTrack');
     if (!track) return;
-    const PATH = 'assets/events';
-    const IMG = /\.(jpe?g|png|webp|gif)$/i;
 
     function buildCard(file){
       const card = document.createElement('div');
@@ -1807,22 +1879,19 @@
       track.innerHTML = '<div class="gallery-empty" style="width:100%;">' + msg + '</div>';
     }
 
-    jsdelivrFolder(PATH)
-      .then(files => {
-        const imgs = (Array.isArray(files) ? files : []).filter(f => f.type === 'file' && IMG.test(f.name));
-        if (!imgs.length) return empty('Photos coming soon.');
-        track.innerHTML = '';
-        imgs.forEach(f => track.appendChild(buildCard(f)));
-      })
-      .catch(() => empty('Gallery is temporarily unavailable.'));
+    const imgs = GALLERY_FILES.map(name => ({ name: name, download_url: rawUrl('events', name) }));
+    if (!imgs.length) {
+      empty('Photos coming soon.');
+    } else {
+      track.innerHTML = '';
+      imgs.forEach(f => track.appendChild(buildCard(f)));
+    }
   })();
 
   /* CLIENTS */
   (function(){
     const track = document.getElementById('clientsTrack');
     if (!track) return;
-    const PATH = 'assets/clients';
-    const IMG = /\.(jpe?g|png|webp|gif|svg)$/i;
 
     function buildCard(file){
       const card = document.createElement('div');
@@ -1842,30 +1911,27 @@
       track.innerHTML = '<div class="clients-empty" style="min-width:100%;">' + msg + '</div>';
     }
 
-    jsdelivrFolder(PATH)
-      .then(files => {
-        const imgs = (Array.isArray(files) ? files : []).filter(f => f.type === 'file' && IMG.test(f.name));
-        if (!imgs.length) return empty('Client logos coming soon.');
-        track.innerHTML = '';
-        imgs.forEach(f => track.appendChild(buildCard(f)));
-        imgs.forEach(f => track.appendChild(buildCard(f)));
+    const imgs = CLIENTS_FILES.map(name => ({ name: name, download_url: rawUrl('clients', name) }));
+    if (!imgs.length) {
+      empty('Client logos coming soon.');
+    } else {
+      track.innerHTML = '';
+      imgs.forEach(f => track.appendChild(buildCard(f)));
+      imgs.forEach(f => track.appendChild(buildCard(f)));
 
-        if (imgs.length < 6) {
-          track.style.animation = 'none';
-          track.style.width = '100%';
-          track.style.flexWrap = 'wrap';
-          track.style.justifyContent = 'center';
-        }
-      })
-      .catch(() => empty('Client logos are temporarily unavailable.'));
+      if (imgs.length < 6) {
+        track.style.animation = 'none';
+        track.style.width = '100%';
+        track.style.flexWrap = 'wrap';
+        track.style.justifyContent = 'center';
+      }
+    }
   })();
 
   /* BUSINESSES */
   (function(){
     const grid = document.getElementById('businessGrid');
     if (!grid) return;
-    const PATH = 'assets/businesses';
-    const IMG = /\.(jpe?g|png|webp|gif|svg)$/i;
 
     function buildCard(file){
       const card = document.createElement('div');
@@ -1884,14 +1950,13 @@
       grid.innerHTML = '<div class="businesses-empty">' + msg + '</div>';
     }
 
-    jsdelivrFolder(PATH)
-      .then(files => {
-        const imgs = (Array.isArray(files) ? files : []).filter(f => f.type === 'file' && IMG.test(f.name));
-        if (!imgs.length) return empty('Business logos coming soon.');
-        grid.innerHTML = '';
-        imgs.forEach(f => grid.appendChild(buildCard(f)));
-      })
-      .catch(() => empty('Business logos are temporarily unavailable.'));
+    const imgs = BUSINESS_FILES.map(name => ({ name: name, download_url: rawUrl('businesses', name) }));
+    if (!imgs.length) {
+      empty('Business logos coming soon.');
+    } else {
+      grid.innerHTML = '';
+      imgs.forEach(f => grid.appendChild(buildCard(f)));
+    }
   })();
 
   /* photo modal: grid view + single view sharing one overlay */
