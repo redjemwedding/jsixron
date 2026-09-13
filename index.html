@@ -191,6 +191,41 @@
   @media (min-width:900px){
     .hero{padding:72px 0 64px;}
   }
+  .hero > .wrap{position:relative;z-index:1;}
+
+  .hero-glow{
+    position:absolute;border-radius:50%;
+    background:radial-gradient(circle, var(--gold-light), transparent 70%);
+    filter:blur(70px);
+    opacity:0.28;
+    pointer-events:none;
+    z-index:0;
+  }
+  .hero-glow.g1{width:420px;height:420px;top:-180px;right:-140px;animation:heroDriftA 20s ease-in-out infinite alternate;}
+  .hero-glow.g2{width:320px;height:320px;bottom:-160px;left:-100px;animation:heroDriftB 24s ease-in-out infinite alternate;}
+  @keyframes heroDriftA{from{transform:translate(0,0);}to{transform:translate(-50px,40px);}}
+  @keyframes heroDriftB{from{transform:translate(0,0);}to{transform:translate(40px,-30px);}}
+
+  .hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+  .hero-particle{
+    position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;
+    background:var(--gold-light);opacity:0;
+    animation:heroFloatUp 14s linear infinite;
+  }
+  @keyframes heroFloatUp{
+    0%{transform:translateY(0);opacity:0;}
+    10%{opacity:.55;}
+    85%{opacity:.3;}
+    100%{transform:translateY(-380px);opacity:0;}
+  }
+
+  .section-glow{
+    position:absolute;width:380px;height:380px;border-radius:50%;
+    background:radial-gradient(circle, var(--gold-light), transparent 70%);
+    filter:blur(90px);opacity:0.14;pointer-events:none;z-index:0;
+  }
+  .section-glow.top-right{top:-140px;right:-120px;}
+  .section-glow.bottom-left{bottom:-140px;left:-120px;}
 
   .hero-eyebrow{
     display:inline-block;
@@ -217,8 +252,20 @@
     -webkit-tap-highlight-color:transparent;
     min-height:48px;
   }
-  .btn-primary{background:var(--gold);color:var(--ink);}
+  .btn-primary{background:var(--gold);color:var(--ink);position:relative;overflow:hidden;}
   .btn-primary:hover{background:var(--gold-light);}
+  .btn-primary::after{
+    content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform:skewX(-18deg);
+    animation:btnShimmer 5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes btnShimmer{
+    0%{left:-60%;}
+    16%{left:130%;}
+    100%{left:130%;}
+  }
   .btn-ghost{border-color:rgba(255,255,255,0.28);color:#fff;background:transparent;}
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold-light);}
 
@@ -359,7 +406,8 @@
   .person-info span{font-size:13px;color:var(--steel-soft);}
 
   /* ---------- catalog ---------- */
-  .catalog{background:var(--ink);color:#fff;}
+  .catalog{background:var(--ink);color:#fff;position:relative;overflow:hidden;}
+  .catalog > .wrap{position:relative;z-index:1;}
   .catalog .section-tag{color:var(--gold-light);}
   .catalog .section-head h2{color:#fff;}
   .catalog .section-head p{color:rgba(255,255,255,0.62);}
@@ -560,8 +608,6 @@
     display:flex;gap:16px;width:max-content;
     animation:clientsScroll 40s linear infinite;
   }
-  .clients-marquee:hover .clients-track,
-  .clients-marquee:active .clients-track{animation-play-state:paused;}
   @keyframes clientsScroll{
     from{transform:translateX(0);}
     to{transform:translateX(-50%);}
@@ -692,7 +738,8 @@
   .process-step p{font-size:13px;color:var(--steel-soft);line-height:1.55;}
 
   /* ---------- contact ---------- */
-  .contact{background:var(--ink);color:#fff;padding:60px 0;}
+  .contact{background:var(--ink);color:#fff;padding:60px 0;position:relative;overflow:hidden;}
+  .contact > .wrap{position:relative;z-index:1;}
   @media (min-width:900px){ .contact{padding:88px 0;} }
   .contact .section-tag{color:var(--gold-light);}
   .contact h2{color:#fff;margin-bottom:12px;}
@@ -783,6 +830,17 @@
   }
   .chat-launcher:hover{transform:scale(1.05);box-shadow:0 14px 30px rgba(11,12,14,0.4);}
   .chat-launcher:active{transform:scale(0.95);}
+  .chat-launcher::before{
+    content:"";position:absolute;inset:-8px;border-radius:50%;
+    border:2px solid var(--gold-light);
+    opacity:0;
+    animation:chatPulse 3s ease-out infinite;
+    pointer-events:none;
+  }
+  @keyframes chatPulse{
+    0%{transform:scale(0.85);opacity:0.55;}
+    100%{transform:scale(1.6);opacity:0;}
+  }
   .chat-launcher svg{width:24px;height:24px;color:var(--ink);}
   .chat-badge{
     position:absolute;top:-2px;right:-2px;
@@ -971,6 +1029,17 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-glow g1" aria-hidden="true"></div>
+    <div class="hero-glow g2" aria-hidden="true"></div>
+    <div class="hero-particles" aria-hidden="true">
+      <span class="hero-particle" style="left:8%;animation-delay:0s;"></span>
+      <span class="hero-particle" style="left:22%;animation-delay:2s;"></span>
+      <span class="hero-particle" style="left:38%;animation-delay:4.5s;"></span>
+      <span class="hero-particle" style="left:55%;animation-delay:1s;"></span>
+      <span class="hero-particle" style="left:70%;animation-delay:6s;"></span>
+      <span class="hero-particle" style="left:85%;animation-delay:3s;"></span>
+      <span class="hero-particle" style="left:95%;animation-delay:5s;"></span>
+    </div>
     <div class="wrap">
       <span class="hero-eyebrow">Manila · General Trading</span>
       <h1>General merchandise, industrial supply, and corporate solutions, under one roof.</h1>
@@ -1074,6 +1143,7 @@
 
   <!-- CATALOG -->
   <section id="catalog" class="catalog">
+    <div class="section-glow top-right" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="section-tag">Products &amp; Services</span>
@@ -1251,8 +1321,6 @@
           <div class="clients-empty" style="min-width:100%;">Loading client logos…</div>
         </div>
       </div>
-      <p class="clients-hint">Hover to pause</p>
-    </div>
   </section>
 
   <!-- BUSINESSES -->
@@ -1305,6 +1373,7 @@
 
   <!-- CONTACT -->
   <section id="contact" class="contact">
+    <div class="section-glow bottom-left" aria-hidden="true"></div>
     <div class="wrap contact-grid">
       <div class="reveal">
         <span class="section-tag">Contact</span>
