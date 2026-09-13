@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSIXRON Consumer Products &amp; Merchandise | General Trading &amp; Industrial Supply — Manila</title>
+<meta name="description" content="JSIXRON Consumer Products & Merchandise is a Manila-based general trading company supplying tires, industrial materials, PPE, corporate branding, uniforms, hauling, scrap disposal, importation consulting and IT services. PhilGEPS-registered supplier.">
+
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="apple-touch-icon" href="assets/logo-mark.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="JSIXRON Consumer Products &amp; Merchandise">
+<meta property="og:description" content="Manila-based general trading company: tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof. PhilGEPS-registered.">
+<meta property="og:image" content="https://jsixron.redjemie.com/assets/logo-mark.png">
+<meta property="og:url" content="https://jsixron.redjemie.com/">
+<meta property="og:site_name" content="JSIXRON Consumer Products &amp; Merchandise">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JSIXRON Consumer Products &amp; Merchandise">
+<meta name="twitter:description" content="Manila-based general trading company: tires, industrial supply, PPE, corporate branding, uniforms, printing, hauling and importation, under one roof.">
+<meta name="twitter:image" content="https://jsixron.redjemie.com/assets/logo-mark.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+     ============================================================ */
+  :root{
+    --spruce:#0f2e2b;
+    --spruce-deep:#091d1b;
+    --spruce-mid:#1a4a44;
+    --parchment:#f5f1e8;
+    --parchment-alt:#ebe5d8;
+    --white:#ffffff;
+    --ink:#111417;
+    --text:#3d4239;
+    --text-soft:#6e7366;
+    --clay:#c75c34;
+    --clay-hover:#a84b28;
+    --clay-soft:#e8a688;
+    --sage:#8ba888;
+    --line:#ddd6c5;
+    --line-dark:rgba(255,255,255,0.12);
+    --shadow:0 1px 2px rgba(15,46,43,0.05), 0 10px 28px rgba(15,46,43,0.06);
+    --shadow-hover:0 2px 4px rgba(15,46,43,0.07), 0 18px 44px rgba(15,46,43,0.10);
+    --shadow-warm:0 2px 6px rgba(199,92,52,0.08), 0 22px 52px rgba(199,92,52,0.14);
+
+    --gap-xs:8px;
+    --gap-sm:16px;
+    --gap-md:24px;
+    --gap-lg:32px;
+    --gap-xl:48px;
+    --gap-2xl:64px;
+    --gap-3xl:80px;
+
+    --ease:cubic-bezier(0.16,1,0.3,1);
+    --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--parchment);
+    color:var(--text);
+    font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces','Playfair Display',Georgia,serif;
+    font-weight:600;
+    line-height:1.14;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+    font-variation-settings:"opsz" 72;
+  }
+  h1{font-size:clamp(36px,4.4vw,58px);font-weight:600;letter-spacing:-0.02em;line-height:1.06;}
+  h2{font-size:clamp(28px,3.4vw,42px);letter-spacing:-0.018em;}
+  h3{font-size:20px;}
+  h4{font-size:16px;}
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1220px;margin:0 auto;padding:0 32px;}
+
+  :focus-visible{outline:2px solid var(--clay);outline-offset:3px;border-radius:2px;}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.01ms !important;
+      scroll-behavior:auto !important;
+    }
+  }
+
+  /* ============================================================
+     IMAGE HANDLING — deliberate and consistent
+     .img-contain → logos, certificates: never crop
+     .img-cover   → photos: crop predictably from the centre
+     .img-cover-top → portraits: anchor to top so faces stay in frame
+     ============================================================ */
+  .img-contain{width:100%;height:100%;object-fit:contain;object-position:center;}
+  .img-cover{width:100%;height:100%;object-fit:cover;object-position:center;}
+  .img-cover-top{width:100%;height:100%;object-fit:cover;object-position:center top;}
+
+  /* ============================================================
+     SCROLL PROGRESS — a thin clay line under the header that
+     grows as the page scrolls. Barely there, but you feel it.
+     ============================================================ */
+  .scroll-progress{
+    position:fixed;top:0;left:0;right:0;
+    height:2px;z-index:200;
+    background:transparent;
+    pointer-events:none;
+  }
+  .scroll-progress span{
+    display:block;height:100%;width:0;
+    background:linear-gradient(90deg,var(--clay) 0%,var(--clay-soft) 100%);
+    transform-origin:left;
+    transition:width .08s linear;
+  }
+
+  /* ============================================================
+     REVEAL — a single restrained entrance, used sparingly
+     ============================================================ */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:var(--spruce);
+    color:#fff;
+  }
+  .header-top{
+    border-bottom:1px solid var(--line-dark);
+    font-size:12.5px;
+    padding:8px 0;
+  }
+  .header-top .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;}
+  .header-top-meta{display:flex;gap:26px;align-items:center;flex-wrap:wrap;}
+  .header-top-meta span{display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,0.72);}
+  .header-top-meta svg{width:13px;height:13px;opacity:0.7;stroke-width:2;}
+  .header-top-meta a{color:rgba(255,255,255,0.72);transition:color .2s;}
+  .header-top-meta a:hover{color:#fff;}
+  .header-top-badge{
+    display:inline-flex;align-items:center;gap:7px;
+    color:rgba(255,255,255,0.75);font-size:11.5px;letter-spacing:0.02em;
+  }
+  .header-top-badge::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--sage);
+    box-shadow:0 0 0 0 rgba(139,168,136,0.6);
+    animation:pulseDot 2.4s ease-out infinite;
+  }
+  @keyframes pulseDot{
+    0%{box-shadow:0 0 0 0 rgba(139,168,136,0.55);}
+    70%{box-shadow:0 0 0 8px rgba(139,168,136,0);}
+    100%{box-shadow:0 0 0 0 rgba(139,168,136,0);}
+  }
+
+  .header-main .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;gap:32px;
+  }
+
+  .brand{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .brand-mark{
+    width:42px;height:42px;border-radius:10px;overflow:hidden;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--clay);color:#fff;
+    transition:transform .4s var(--ease-spring);
+  }
+  .brand:hover .brand-mark{transform:rotate(-4deg) scale(1.05);}
+  .brand-mark img{width:100%;height:100%;object-fit:contain;padding:5px;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.18;}
+  .brand-text b{
+    font-family:'Fraunces',serif;font-size:17px;font-weight:700;
+    color:#fff;letter-spacing:0.01em;
+  }
+  .brand-text span{font-size:10.5px;color:rgba(255,255,255,0.62);letter-spacing:0.02em;font-weight:500;}
+
+  nav{display:flex;align-items:center;gap:30px;}
+  nav a{
+    color:rgba(255,255,255,0.82);font-size:14px;font-weight:500;
+    transition:color .18s;position:relative;padding:4px 0;
+  }
+  nav a:hover{color:#fff;}
+  nav a::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;
+    height:2px;background:var(--clay);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .28s var(--ease);
+  }
+  nav a:hover::after{transform:scaleX(1);}
+
+  .nav-cta{
+    background:var(--clay);color:#fff !important;
+    padding:10px 22px;border-radius:6px;
+    font-size:13.5px;font-weight:600;
+    transition:background .2s,transform .2s,box-shadow .2s;
+  }
+  .nav-cta:hover{background:var(--clay-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(199,92,52,0.32);}
+  .nav-cta::after{display:none;}
+
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+  .burger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .25s ease;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--spruce);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    padding:80px 0 88px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:url('assets/bg1.jpg');
+    background-size:cover;background-position:center;
+    opacity:0.08;
+    filter:saturate(0.6);
+    mask-image:radial-gradient(ellipse 80% 90% at 82% 38%,black 0%,transparent 74%);
+    -webkit-mask-image:radial-gradient(ellipse 80% 90% at 82% 38%,black 0%,transparent 74%);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:var(--gap-3xl);
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;font-weight:600;
+    letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--clay-soft);
+    margin-bottom:22px;
+    padding:7px 14px;
+    border:1px solid rgba(232,166,136,0.28);
+    border-radius:100px;
+    background:rgba(232,166,136,0.04);
+  }
+  .hero-eyebrow::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--clay);
+    box-shadow:0 0 0 0 rgba(199,92,52,0.6);
+    animation:pulseDot 2.2s ease-out infinite;
+  }
+
+  /* Hero headline — an underline "writes" itself after the text lands */
+  .hero h1{
+    color:#fff;max-width:17ch;margin-bottom:26px;
+    opacity:0;transform:translateY(14px);
+    animation:heroIn 0.9s var(--ease) 0.05s forwards;
+  }
+  .hero h1 .accent{
+    position:relative;
+    display:inline-block;
+    color:var(--clay-soft);
+    font-style:italic;
+    font-weight:500;
+    font-variation-settings:"opsz" 144;
+  }
+  .hero h1 .accent::after{
+    content:"";position:absolute;left:0;right:0;bottom:0.04em;
+    height:2px;background:var(--clay);
+    transform:scaleX(0);transform-origin:left;
+    animation:underlineDraw 0.9s var(--ease) 1.1s forwards;
+  }
+  @keyframes underlineDraw{
+    0%{transform:scaleX(0);}
+    100%{transform:scaleX(1);}
+  }
+  @keyframes heroIn{
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .hero-lede{
+    color:rgba(255,255,255,0.76);
+    font-size:17px;line-height:1.72;
+    max-width:520px;margin-bottom:36px;
+    opacity:0;transform:translateY(14px);
+    animation:heroIn 0.9s var(--ease) 0.22s forwards;
+  }
+  .hero-actions{
+    display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;
+    opacity:0;transform:translateY(14px);
+    animation:heroIn 0.9s var(--ease) 0.36s forwards;
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;font-family:inherit;font-weight:600;
+    font-size:14px;border-radius:8px;
+    transition:all .22s ease;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--clay);color:#fff;}
+  .btn-primary:hover{background:var(--clay-hover);transform:translateY(-2px);box-shadow:0 12px 28px rgba(199,92,52,0.38);}
+  .btn-ghost{border-color:rgba(255,255,255,0.28);color:#fff;}
+  .btn-ghost:hover{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.05);transform:translateY(-2px);}
+  .btn svg{width:15px;height:15px;}
+
+  .hero-stats{
+    display:flex;gap:0;flex-wrap:wrap;
+    border-top:1px solid var(--line-dark);
+    padding-top:32px;
+    opacity:0;transform:translateY(14px);
+    animation:heroIn 0.9s var(--ease) 0.5s forwards;
+  }
+  .hero-stat{
+    flex:1;min-width:150px;
+    padding:0 28px 0 0;
+    border-right:1px solid var(--line-dark);
+    margin-right:28px;
+  }
+  .hero-stat:last-child{border-right:none;margin-right:0;padding-right:0;}
+  .hero-stat b{
+    display:block;font-family:'Fraunces',serif;
+    font-size:32px;font-weight:600;color:#fff;
+    letter-spacing:-0.02em;line-height:1;margin-bottom:8px;
+    font-variation-settings:"opsz" 144;
+  }
+  .hero-stat span{font-size:12.5px;color:rgba(255,255,255,0.58);letter-spacing:0.01em;}
+
+  /* Hero visual: cinematic reveal — a curtain pulls back from the right */
+  .hero-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 32px 80px rgba(0,0,0,0.42);
+    background:var(--spruce-mid);
+  }
+  .hero-visual::after{
+    content:"";position:absolute;inset:0;z-index:3;
+    background:var(--spruce);
+    transform-origin:right center;
+    animation:curtain 1.1s var(--ease) 0.15s forwards;
+  }
+  @keyframes curtain{
+    0%{transform:scaleX(1);}
+    100%{transform:scaleX(0);}
+  }
+  .hero-visual img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center;
+  }
+  .hero-visual-tag{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(180deg,transparent 0%,rgba(9,29,27,0.94) 100%);
+    padding:72px 26px 26px;
+    color:#fff;
+  }
+  .hero-visual-tag small{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--clay-soft);margin-bottom:10px;font-weight:600;
+  }
+  .hero-visual-tag small::before{
+    content:"";width:14px;height:1px;background:var(--clay-soft);
+  }
+  .hero-visual-tag p{font-size:14px;color:rgba(255,255,255,0.92);line-height:1.55;font-weight:500;}
+
+  /* ---------- trust bar ---------- */
+  .trust-bar{
+    background:var(--parchment-alt);
+    border-bottom:1px solid var(--line);
+    padding:26px 0;
+  }
+  .trust-bar .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    gap:32px;flex-wrap:wrap;
+  }
+  .trust-item{
+    display:flex;align-items:center;gap:12px;
+    font-size:13.5px;color:var(--text);font-weight:500;
+  }
+  .trust-item svg{width:22px;height:22px;color:var(--clay);flex-shrink:0;stroke-width:1.8;}
+  .trust-item b{color:var(--ink);font-weight:700;}
+
+  /* ---------- section base ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:720px;margin-bottom:56px;}
+  .section-kicker{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:11.5px;font-weight:700;
+    letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--clay);
+    margin-bottom:16px;
+  }
+  /* Numbering system in the kicker — editorial touch */
+  .section-kicker .kicker-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:34px;height:22px;padding:0 8px;
+    border-radius:100px;
+    background:var(--clay);color:#fff;
+    font-family:'Fraunces',serif;
+    font-size:11px;font-weight:600;
+    letter-spacing:0.04em;
+  }
+  .section-kicker .kicker-line{
+    display:inline-block;width:20px;height:1px;
+    background:var(--clay);
+  }
+  .section-head h2{margin-bottom:18px;}
+  .section-head p{color:var(--text-soft);font-size:16px;line-height:1.72;max-width:600px;}
+
+  /* ---------- company ---------- */
+  .company{background:var(--parchment);}
+  .company-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:var(--gap-3xl);
+    align-items:center;
+  }
+  .company-copy p{
+    color:var(--text);
+    font-size:16px;line-height:1.82;
+    margin-bottom:20px;
+  }
+  .company-copy p:last-child{margin-bottom:0;}
+  .company-copy strong{color:var(--ink);font-weight:700;}
+  .company-copy h2{margin-bottom:24px;}
+
+  .company-facts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .company-fact{
+    background:var(--white);
+    padding:30px 26px;
+    transition:background .3s ease;
+  }
+  .company-fact:hover{background:#fbf9f4;}
+  .company-fact span{
+    display:block;
+    font-size:11px;font-weight:700;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--clay);
+    margin-bottom:10px;
+  }
+  .company-fact b{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-size:16px;color:var(--ink);font-weight:600;
+    line-height:1.42;
+    letter-spacing:-0.005em;
+  }
+
+  /* ---------- accreditation ---------- */
+  .accreditation{background:var(--parchment-alt);}
+  .accred-strip{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:40px;
+    align-items:center;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:36px 40px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  /* A subtle diagonal sheen that sweeps once on load */
+  .accred-strip::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(105deg,transparent 40%,rgba(199,92,52,0.06) 50%,transparent 60%);
+    transform:translateX(-100%);
+    transition:transform 1.2s var(--ease);
+    pointer-events:none;
+  }
+  .accred-strip.in::before{transform:translateX(100%);}
+  .accred-mark{
+    width:112px;height:112px;
+    border-radius:12px;
+    background:var(--parchment-alt);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;flex-shrink:0;
+    padding:12px;
+  }
+  .accred-mark img{width:100%;height:100%;object-fit:contain;object-position:center;}
+  .accred-mark-pending{
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    color:var(--text-soft);text-align:center;
+  }
+  .accred-mark-pending svg{width:26px;height:26px;opacity:0.5;}
+  .accred-mark-pending span{font-size:9.5px;letter-spacing:0.04em;text-transform:uppercase;line-height:1.35;font-weight:600;}
+
+  .accred-copy h3{margin-bottom:10px;font-size:20px;letter-spacing:-0.01em;}
+  .accred-copy p{color:var(--text-soft);font-size:14.5px;line-height:1.72;max-width:640px;}
+
+  .accred-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--spruce);color:#fff;
+    padding:10px 18px;border-radius:8px;
+    font-size:12.5px;font-weight:600;
+    white-space:nowrap;
+  }
+  .accred-badge svg{width:14px;height:14px;color:var(--sage);}
+
+  /* ---------- leadership ---------- */
+  .leadership{background:var(--parchment);}
+  .leadership-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:32px;
+    max-width:760px;
+  }
+  .lead-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    transition:box-shadow .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
+  }
+  .lead-card:hover{
+    box-shadow:var(--shadow-warm);
+    border-color:var(--clay-soft);
+    transform:translateY(-6px);
+  }
+  .lead-photo{
+    aspect-ratio:1;
+    background:var(--spruce);
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  /* A warm gradient wipe sweeps across on hover */
+  .lead-photo::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(160deg,transparent 30%,rgba(199,92,52,0.14) 60%,transparent 90%);
+    opacity:0;transition:opacity .5s ease;
+    pointer-events:none;
+  }
+  .lead-card:hover .lead-photo::after{opacity:1;}
+  .lead-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .lead-photo .initials{
+    font-family:'Fraunces',serif;
+    font-size:58px;font-weight:600;
+    color:rgba(255,255,255,0.88);
+    letter-spacing:-0.03em;
+  }
+  .lead-info{padding:26px 28px 28px;}
+  .lead-info h4{margin-bottom:5px;font-size:18px;letter-spacing:-0.01em;}
+  .lead-info span{font-size:13.5px;color:var(--clay);font-weight:600;letter-spacing:0.02em;}
+
+  /* ---------- catalog ---------- */
+  .catalog{background:var(--spruce);color:#fff;}
+  .catalog .section-kicker{color:var(--clay-soft);}
+  .catalog .section-kicker .kicker-num{background:var(--clay-soft);color:var(--spruce);}
+  .catalog .section-kicker .kicker-line{background:var(--clay-soft);}
+  .catalog .section-head h2{color:#fff;}
+  .catalog .section-head p{color:rgba(255,255,255,0.68);}
+
+  .category-block{border-top:1px solid var(--line-dark);}
+  .category-block:last-child{border-bottom:1px solid var(--line-dark);}
+  .category-toggle{
+    width:100%;background:none;border:none;padding:0;margin:0;cursor:pointer;
+    text-align:left;color:inherit;font:inherit;display:block;
+  }
+  .category-title{
+    display:grid;
+    grid-template-columns:auto 1fr auto auto;
+    align-items:center;
+    gap:28px;
+    padding:30px 12px;
+    transition:padding .3s var(--ease);
+  }
+  .category-toggle:hover .category-title{padding-left:24px;}
+  .category-num{
+    font-family:'Fraunces',serif;
+    font-size:15px;font-weight:600;
+    color:var(--clay-soft);
+    font-variant-numeric:tabular-nums;
+    min-width:38px;
+    letter-spacing:0.02em;
+    transition:transform .4s var(--ease-spring),color .3s ease;
+  }
+  /* The division number pops when the block opens — a small reward */
+  .category-block.open .category-num{
+    transform:scale(1.18);
+    color:#fff;
+  }
+  .category-title h3{
+    color:#fff;font-size:21px;font-weight:600;
+    letter-spacing:-0.012em;
+  }
+  .category-count{
+    font-size:12.5px;color:rgba(255,255,255,0.5);
+    white-space:nowrap;font-weight:500;
+  }
+  .category-chevron{
+    width:24px;height:24px;
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,0.55);
+    transition:transform .3s ease,color .3s ease;
+  }
+  .category-chevron svg{width:15px;height:15px;stroke-width:2.2;}
+  .category-block.open .category-chevron{transform:rotate(180deg);color:var(--clay-soft);}
+
+  .ledger-wrapper{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(0.4,0,0.2,1);}
+  .ledger{
+    padding:0 12px 34px 66px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 56px;
+  }
+  .ledger-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    font-size:14.5px;
+  }
+  .ledger-row:last-child{border-bottom:none;}
+  .ledger-name{color:rgba(255,255,255,0.9);line-height:1.5;}
+  .ledger-status{
+    font-size:11.5px;color:rgba(255,255,255,0.4);
+    white-space:nowrap;font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .ledger-status.instock{color:var(--sage);}
+  .ledger-status.order{color:var(--clay-soft);}
+
+  /* ---------- completed work ---------- */
+  .work{background:var(--parchment);}
+  .work-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:32px;margin-bottom:44px;flex-wrap:wrap;
+  }
+  .work-head .section-head{margin-bottom:0;}
+  .work-nav{display:flex;gap:10px;}
+  .work-nav button{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--white);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;color:var(--ink);
+    transition:background .2s,color .2s,border-color .2s,transform .3s var(--ease-spring);
+  }
+  .work-nav button:hover{background:var(--spruce);color:#fff;border-color:var(--spruce);transform:translateY(-2px) scale(1.05);}
+  .work-nav button:active{transform:translateY(0) scale(0.98);}
+
+  .work-track{
+    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+    scrollbar-width:none;-ms-overflow-style:none;
+    gap:24px;
+    padding-bottom:8px;
+  }
+  .work-track::-webkit-scrollbar{display:none;}
+  .work-slide{
+    flex:0 0 calc((100% - 24px) / 2);
+    scroll-snap-align:start;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:box-shadow .4s var(--ease),transform .4s var(--ease);
+  }
+  .work-slide:hover{box-shadow:var(--shadow-warm);transform:translateY(-4px);}
+  .work-photo{
+    position:relative;overflow:hidden;
+    aspect-ratio:4/3;
+    background:var(--parchment-alt);
+  }
+  .work-photo img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    cursor:zoom-in;
+    transition:transform .8s var(--ease);
+  }
+  .work-slide:hover .work-photo img{transform:scale(1.05);}
+  .zoom-hint{
+    position:absolute;bottom:14px;right:14px;z-index:2;
+    width:36px;height:36px;border-radius:50%;
+    background:rgba(15,46,43,0.85);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;transition:opacity .3s ease,transform .3s var(--ease);
+    transform:scale(0.9);
+    pointer-events:none;
+  }
+  .work-slide:hover .zoom-hint{opacity:1;transform:scale(1);}
+  .zoom-hint svg{width:15px;height:15px;stroke-width:2;}
+
+  .work-body{padding:26px 28px 30px;flex:1;display:flex;flex-direction:column;}
+  .work-tag{
+    display:inline-block;align-self:flex-start;
+    font-size:11px;font-weight:700;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--clay);
+    margin-bottom:12px;
+  }
+  .work-body h4{font-size:19px;margin-bottom:8px;letter-spacing:-0.012em;}
+  .work-body p{font-size:14px;color:var(--text-soft);line-height:1.6;}
+
+  @media (max-width:880px){
+    .work-slide{flex:0 0 100%;}
+  }
+
+  /* ---------- gallery ---------- */
+  .gallery{background:var(--parchment-alt);}
+  .gallery-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:32px;margin-bottom:40px;flex-wrap:wrap;
+  }
+  .gallery-head .section-head{margin-bottom:0;}
+  .gallery-track{
+    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;
+    scrollbar-width:none;-ms-overflow-style:none;
+    padding-bottom:6px;
+  }
+  .gallery-track::-webkit-scrollbar{display:none;}
+  .gallery-card{
+    flex:0 0 280px;scroll-snap-align:start;
+    background:var(--white);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;
+    transition:box-shadow .4s var(--ease),transform .4s var(--ease);
+  }
+  .gallery-card:hover{box-shadow:var(--shadow-warm);transform:translateY(-4px);}
+  .gallery-photo{
+    aspect-ratio:1;
+    position:relative;overflow:hidden;background:var(--parchment-alt);
+  }
+  .gallery-photo img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    cursor:zoom-in;
+    transition:transform .8s var(--ease);
+  }
+  .gallery-card:hover .gallery-photo img{transform:scale(1.06);}
+  .gallery-pending{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    height:100%;color:var(--text-soft);text-align:center;padding:20px;
+  }
+  .gallery-pending svg{width:30px;height:30px;opacity:0.4;}
+  .gallery-pending span{font-size:11px;letter-spacing:0.04em;text-transform:uppercase;font-weight:600;}
+  .gallery-body{padding:18px 20px 22px;}
+  .gallery-tag{
+    font-size:10.5px;font-weight:700;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--clay);
+    margin-bottom:8px;display:block;
+  }
+  .gallery-body h4{font-size:15px;margin-bottom:4px;letter-spacing:-0.005em;}
+  .gallery-body p{font-size:12.5px;color:var(--text-soft);line-height:1.55;}
+  .gallery-nav{display:flex;gap:10px;}
+  .gallery-nav-btn{
+    width:42px;height:42px;border-radius:50%;background:var(--white);
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+    cursor:pointer;color:var(--ink);
+    transition:background .2s,color .2s,border-color .2s,transform .3s var(--ease-spring);
+  }
+  .gallery-nav-btn:hover{background:var(--spruce);color:#fff;border-color:var(--spruce);transform:translateY(-2px) scale(1.05);}
+  .gallery-nav-btn:active{transform:translateY(0) scale(0.98);}
+
+  /* ---------- clients ---------- */
+  .clients{background:var(--parchment);}
+  .clients-marquee{
+    overflow:hidden;position:relative;
+    -webkit-mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);
+    mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);
+  }
+  .clients-track{
+    display:flex;gap:20px;width:max-content;
+    animation:clientsScroll 48s linear infinite;
+  }
+  .clients-marquee:hover .clients-track{animation-play-state:paused;}
+  @keyframes clientsScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .client-card{
+    flex:0 0 200px;
+    background:var(--white);border:1px solid var(--line);border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    aspect-ratio:1.5;padding:24px;
+    transition:box-shadow .3s ease,border-color .3s ease,transform .3s ease;
+  }
+  .client-card:hover{box-shadow:var(--shadow-warm);border-color:var(--clay-soft);transform:translateY(-3px);}
+  .client-card img{
+    max-width:100%;max-height:100%;
+    width:auto;height:auto;
+    object-fit:contain;object-position:center;
+    filter:grayscale(1) opacity(0.6);
+    transition:filter .35s ease;
+  }
+  .client-card:hover img{filter:grayscale(0) opacity(1);}
+  .client-pending{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    height:100%;width:100%;color:var(--text-soft);text-align:center;
+  }
+  .client-pending svg{width:26px;height:26px;opacity:0.4;}
+  .client-pending span{font-size:10px;letter-spacing:0.04em;text-transform:uppercase;font-weight:600;}
+
+  /* ---------- businesses ---------- */
+  .businesses{background:var(--parchment-alt);}
+  .business-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .business-card{
+    background:var(--white);border:1px solid var(--line);border-radius:14px;
+    padding:30px 26px;text-align:left;
+    display:flex;flex-direction:column;
+    transition:box-shadow .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
+    position:relative;
+    overflow:hidden;
+  }
+  .business-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--clay) 0%,var(--clay-soft) 100%);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .5s var(--ease);
+  }
+  .business-card:hover{
+    box-shadow:var(--shadow-warm);
+    border-color:var(--clay-soft);
+    transform:translateY(-4px);
+  }
+  .business-card:hover::before{transform:scaleX(1);}
+  .business-logo{
+    width:72px;height:72px;margin-bottom:22px;border-radius:12px;
+    background:var(--parchment-alt);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    color:var(--spruce);font-family:'Fraunces',serif;
+    font-size:20px;font-weight:700;
+    flex-shrink:0;
+    padding:6px;
+    transition:background .3s ease,transform .4s var(--ease-spring);
+  }
+  .business-card:hover .business-logo{
+    background:var(--parchment);
+    transform:scale(1.06) rotate(-2deg);
+  }
+  .business-logo img{width:100%;height:100%;object-fit:contain;object-position:center;}
+  .business-card h4{
+    font-size:16px;margin-bottom:8px;line-height:1.35;
+    letter-spacing:-0.008em;
+  }
+  .business-card p{font-size:13px;color:var(--text-soft);line-height:1.6;}
+
+  @media (max-width:980px){ .business-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .business-grid{grid-template-columns:1fr;} }
+
+  /* ---------- why ---------- */
+  .why{background:var(--parchment);}
+  .why-grid{
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:var(--gap-3xl);align-items:start;
+  }
+  .why-intro h2{margin-bottom:20px;}
+  .why-intro p{color:var(--text-soft);font-size:15.5px;line-height:1.78;}
+  .why-list{list-style:none;}
+  .why-list li{
+    display:grid;grid-template-columns:auto 1fr;gap:24px;
+    padding:26px 0;
+    position:relative;
+    opacity:0;
+    transform:translateX(-14px);
+    transition:opacity .7s var(--ease),transform .7s var(--ease);
+  }
+  .why-list.in li{opacity:1;transform:translateX(0);}
+  .why-list.in li:nth-child(1){transition-delay:.06s;}
+  .why-list.in li:nth-child(2){transition-delay:.14s;}
+  .why-list.in li:nth-child(3){transition-delay:.22s;}
+  .why-list.in li:nth-child(4){transition-delay:.30s;}
+  .why-list.in li:nth-child(5){transition-delay:.38s;}
+  .why-list li::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;
+    height:1px;background:var(--line);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .8s var(--ease);
+  }
+  .why-list.in li::after{transform:scaleX(1);}
+  .why-list.in li:nth-child(1)::after{transition-delay:.20s;}
+  .why-list.in li:nth-child(2)::after{transition-delay:.28s;}
+  .why-list.in li:nth-child(3)::after{transition-delay:.36s;}
+  .why-list.in li:nth-child(4)::after{transition-delay:.44s;}
+  .why-list.in li:nth-child(5)::after{transition-delay:.52s;transform:scaleX(0);}
+  .why-list li:last-child::after{display:none;}
+  .why-num{
+    font-family:'Fraunces',serif;
+    font-size:15px;font-weight:600;color:var(--clay);
+    font-variant-numeric:tabular-nums;
+    padding-top:3px;
+    letter-spacing:0.02em;
+    transition:transform .4s var(--ease-spring);
+  }
+  .why-list li:hover .why-num{transform:translateX(4px) scale(1.1);}
+  .why-list li b{
+    display:block;font-size:16px;color:var(--ink);font-weight:700;
+    margin-bottom:6px;letter-spacing:-0.008em;
+  }
+  .why-list li span{font-size:14px;color:var(--text-soft);line-height:1.65;}
+
+  /* ---------- process ---------- */
+  .process{background:var(--parchment-alt);}
+  .process-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+    counter-reset:step;
+  }
+  .process-step{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:14px;padding:30px 26px;
+    position:relative;
+    transition:box-shadow .4s var(--ease),transform .4s var(--ease),border-color .4s var(--ease);
+  }
+  .process-step:hover{
+    box-shadow:var(--shadow-warm);
+    transform:translateY(-4px);
+    border-color:var(--clay-soft);
+  }
+  .process-step-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--spruce);color:#fff;
+    font-family:'Fraunces',serif;
+    font-size:15px;font-weight:600;
+    margin-bottom:22px;
+    transition:background .3s ease,transform .4s var(--ease-spring);
+  }
+  .process-step:hover .process-step-num{
+    background:var(--clay);
+    transform:rotate(-8deg) scale(1.08);
+  }
+  .process-step h4{font-size:16px;margin-bottom:8px;letter-spacing:-0.008em;}
+  .process-step p{font-size:13.5px;color:var(--text-soft);line-height:1.6;}
+
+  @media (max-width:880px){ .process-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .process-grid{grid-template-columns:1fr;} }
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--spruce);color:#fff;}
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:var(--gap-3xl);align-items:start;
+  }
+  .contact .section-kicker{color:var(--clay-soft);}
+  .contact .section-kicker .kicker-num{background:var(--clay-soft);color:var(--spruce);}
+  .contact .section-kicker .kicker-line{background:var(--clay-soft);}
+  .contact h2{color:#fff;margin-bottom:18px;}
+  .contact-lede{color:rgba(255,255,255,0.7);font-size:16px;line-height:1.72;margin-bottom:40px;max-width:480px;}
+
+  .contact-list{list-style:none;}
+  .contact-item{
+    display:grid;grid-template-columns:auto 1fr;gap:20px;
+    padding:20px 0;border-bottom:1px solid var(--line-dark);
+    transition:padding-left .3s var(--ease);
+  }
+  .contact-item:hover{padding-left:8px;}
+  .contact-item:last-child{border-bottom:none;}
+  .contact-ic{
+    width:40px;height:40px;border-radius:10px;
+    background:rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--clay-soft);flex-shrink:0;
+    transition:background .3s ease,color .3s ease,transform .3s var(--ease-spring);
+  }
+  .contact-item:hover .contact-ic{
+    background:var(--clay);
+    color:#fff;
+    transform:rotate(-6deg) scale(1.08);
+  }
+  .contact-ic svg{width:17px;height:17px;stroke-width:1.8;}
+  .contact-item b{
+    display:block;font-size:11px;font-weight:700;
+    letter-spacing:0.1em;text-transform:uppercase;
+    color:rgba(255,255,255,0.5);margin-bottom:6px;
+  }
+  .contact-item a,.contact-item span.val{font-size:16px;color:#fff;line-height:1.45;}
+  .contact-item a:hover{color:var(--clay-soft);}
+
+  .contact-panel{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--line-dark);
+    border-radius:14px;
+    padding:40px;
+    transition:background .3s ease,border-color .3s ease;
+  }
+  .contact-panel:hover{background:rgba(255,255,255,0.06);border-color:rgba(199,92,52,0.3);}
+  .contact-panel h3{color:#fff;font-size:22px;margin-bottom:14px;letter-spacing:-0.012em;}
+  .contact-panel > p{color:rgba(255,255,255,0.7);font-size:14.5px;line-height:1.72;margin-bottom:28px;}
+  .contact-panel hr{border:none;border-top:1px solid var(--line-dark);margin:28px 0;}
+  .contact-panel-meta{display:flex;flex-direction:column;gap:16px;}
+  .contact-panel-meta div{
+    display:flex;align-items:flex-start;gap:12px;
+    font-size:13.5px;color:rgba(255,255,255,0.72);
+    line-height:1.55;
+  }
+  .contact-panel-meta svg{
+    width:16px;height:16px;color:var(--clay-soft);flex-shrink:0;margin-top:3px;stroke-width:2.4;
+  }
+  .contact-panel-meta b{color:#fff;font-weight:700;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--spruce-deep);color:rgba(255,255,255,0.7);padding:72px 0 0;}
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.6fr 1fr 1fr 1fr;
+    gap:56px;
+    padding-bottom:52px;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .footer-brand .brand-mark{background:var(--clay);}
+  .footer-brand b{
+    font-family:'Fraunces',serif;
+    font-size:18px;font-weight:700;color:#fff;
+    letter-spacing:0.005em;
+  }
+  .footer-col p{font-size:13.5px;line-height:1.72;color:rgba(255,255,255,0.6);max-width:320px;}
+  .footer-col h5{
+    font-size:11.5px;font-weight:700;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--clay-soft);
+    margin-bottom:20px;
+  }
+  .footer-col a{
+    display:block;font-size:13.5px;color:rgba(255,255,255,0.72);
+    margin-bottom:12px;transition:color .18s,transform .3s var(--ease);
+  }
+  .footer-col a:hover{color:#fff;transform:translateX(3px);}
+  .footer-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-top:22px;padding:9px 15px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-dark);
+    border-radius:8px;
+  }
+  .footer-badge img{
+    width:28px;height:28px;
+    object-fit:contain;object-position:center;
+    border-radius:4px;background:#fff;padding:3px;
+  }
+  .footer-badge span{font-size:11px;font-weight:600;color:rgba(255,255,255,0.72);letter-spacing:0.02em;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:28px 0;gap:16px;flex-wrap:wrap;
+    font-size:12.5px;color:rgba(255,255,255,0.46);
+  }
+
+  @media (max-width:980px){ .footer-grid{grid-template-columns:1fr 1fr;gap:36px;} }
+  @media (max-width:560px){
+    .footer-grid{grid-template-columns:1fr;gap:32px;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;}
+  }
+
+  /* ---------- chat ---------- */
+  .chat-launcher{
+    position:fixed;right:24px;bottom:24px;z-index:200;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--clay);border:none;cursor:pointer;
+    box-shadow:0 10px 28px rgba(199,92,52,0.32);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .3s var(--ease-spring),box-shadow .3s,background .2s;
+  }
+  .chat-launcher:hover{transform:translateY(-3px) scale(1.08);background:var(--clay-hover);box-shadow:0 16px 38px rgba(199,92,52,0.44);}
+  .chat-launcher::before{
+    content:"";position:absolute;inset:-4px;border-radius:50%;
+    border:2px solid var(--clay);opacity:0;
+    animation:chatRing 3s ease-out infinite;
+  }
+  @keyframes chatRing{
+    0%{opacity:0.5;transform:scale(1);}
+    100%{opacity:0;transform:scale(1.4);}
+  }
+  .chat-launcher svg{width:26px;height:26px;color:#fff;position:relative;z-index:1;}
+  .chat-badge{
+    position:absolute;top:-1px;right:-1px;
+    width:20px;height:20px;border-radius:50%;
+    background:var(--spruce);color:#fff;
+    font-size:11px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--parchment);
+    z-index:2;
+  }
+  .chat-popup{
+    position:fixed;right:24px;bottom:96px;z-index:200;
+    width:330px;max-width:calc(100vw - 48px);
+    background:var(--white);border:1px solid var(--line);border-radius:16px;
+    box-shadow:0 24px 56px rgba(15,46,43,0.22);
+    opacity:0;transform:translateY(10px) scale(0.98);pointer-events:none;
+    transition:opacity .25s var(--ease),transform .25s var(--ease);
+    overflow:hidden;
+  }
+  .chat-popup.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+  .chat-popup-head{
+    background:var(--spruce);padding:18px 20px;
+    display:flex;align-items:center;gap:12px;position:relative;
+  }
+  .chat-popup-avatar{
+    width:40px;height:40px;border-radius:10px;overflow:hidden;
+    flex-shrink:0;background:rgba(255,255,255,0.10);
+    padding:4px;
+  }
+  .chat-popup-avatar img{width:100%;height:100%;object-fit:contain;object-position:center;}
+  .chat-popup-head-text b{display:block;color:#fff;font-size:14px;font-weight:700;}
+  .chat-popup-head-text span{
+    display:flex;align-items:center;gap:6px;
+    font-size:11px;color:rgba(255,255,255,0.6);
+  }
+  .chat-popup-head-text span::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--sage);
+    box-shadow:0 0 0 0 rgba(139,168,136,0.6);
+    animation:pulseDot 2.4s ease-out infinite;
+  }
+  .chat-popup-close{
+    position:absolute;top:12px;right:12px;
+    width:26px;height:26px;border-radius:6px;
+    background:transparent;border:none;
+    color:rgba(255,255,255,0.6);cursor:pointer;font-size:15px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .chat-popup-close:hover{color:#fff;background:rgba(255,255,255,0.08);}
+  .chat-popup-body{padding:20px;}
+  .chat-bubble{
+    background:var(--parchment-alt);border-radius:12px;
+    padding:14px 16px;font-size:13.5px;color:var(--text);
+    line-height:1.62;margin-bottom:16px;
+  }
+  .chat-popup-cta{
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    width:100%;padding:13px 16px;border-radius:10px;border:none;cursor:pointer;
+    background:var(--clay);color:#fff;font-family:inherit;font-weight:600;font-size:13.5px;
+    transition:background .2s,transform .2s,box-shadow .2s;
+  }
+  .chat-popup-cta:hover{background:var(--clay-hover);transform:translateY(-1px);box-shadow:0 8px 20px rgba(199,92,52,0.32);}
+  .chat-popup-cta svg{width:16px;height:16px;}
+  .chat-popup-note{margin-top:14px;text-align:center;font-size:11px;color:var(--text-soft);}
+  @media (max-width:560px){
+    .chat-launcher{right:16px;bottom:16px;width:54px;height:54px;}
+    .chat-popup{right:16px;bottom:82px;width:calc(100vw - 32px);}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;gap:52px;}
+    .hero-visual{aspect-ratio:16/10;max-width:560px;margin:0 auto;}
+    .company-grid{grid-template-columns:1fr;gap:56px;}
+    .why-grid{grid-template-columns:1fr;gap:56px;}
+    .contact-grid{grid-template-columns:1fr;gap:56px;}
+    .accred-strip{grid-template-columns:auto 1fr;gap:32px;}
+    .accred-badge{grid-column:1 / -1;justify-self:start;}
+  }
+  @media (max-width:880px){
+    nav{
+      position:fixed;top:0;right:0;bottom:0;
+      width:min(340px,88vw);
+      background:var(--white);
+      flex-direction:column;align-items:flex-start;
+      padding:96px 32px 32px;gap:0;
+      transform:translateX(100%);
+      transition:transform .32s var(--ease);
+      border-left:1px solid var(--line);
+      box-shadow:-20px 0 56px rgba(15,46,43,0.14);
+      z-index:99;
+    }
+    nav.open{transform:translateX(0);}
+    nav a{
+      width:100%;padding:16px 0;
+      border-bottom:1px solid var(--line);
+      font-size:15px;color:var(--ink) !important;
+    }
+    nav a::after{display:none;}
+    .nav-cta{margin-top:24px;width:100%;text-align:center;justify-content:center;padding:15px;}
+    .burger{display:flex;z-index:101;position:relative;}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .burger.open span:nth-child(2){opacity:0;}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .header-top .wrap{justify-content:center;text-align:center;}
+    .header-top-meta span:not(:first-child){display:none;}
+    .header-top-badge{display:none;}
+
+    .hero-stats{flex-direction:column;gap:0;}
+    .hero-stat{border-right:none;margin-right:0;padding:18px 0;border-bottom:1px solid var(--line-dark);}
+    .hero-stat:last-child{border-bottom:none;}
+
+    .company-facts{grid-template-columns:1fr;}
+    .ledger{grid-template-columns:1fr;padding-left:12px;}
+    .leadership-grid{grid-template-columns:1fr;max-width:420px;}
+    .section-head{margin-bottom:40px;}
+    section{padding:72px 0;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 22px;}
+    .header-main .wrap{height:68px;}
+    .brand-text span{display:none;}
+    h1{font-size:30px;}
+    h2{font-size:25px;}
+    .hero{padding:56px 0 64px;}
+    .hero-stat b{font-size:26px;}
+    .category-title{grid-template-columns:auto 1fr auto;gap:16px;padding:22px 6px;}
+    .category-count{display:none;}
+    .ledger{padding:0 6px 26px 6px;}
+    .btn{padding:13px 22px;font-size:13.5px;}
+    .accred-strip{padding:28px;gap:24px;}
+    .accred-mark{width:80px;height:80px;padding:8px;}
+    .work-body{padding:22px 24px 26px;}
+    .process-step{padding:26px 22px;}
+    .contact-panel{padding:28px;}
+    .hero-eyebrow{font-size:10.5px;padding:6px 12px;}
+    .business-logo{width:60px;height:60px;padding:5px;}
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:400;
+    background:rgba(9,29,27,0.96);
+    display:flex;align-items:center;justify-content:center;
+    padding:56px 24px;
+    opacity:0;pointer-events:none;transition:opacity .22s ease;
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+  }
+  .lightbox.open{opacity:1;pointer-events:auto;}
+  .lightbox-img-wrap{
+    max-width:min(1120px,92vw);max-height:88vh;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-img-wrap img{
+    max-width:100%;max-height:88vh;
+    width:auto;height:auto;
+    object-fit:contain;object-position:center;
+    border-radius:6px;
+    box-shadow:0 32px 76px rgba(0,0,0,0.6);
+    animation:lbIn .35s var(--ease) forwards;
+  }
+  @keyframes lbIn{
+    0%{opacity:0;transform:scale(0.96);}
+    100%{opacity:1;transform:scale(1);}
+  }
+  .lightbox-close{
+    position:fixed;top:22px;right:26px;z-index:401;
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);
+    color:#fff;font-size:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease,transform .2s;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.2);transform:scale(1.08);}
+  .lightbox-nav{
+    position:fixed;top:50%;transform:translateY(-50%);z-index:401;
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);
+    color:#fff;font-size:20px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease,transform .2s;
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,0.2);transform:translateY(-50%) scale(1.08);}
+  .lightbox-prev{left:22px;}
+  .lightbox-next{right:22px;}
+  .lightbox-counter{
+    position:fixed;top:24px;left:0;right:0;text-align:center;z-index:401;
+    font-size:12px;letter-spacing:0.06em;
+    color:rgba(255,255,255,0.6);pointer-events:none;
+    font-weight:500;
+  }
+  .lightbox-caption{
+    position:fixed;bottom:26px;left:0;right:0;text-align:center;
+    font-size:13.5px;color:rgba(255,255,255,0.72);pointer-events:none;
+    padding:0 24px;
+  }
+  @media (max-width:520px){
+    .lightbox{padding:40px 16px;}
+    .lightbox-close{top:14px;right:14px;width:40px;height:40px;}
+    .lightbox-nav{width:42px;height:42px;font-size:17px;}
+    .lightbox-prev{left:10px;}
+    .lightbox-next{right:10px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+<header>
+  <div class="header-top">
+    <div class="wrap">
+      <div class="header-top-meta">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          292B Lakandula St, Tondo, Manila
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:+639763992008">0976-399-2008</a>
+        </span>
+      </div>
+      <span class="header-top-badge">PhilGEPS Registered Supplier</span>
+    </div>
+  </div>
+
+  <div class="header-main">
+    <div class="wrap">
+      <a href="#top" class="brand">
+        <span class="brand-mark"><img src="assets/logo-mark.png" alt="JSIXRON logo"></span>
+        <span class="brand-text">
+          <b>JSIXRON</b>
+          <span>Consumer Products &amp; Merchandise</span>
+        </span>
+      </a>
+      <nav id="nav">
+        <a href="#company">Company</a>
+        <a href="#catalog">Products &amp; Services</a>
+        <a href="#work">Completed Work</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#clients">Clients</a>
+        <a href="#businesses">Our Businesses</a>
+        <a href="#contact" class="nav-cta">Request a Quote</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-eyebrow">General Trading &amp; Industrial Supply · Manila</span>
+      <h1>One supplier for <span class="accent">tires, industrial supply,</span> and everything your operation runs on.</h1>
+      <p class="hero-lede">From PPE and uniforms to hauling, printing, and importation — JSIXRON consolidates the categories you'd otherwise chase across six vendors. One contact, one PO, one invoice.</p>
+      <div class="hero-actions">
+        <a href="tel:+639763992008" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call 0976-399-2008
+        </a>
+        <a href="#catalog" class="btn btn-ghost">View Products &amp; Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b data-count="21">0</b><span>Product &amp; service lines</span></div>
+        <div class="hero-stat"><b data-count="3">0</b><span>Core divisions</span></div>
+        <div class="hero-stat"><b>Manila</b><span>Based &amp; delivering nationwide</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <img src="assets/banner.jpg" alt="JSIXRON operations — general merchandise and industrial supply" loading="eager">
+      <div class="hero-visual-tag">
+        <small>Now supplying</small>
+        <p>Fleet tires, safety gear, corporate uniforms, and industrial materials — delivered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="wrap">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span><b>PhilGEPS-registered</b> — cleared for government bids</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg>
+      <span><b>Same-day quotes</b> on most requests</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      <span><b>Direct owner access</b> — no account managers in between</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span><b>Since 2019</b> — Binondo-rooted, Manila-based</span>
+    </div>
+  </div>
+</div>
+
+<section class="company" id="company">
+  <div class="wrap company-grid">
+    <div class="company-copy reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">01</span>
+        <span class="kicker-line"></span>
+        The Company
+      </span>
+      <h2>We started with tires. Clients kept asking for more, so we built the network to say yes.</h2>
+      <p>JSIXRON began as a tire and hardware supplier in Binondo. Over time, the same buyers who came for tires started asking about uniforms, safety gear, printing, and hauling. Rather than turn them away, we built relationships with specialist suppliers across Metro Manila — and took responsibility for coordinating them.</p>
+      <p>Today, <strong>one JSIXRON contact handles what used to take six vendors</strong>. You get one quote, one delivery schedule, and one invoice. Behind the scenes, our team manages the sourcing, quality checks, and logistics.</p>
+    </div>
+
+    <div class="company-facts reveal">
+      <div class="company-fact">
+        <span>Headquarters</span>
+        <b>292B Lakandula St, Tondo, Manila</b>
+      </div>
+      <div class="company-fact">
+        <span>Coverage</span>
+        <b>Metro Manila &amp; nationwide by arrangement</b>
+      </div>
+      <div class="company-fact">
+        <span>Divisions</span>
+        <b>General Merchandise · Corporate Solutions · Services</b>
+      </div>
+      <div class="company-fact">
+        <span>Client Base</span>
+        <b>Government, aviation, construction, private enterprise</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="accreditation" id="accreditation">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">02</span>
+        <span class="kicker-line"></span>
+        Accreditations
+      </span>
+      <h2>Registered to transact with government and enterprise</h2>
+      <p>Compliance isn't a formality here — it's the reason our government and aviation clients can move quickly with us.</p>
+    </div>
+
+    <div class="accred-strip reveal">
+      <div class="accred-mark">
+        <div class="accred-mark-pending">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
+          <span>Certificate pending upload</span>
+        </div>
+      </div>
+      <div class="accred-copy">
+        <h3>PhilGEPS-Registered Supplier</h3>
+        <p>JSIXRON is registered with the Philippine Government Electronic Procurement System. We participate in government bids and supply contracts alongside our private-sector clients, with the documentation, transparency, and audit trail that entails.</p>
+      </div>
+      <span class="accred-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Active Registration
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="leadership" id="leadership">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">03</span>
+        <span class="kicker-line"></span>
+        Leadership
+      </span>
+      <h2>The people you'll actually deal with</h2>
+      <p>No call centre. No account manager relay. When you call JSIXRON, one of the two founders picks up.</p>
+    </div>
+    <div class="leadership-grid reveal">
+      <div class="lead-card">
+        <div class="lead-photo">
+          <img src="assets/founderron.jpg" alt="Ronald Diola, General Manager" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="initials" style="display:none;">RD</span>
+        </div>
+        <div class="lead-info">
+          <h4>Ronald Diola</h4>
+          <span>General Manager</span>
+        </div>
+      </div>
+      <div class="lead-card">
+        <div class="lead-photo">
+          <img src="assets/founderjerald.jpg" alt="Jerald Satina, Operations Manager" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <span class="initials" style="display:none;">JS</span>
+        </div>
+        <div class="lead-info">
+          <h4>Jerald Satina</h4>
+          <span>Operations Manager</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catalog" id="catalog">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">04</span>
+        <span class="kicker-line"></span>
+        Products &amp; Services
+      </span>
+      <h2>Three divisions. Twenty-one lines.</h2>
+      <p>Everything below is available today — in stock, made to order, or scheduled by arrangement. Tap any division to see the full list.</p>
+    </div>
+
+    <div class="category-block open reveal" data-category>
+      <button class="category-toggle" type="button" aria-expanded="true">
+        <div class="category-title">
+          <span class="category-num">01</span>
+          <h3>General Merchandise &amp; Industrial Supplies</h3>
+          <span class="category-count">7 lines</span>
+          <span class="category-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+      </button>
+      <div class="ledger-wrapper">
+        <div class="ledger">
+          <div class="ledger-row"><span class="ledger-name">Premium tires, various brands &amp; sizes</span><span class="ledger-status instock">In stock</span></div>
+          <div class="ledger-row"><span class="ledger-name">Safety gear &amp; personal protective equipment (PPE)</span><span class="ledger-status instock">In stock</span></div>
+          <div class="ledger-row"><span class="ledger-name">Office supplies &amp; corporate essentials</span><span class="ledger-status instock">In stock</span></div>
+          <div class="ledger-row"><span class="ledger-name">Storage &amp; material handling equipment</span><span class="ledger-status order">On request</span></div>
+          <div class="ledger-row"><span class="ledger-name">Aircraft &amp; aviation ground support supplies</span><span class="ledger-status order">On request</span></div>
+          <div class="ledger-row"><span class="ledger-name">Steel construction materials &amp; industrial supplies</span><span class="ledger-status instock">In stock</span></div>
+          <div class="ledger-row"><span class="ledger-name">Bulk &amp; project-based sourcing</span><span class="ledger-status order">On request</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-block reveal" data-category>
+      <button class="category-toggle" type="button" aria-expanded="false">
+        <div class="category-title">
+          <span class="category-num">02</span>
+          <h3>Corporate &amp; Promotional Solutions</h3>
+          <span class="category-count">10 lines</span>
+          <span class="category-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+      </button>
+      <div class="ledger-wrapper">
+        <div class="ledger">
+          <div class="ledger-row"><span class="ledger-name">Sublimation printing services</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Corporate jackets &amp; branded apparel</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Company uniforms</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Fraternity &amp; organization uniforms</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Sports jerseys &amp; teamwear</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Customised long-sleeve shirts</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Professional embroidery services</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Customised promotional merchandise</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Corporate branding, printing &amp; marketing materials</span><span class="ledger-status order">Made to order</span></div>
+          <div class="ledger-row"><span class="ledger-name">Sticker design, printing &amp; installation</span><span class="ledger-status order">Made to order</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-block reveal" data-category>
+      <button class="category-toggle" type="button" aria-expanded="false">
+        <div class="category-title">
+          <span class="category-num">03</span>
+          <h3>Other Services</h3>
+          <span class="category-count">4 lines</span>
+          <span class="category-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+      </button>
+      <div class="ledger-wrapper">
+        <div class="ledger">
+          <div class="ledger-row"><span class="ledger-name">Hauling services</span><span class="ledger-status order">Scheduled</span></div>
+          <div class="ledger-row"><span class="ledger-name">Scrap buying &amp; disposal</span><span class="ledger-status order">Scheduled</span></div>
+          <div class="ledger-row"><span class="ledger-name">Importation consultation</span><span class="ledger-status order">By appointment</span></div>
+          <div class="ledger-row"><span class="ledger-name">Information technology services</span><span class="ledger-status order">By appointment</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <div class="section-head">
+        <span class="section-kicker">
+          <span class="kicker-num">05</span>
+          <span class="kicker-line"></span>
+          Completed Work
+        </span>
+        <h2>Delivered, by category</h2>
+        <p>A sample of recent supply and service deliveries across our three divisions.</p>
+      </div>
+      <div class="work-nav">
+        <button id="workPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button id="workNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="work-track reveal" id="workTrack">
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/tires-delivery-1a.jpg" data-lightbox data-caption="JSIXRON team delivering premium tires to a client warehouse" alt="JSIXRON team delivering premium tires to a client warehouse" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">General Merchandise</span>
+          <h4>Fleet Tire Supply</h4>
+          <p>Bulk tires delivered direct to client warehouse, offloaded on-schedule.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/uniforms-jerseys.jpg" data-lightbox data-caption="Customised JSIXRON team jerseys, representative of company uniform work" alt="Customised JSIXRON team jerseys" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">Corporate Solutions</span>
+          <h4>Company Uniform Rollout</h4>
+          <p>Embroidered uniforms produced and delivered for a full department.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/signage-installation.jpg" data-lightbox data-caption="JSIXRON team installing large-format signage on-site" alt="JSIXRON team installing large-format signage" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">Corporate Solutions</span>
+          <h4>Sticker &amp; Signage Installation</h4>
+          <p>Designed, printed, and installed on-site by our team.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/construction-materials.jpg" data-lightbox data-caption="Cement and construction materials ready for delivery" alt="Construction materials ready for delivery" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">General Merchandise</span>
+          <h4>Construction Materials Supply</h4>
+          <p>Steel and cement delivered on-site for an active build phase.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/hauling-truck.jpg" data-lightbox data-caption="JSIXRON hauling truck lifting a vehicle for transport" alt="JSIXRON hauling truck in operation" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">Other Services</span>
+          <h4>Scheduled Hauling Job</h4>
+          <p>Vehicle hauled to designated drop-off, on schedule and documented.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/ppe-boots-delivery.jpg" data-lightbox data-caption="JSIXRON team delivering safety boots and PPE stock to a construction client" alt="PPE stock delivered to a construction site" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">General Merchandise</span>
+          <h4>Safety Gear Deployment</h4>
+          <p>Site-wide PPE stock delivered — boots, helmets, gloves, and vests.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/cones-delivery-1.jpg" data-lightbox data-caption="JSIXRON team delivering traffic safety cones to an aviation ground support client" alt="Traffic safety cones delivered to aviation client" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">General Merchandise</span>
+          <h4>Traffic Cone Supply</h4>
+          <p>Safety cones delivered to an aviation ground support operation.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/stickersamp.jpg" data-lightbox data-caption="Sample of JSIXRON custom sticker and signage work" alt="Sample of custom sticker work" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">Corporate Solutions</span>
+          <h4>Custom Sticker Production</h4>
+          <p>Cut, printed, and applied for a client branding rollout.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/cctv.jpg" data-lightbox data-caption="CCTV and security camera system supplied and installed by JSIXRON" alt="CCTV installation" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">Other Services</span>
+          <h4>CCTV Installation</h4>
+          <p>Security system supplied and configured on-site.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/airchock.jpg" data-lightbox data-caption="Aviation ground support wheel chocks supplied by JSIXRON" alt="Aviation wheel chocks supplied" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">General Merchandise</span>
+          <h4>Aircraft Wheel Chock Supply</h4>
+          <p>Ground support equipment delivered to an aviation client.</p>
+        </div>
+      </div>
+      <div class="work-slide">
+        <div class="work-photo">
+          <img src="assets/egg2supply.png" data-lightbox data-caption="JSIXRON egg supply delivered to a client" alt="Egg supply delivered" loading="lazy">
+          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>
+        </div>
+        <div class="work-body">
+          <span class="work-tag">General Merchandise</span>
+          <h4>Food Supply Contract</h4>
+          <p>Recurring fresh stock delivered on a fixed schedule.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <div class="section-head">
+        <span class="section-kicker">
+          <span class="kicker-num">06</span>
+          <span class="kicker-line"></span>
+          Behind the Scenes
+        </span>
+        <h2>Activities, events, and products</h2>
+        <p>Real photos from our operations, updated regularly.</p>
+      </div>
+      <div class="gallery-nav">
+        <button class="gallery-nav-btn" id="galleryPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="gallery-nav-btn" id="galleryNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="gallery-track reveal" id="galleryTrack">
+      <div class="gallery-card">
+        <div class="gallery-photo">
+          <div class="gallery-pending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+            <span>Loading photos</span>
+          </div>
+        </div>
+        <div class="gallery-body">
+          <span class="gallery-tag">Gallery</span>
+          <h4>Fetching from repository</h4>
+          <p>Updates automatically — no code changes needed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients" id="clients">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">07</span>
+        <span class="kicker-line"></span>
+        Trusted By
+      </span>
+      <h2>Airlines, airports, and enterprise accounts</h2>
+      <p>A sample of organisations we've supplied and served.</p>
+    </div>
+    <div class="clients-marquee reveal" id="clientsMarquee">
+      <div class="clients-track" id="clientsTrack">
+        <div class="client-card">
+          <div class="client-pending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Loading logos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="businesses" id="businesses">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">08</span>
+        <span class="kicker-line"></span>
+        Under One Group
+      </span>
+      <h2>Other businesses in the group</h2>
+      <p>Ventures under the same ownership as JSIXRON Consumer Products &amp; Merchandise.</p>
+    </div>
+    <div class="business-grid reveal">
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/logo-mark.png" alt="JSIXRON Consumer Products &amp; Merchandise logo" onerror="this.parentElement.textContent='JCP'"></div>
+        <h4>JSIXRON Consumer Products &amp; Merchandise</h4>
+        <p>General trading &amp; industrial supply, Manila. The group's founding business.</p>
+      </div>
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/businesses/jsixron-laundry.png" alt="JSIXRON Laundry logo" onerror="this.parentElement.textContent='JLY'"></div>
+        <h4>JSIXRON Laundry</h4>
+        <p>Wash, dry, fold, hang, steam. By RedJemie.com.</p>
+      </div>
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/businesses/jsixron-barbershop.png" alt="JSIXRON Barbershop &amp; Coffee logo" onerror="this.parentElement.textContent='JBC'"></div>
+        <h4>JSIXRON Barbershop &amp; Coffee</h4>
+        <p>Grooming and barbershop services, served with coffee.</p>
+      </div>
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/businesses/jsixron-scrap.png" alt="JSIXRON Scrap Buyer logo" onerror="this.parentElement.textContent='JSC'"></div>
+        <h4>JSIXRON Scrap Buyer</h4>
+        <p>Scrap buying, sorting, and responsible disposal.</p>
+      </div>
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/businesses/jsixron-sublimation.png" alt="JSIXRON Sublimation Printing logo" onerror="this.parentElement.textContent='JSP'"></div>
+        <h4>JSIXRON Sublimation Printing Services</h4>
+        <p>Custom printing on jerseys, uniforms, and merchandise.</p>
+      </div>
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/businesses/jsixron-bedspace.png" alt="JSIXRON BedSpace Rent logo" onerror="this.parentElement.textContent='JBS'"></div>
+        <h4>JSIXRON BedSpace Rent</h4>
+        <p>Affordable bed space rentals in Metro Manila.</p>
+      </div>
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/businesses/jsixron-ramen.png" alt="Ramen by JSIXRON logo" onerror="this.parentElement.textContent='RAM'"></div>
+        <h4>Ramen by JSIXRON</h4>
+        <p>Comfort ramen, freshly prepared.</p>
+      </div>
+
+      <div class="business-card">
+        <div class="business-logo"><img src="assets/businesses/jsixron-calamares.png" alt="Calamares &amp; Tempura by JSIXRON logo" onerror="this.parentElement.textContent='C&amp;T'"></div>
+        <h4>Calamares &amp; Tempura by JSIXRON</h4>
+        <p>Crispy calamares and tempura, made to order.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-intro reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">09</span>
+        <span class="kicker-line"></span>
+        Why JSIXRON
+      </span>
+      <h2>Five reasons clients consolidate with us</h2>
+      <p>Most suppliers cover one category. JSIXRON was built to cover the ones that usually don't overlap — so you stop managing six vendor relationships for one project.</p>
+    </div>
+    <ul class="why-list reveal" id="whyList">
+      <li>
+        <span class="why-num">01</span>
+        <div>
+          <b>One point of contact</b>
+          <span>Every order, every category, handled by the same two founders. No hand-offs, no re-explaining your requirements.</span>
+        </div>
+      </li>
+      <li>
+        <span class="why-num">02</span>
+        <div>
+          <b>Cross-category reach</b>
+          <span>Industrial supplies and corporate branding from a single vendor — so a single project doesn't need two procurement trails.</span>
+        </div>
+      </li>
+      <li>
+        <span class="why-num">03</span>
+        <div>
+          <b>Manila-based logistics</b>
+          <span>Based in Tondo, central to Metro Manila. Same-day quotes, fast dispatch, and quick site visits when needed.</span>
+        </div>
+      </li>
+      <li>
+        <span class="why-num">04</span>
+        <div>
+          <b>Government-ready</b>
+          <span>PhilGEPS-registered with the documentation trail that government and enterprise procurement teams require.</span>
+        </div>
+      </li>
+      <li>
+        <span class="why-num">05</span>
+        <div>
+          <b>Importation support</b>
+          <span>Consultation and coordination for goods that need to be imported — from sourcing to clearance.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">10</span>
+        <span class="kicker-line"></span>
+        How It Works
+      </span>
+      <h2>From requirement to delivery</h2>
+      <p>Four steps. No accounts to set up, no minimums to negotiate.</p>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <span class="process-step-num">1</span>
+        <h4>Send the requirement</h4>
+        <p>Tell us what you need — item, quantity, delivery area. A photo or spec sheet helps.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">2</span>
+        <h4>Receive a quote</h4>
+        <p>Same-day pricing on most requests. Itemised, with lead time and delivery cost.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">3</span>
+        <h4>Confirm &amp; produce</h4>
+        <p>Sourced from stock, or produced to order. You get a firm delivery window in writing.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">4</span>
+        <h4>Deliver or haul</h4>
+        <p>Delivered to site or scheduled for hauling — with photo confirmation on handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="section-kicker">
+        <span class="kicker-num">11</span>
+        <span class="kicker-line"></span>
+        Get In Touch
+      </span>
+      <h2>Request a quote</h2>
+      <p class="contact-lede">Send us your requirements and we'll come back with a same-day quote on most items. No account setup, no minimums.</p>
+
+      <ul class="contact-list">
+        <li class="contact-item">
+          <span class="contact-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+          <div><b>Phone</b><a href="tel:+639763992008">0976-399-2008</a></div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></span>
+          <div><b>Email</b><a href="mailto:rondiola84@gmail.com">rondiola84@gmail.com</a></div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></span>
+          <div><b>Facebook</b><a href="https://www.facebook.com/profile.php?id=61553961980286" target="_blank" rel="noopener">JSIXRON Consumer Products &amp; Merchandise</a></div>
+        </li>
+        <li class="contact-item">
+          <span class="contact-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Address</b><span class="val">292B Lakandula St, Tondo, Manila</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <aside class="contact-panel reveal">
+      <h3>What to include in your request</h3>
+      <p>The more specific you are, the faster we can price it. Below is what helps us most.</p>
+      <hr>
+      <div class="contact-panel-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b>Item &amp; quantity</b> — brand, size, or spec if you have a preference</span>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b>Delivery location</b> — so we can include freight in the quote</span>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b>Timeline</b> — when you need it, and whether it's a one-off or recurring</span>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><b>Reference photos</b> — for custom work, uniforms, or signage</span>
+        </div>
+      </div>
+      <hr>
+      <p style="margin-bottom:0;font-size:13.5px;color:rgba(255,255,255,0.6);">Response time is typically within the same business day. For urgent requirements, call the number on the left.</p>
+    </aside>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <span class="brand-mark"><img src="assets/logo-mark.png" alt="JSIXRON logo"></span>
+          <b>JSIXRON</b>
+        </div>
+        <p>General trading and industrial supply, Manila-based since 2019. PhilGEPS-registered.</p>
+        <div class="footer-badge">
+          <img src="assets/philgeps.png" alt="PhilGEPS" onerror="this.parentElement.style.display='none'">
+          <span>PhilGEPS Registered Supplier</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#company">About</a>
+        <a href="#accreditation">Accreditations</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#businesses">Group Businesses</a>
+      </div>
+      <div class="footer-col">
+        <h5>Products &amp; Services</h5>
+        <a href="#catalog">General Merchandise</a>
+        <a href="#catalog">Corporate Solutions</a>
+        <a href="#catalog">Hauling &amp; Services</a>
+        <a href="#work">Completed Work</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="tel:+639763992008">0976-399-2008</a>
+        <a href="mailto:rondiola84@gmail.com">rondiola84@gmail.com</a>
+        <a href="https://www.facebook.com/profile.php?id=61553961980286" target="_blank" rel="noopener">Facebook</a>
+        <a href="#contact">Request a Quote</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> JSIXRON Consumer Products &amp; Merchandise · 292B Lakandula St, Tondo, Manila</span>
+      <span>PhilGEPS-registered · "Your Demand, Our Commitment"</span>
+    </div>
+  </div>
+</footer>
+
+<button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.89 1.46 5.47 3.74 7.15V22l3.42-1.88c.91.25 1.87.39 2.84.39 5.52 0 10-4.13 10-9.2S17.52 2 12 2zm.99 12.4l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/></svg>
+  <span class="chat-badge" id="chatBadge">1</span>
+</button>
+
+<div class="chat-popup" id="chatPopup" role="dialog" aria-label="Message JSIXRON">
+  <div class="chat-popup-head">
+    <span class="chat-popup-avatar"><img src="assets/logo-mark.png" alt="JSIXRON"></span>
+    <span class="chat-popup-head-text"><b>JSIXRON</b><span>Typically replies within a day</span></span>
+    <button class="chat-popup-close" id="chatClose" aria-label="Close">✕</button>
+  </div>
+  <div class="chat-popup-body">
+    <div class="chat-bubble">Good day. How may we help? Send your requirements (item, quantity, delivery area) and we'll get back to you with a quote.</div>
+    <a class="chat-popup-cta" href="https://m.me/61553961980286" target="_blank" rel="noopener" id="chatCta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.89 1.46 5.47 3.74 7.15V22l3.42-1.88c.91.25 1.87.39 2.84.39 5.52 0 10-4.13 10-9.2S17.52 2 12 2zm.99 12.4l-2.55-2.72-4.98 2.72 5.48-5.82 2.61 2.72 4.92-2.72-5.48 5.82z"/></svg>
+      Message us on Facebook
+    </a>
+    <p class="chat-popup-note">292B Lakandula St, Tondo, Manila · 0976-399-2008</p>
+  </div>
+</div>
+
+<button class="lightbox-close" id="lightboxClose" aria-label="Close image" style="display:none;">✕</button>
+<button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image" style="display:none;">‹</button>
+<button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image" style="display:none;">›</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Full-screen image view">
+  <p class="lightbox-counter" id="lightboxCounter"></p>
+  <div class="lightbox-img-wrap">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- scroll progress bar ---------- */
+  (function(){
+    const bar = document.getElementById('scrollBar');
+    if (!bar) return;
+    function update(){
+      const h = document.documentElement;
+      const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+      bar.style.width = (scrolled * 100) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
+  /* ---------- mobile menu ---------- */
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  /* ---------- reveal on scroll ---------- */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ---------- why list: staggered entrance ---------- */
+  const whyList = document.getElementById('whyList');
+  if (whyList) {
+    const whyIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); whyIo.unobserve(e.target); }
+      });
+    }, { threshold: 0.25 });
+    whyIo.observe(whyList);
+  }
+
+  /* ---------- stat counters: spring-land ---------- */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countEls = document.querySelectorAll('[data-count]');
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      if (reduceMotion) { el.textContent = target; countIo.unobserve(el); return; }
+      const duration = 1100;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        // easeOutBack — the number lands with a slight overshoot, feels weighted
+        const c1 = 1.70158, c3 = c1 + 1;
+        const eased = 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2);
+        el.textContent = Math.round(eased * target);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIo.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  countEls.forEach(el => countIo.observe(el));
+
+  /* ---------- completed-work carousel ---------- */
+  (function(){
+    const track = document.getElementById('workTrack');
+    const prev = document.getElementById('workPrev');
+    const next = document.getElementById('workNext');
+    if (!track || !prev || !next) return;
+    function step(){
+      const slide = track.querySelector('.work-slide');
+      if (!slide) return track.clientWidth;
+      const gap = 24;
+      return slide.getBoundingClientRect().width + gap;
+    }
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left:  step(), behavior: 'smooth' }));
+  })();
+
+  /* ---------- accreditation badge swap ---------- */
+  (function(){
+    const badge = document.querySelector('.accred-mark');
+    if (!badge) return;
+    const test = new Image();
+    test.onload = function(){
+      badge.innerHTML = '<img src="assets/philgeps.png" alt="PhilGEPS Registered Supplier">';
+    };
+    test.onerror = function(){};
+    test.src = 'assets/philgeps.png';
+  })();
+
+  /* ---------- chat widget ---------- */
+  (function(){
+    const launcher = document.getElementById('chatLauncher');
+    const popup = document.getElementById('chatPopup');
+    const closeBtn = document.getElementById('chatClose');
+    const badge = document.getElementById('chatBadge');
+    const cta = document.getElementById('chatCta');
+    if (!launcher || !popup) return;
+    const KEY = 'jsixronChatDismissed';
+    const dismissed = sessionStorage.getItem(KEY) === '1';
+
+    function open(){
+      popup.classList.add('open');
+      if (badge) badge.style.display = 'none';
+      document.addEventListener('click', outside);
+      document.addEventListener('keydown', onEsc);
+    }
+    function close(){
+      popup.classList.remove('open');
+      sessionStorage.setItem(KEY, '1');
+      document.removeEventListener('click', outside);
+      document.removeEventListener('keydown', onEsc);
+    }
+    function outside(e){ if (!popup.contains(e.target) && !launcher.contains(e.target)) close(); }
+    function onEsc(e){ if (e.key === 'Escape') close(); }
+
+    launcher.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.contains('open') ? close() : open();
+    });
+    closeBtn.addEventListener('click', close);
+    popup.addEventListener('click', (e) => e.stopPropagation());
+
+    if (!dismissed) setTimeout(open, 4200);
+    else if (badge) badge.style.display = 'none';
+
+    cta.addEventListener('click', function(){
+      const fallback = 'https://www.facebook.com/profile.php?id=61553961980286';
+      const w = window.open('https://m.me/61553961980286', '_blank');
+      setTimeout(() => { if (!w || w.closed) window.open(fallback, '_blank'); }, 600);
+    });
+  })();
+
+  /* ---------- gallery prev/next ---------- */
+  (function(){
+    const track = document.getElementById('galleryTrack');
+    const prev = document.getElementById('galleryPrev');
+    const next = document.getElementById('galleryNext');
+    if (!track || !prev || !next) return;
+    function step(){
+      const card = track.querySelector('.gallery-card');
+      return card ? card.getBoundingClientRect().width + 20 : 300;
+    }
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left:  step(), behavior: 'smooth' }));
+  })();
+
+  /* ---------- gallery: fetch from GitHub ---------- */
+  (function(){
+    const track = document.getElementById('galleryTrack');
+    if (!track) return;
+    const OWNER = 'redjemwedding', REPO = 'jsixron', PATH = 'assets/events';
+    const IMG = /\.(jpe?g|png|webp|gif)$/i;
+
+    function zoomHint(){
+      return '<span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></span>';
+    }
+    function card(file){
+      const el = document.createElement('div');
+      el.className = 'gallery-card';
+      el.innerHTML =
+        '<div class="gallery-photo">' +
+          '<img src="'+file.download_url+'" data-lightbox data-caption="JSIXRON — activities, events, and products" alt="JSIXRON photo" loading="lazy">' +
+          zoomHint() +
+        '</div>' +
+        '<div class="gallery-body"><span class="gallery-tag">Gallery</span><h4>JSIXRON</h4><p>From our activities, events, and services.</p></div>';
+      return el;
+    }
+    function empty(msg){
+      track.innerHTML =
+        '<div class="gallery-card">' +
+          '<div class="gallery-photo"><div class="gallery-pending">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>' +
+            '<span>'+msg+'</span></div></div>' +
+          '<div class="gallery-body"><span class="gallery-tag">Gallery</span><h4>Check back soon</h4><p>New photos added regularly.</p></div>' +
+        '</div>';
+    }
+    fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+PATH)
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(files => {
+        const imgs = (Array.isArray(files) ? files : []).filter(f => f.type === 'file' && IMG.test(f.name));
+        if (!imgs.length) return empty('No photos yet');
+        track.innerHTML = '';
+        imgs.forEach(f => track.appendChild(card(f)));
+      })
+      .catch(() => empty('Gallery unavailable'));
+  })();
+
+  /* ---------- clients: fetch from GitHub ---------- */
+  (function(){
+    const track = document.getElementById('clientsTrack');
+    if (!track) return;
+    const OWNER = 'redjemwedding', REPO = 'jsixron', PATH = 'assets/clients';
+    const IMG = /\.(jpe?g|png|webp|gif|svg)$/i;
+
+    function card(file){
+      const el = document.createElement('div');
+      el.className = 'client-card';
+      const label = file.name.replace(/\.[^/.]+$/, '').replace(/[-_]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      el.innerHTML = '<img src="'+file.download_url+'" alt="'+label+' logo" loading="lazy">';
+      return el;
+    }
+    function empty(msg){
+      track.style.animation = 'none';
+      track.innerHTML =
+        '<div class="client-card"><div class="client-pending">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>' +
+          '<span>'+msg+'</span></div></div>';
+    }
+    fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+PATH)
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(files => {
+        const imgs = (Array.isArray(files) ? files : []).filter(f => f.type === 'file' && IMG.test(f.name));
+        if (!imgs.length) return empty('No clients yet');
+        track.innerHTML = '';
+        imgs.forEach(f => track.appendChild(card(f)));
+        imgs.forEach(f => track.appendChild(card(f)));
+        if (imgs.length < 6) {
+          track.style.animation = 'none';
+          track.style.width = '100%';
+          track.style.flexWrap = 'wrap';
+          track.style.justifyContent = 'center';
+        }
+      })
+      .catch(() => empty('Clients unavailable'));
+  })();
+
+  /* ---------- capabilities accordion ---------- */
+  (function(){
+    const blocks = document.querySelectorAll('[data-category]');
+
+    function open(b, t, w){
+      w.style.transition = '';
+      w.style.maxHeight = w.scrollHeight + 'px';
+      b.classList.add('open');
+      t.setAttribute('aria-expanded', 'true');
+    }
+    function close(b, t, w){
+      w.style.transition = '';
+      w.style.maxHeight = '0px';
+      b.classList.remove('open');
+      t.setAttribute('aria-expanded', 'false');
+    }
+    function closeCompensated(b, t, w){
+      const start = w.scrollHeight;
+      if (!start){ close(b, t, w); return; }
+      const dur = 450, t0 = performance.now();
+      let last = start;
+      w.style.transition = '';
+      w.style.maxHeight = start + 'px';
+      b.classList.remove('open');
+      t.setAttribute('aria-expanded', 'false');
+      function step(now){
+        const p = Math.min((now - t0) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        const nh = start * (1 - e);
+        const d = nh - last;
+        w.style.maxHeight = nh + 'px';
+        if (d) window.scrollBy(0, d);
+        last = nh;
+        if (p < 1) requestAnimationFrame(step);
+        else { w.style.maxHeight = '0px'; }
+      }
+      requestAnimationFrame(step);
+    }
+
+    blocks.forEach(b => {
+      const t = b.querySelector('.category-toggle');
+      const w = b.querySelector('.ledger-wrapper');
+      if (!t || !w) return;
+      if (b.classList.contains('open')) w.style.maxHeight = w.scrollHeight + 'px';
+      t.addEventListener('click', () => {
+        b.classList.contains('open') ? close(b, t, w) : open(b, t, w);
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.category-block.open .ledger-wrapper').forEach(w => {
+        w.style.maxHeight = w.scrollHeight + 'px';
+      });
+    });
+
+    if (reduceMotion || !blocks.length) return;
+    let cur = null, timer = null;
+    function setOpen(b){
+      if (b === cur) return;
+      const prev = cur;
+      cur = b;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (prev && prev !== b){
+          const pt = prev.querySelector('.category-toggle');
+          const pw = prev.querySelector('.ledger-wrapper');
+          if (pt && pw) closeCompensated(prev, pt, pw);
+        }
+        const t = b.querySelector('.category-toggle');
+        const w = b.querySelector('.ledger-wrapper');
+        if (t && w) open(b, t, w);
+      }, 180);
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          const b = e.target.closest('.category-block');
+          if (b) setOpen(b);
+        }
+      });
+    }, { rootMargin: '-35% 0px -35% 0px', threshold: 0 });
+    blocks.forEach(b => {
+      const title = b.querySelector('.category-title');
+      if (title) obs.observe(title);
+    });
+  })();
+
+  /* ---------- lightbox ---------- */
+  (function(){
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    const cap = document.getElementById('lightboxCaption');
+    const cnt = document.getElementById('lightboxCounter');
+    const close = document.getElementById('lightboxClose');
+    const prev = document.getElementById('lightboxPrev');
+    const next = document.getElementById('lightboxNext');
+    if (!lb || !img) return;
+
+    let items = [], idx = 0, lockY = 0;
+
+    function refresh(){ items = Array.from(document.querySelectorAll('img[data-lightbox]')); }
+    function render(){
+      const el = items[idx];
+      img.src = el.currentSrc || el.src;
+      const c = el.getAttribute('data-caption') || '';
+      img.alt = c;
+      cap.textContent = c;
+      cnt.textContent = (idx + 1) + ' / ' + items.length;
+    }
+    function openAt(i){
+      idx = i; lockY = window.scrollY; render();
+      lb.classList.add('open');
+      close.style.display = 'flex';
+      if (items.length > 1){ prev.style.display = 'flex'; next.style.display = 'flex'; }
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + lockY + 'px';
+      document.body.style.width = '100%';
+      document.addEventListener('keydown', onKey);
+    }
+    function shut(){
+      lb.classList.remove('open');
+      close.style.display = prev.style.display = next.style.display = 'none';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, lockY);
+      document.removeEventListener('keydown', onKey);
+      setTimeout(() => { if (!lb.classList.contains('open')) img.src = ''; }, 200);
+    }
+    function go(n){ idx = (idx + n + items.length) % items.length; render(); }
+    function onKey(e){
+      if (e.key === 'Escape') shut();
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
+    }
+
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest('img[data-lightbox]');
+      if (!el) return;
+      refresh();
+      const i = items.indexOf(el);
+      if (i !== -1) openAt(i);
+    });
+    close.addEventListener('click', shut);
+    next.addEventListener('click', () => go(1));
+    prev.addEventListener('click', () => go(-1));
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb || e.target.classList.contains('lightbox-img-wrap')) shut();
+    });
+
+    let sx = 0, sy = 0;
+    lb.addEventListener('touchstart', (e) => {
+      sx = e.changedTouches[0].screenX;
+      sy = e.changedTouches[0].screenY;
+    }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].screenX - sx;
+      const dy = e.changedTouches[0].screenY - sy;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+        dx < 0 ? go(1) : go(-1);
+      }
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
