@@ -708,7 +708,9 @@
     transform:translateY(-2px);
   }
   .business-card img{
-    position:absolute;inset:24px;
+    position:absolute;
+    top:24px;left:24px;right:24px;bottom:24px;
+    width:calc(100% - 48px);height:calc(100% - 48px);
     object-fit:contain;
     /* No grayscale: logos show in full color right away */
   }
@@ -942,25 +944,16 @@
     .chat-popup{right:24px;bottom:92px;}
   }
 
-  /* ---------- photo modal (grid view + single view, one shared overlay) ---------- */
+  /* ---------- photo lightbox (single full-screen view, no grid step) ---------- */
   .photo-modal{
     position:fixed;inset:0;z-index:400;
     background:rgba(6,6,7,0.97);
+    display:flex;align-items:center;justify-content:center;
+    padding:56px 20px;
     opacity:0;pointer-events:none;
     transition:opacity .2s ease;
   }
   .photo-modal.open{opacity:1;pointer-events:auto;}
-
-  .photo-modal-grid,
-  .photo-modal-single{
-    position:absolute;inset:0;
-    display:none;
-  }
-  .photo-modal-grid.active{display:flex;flex-direction:column;}
-  .photo-modal-single.active{
-    display:flex;align-items:center;justify-content:center;
-    padding:56px 20px;
-  }
 
   .lightbox-img-wrap{
     max-width:min(1100px,92vw);max-height:88vh;
@@ -1015,47 +1008,6 @@
     color:rgba(255,255,255,0.65);
     pointer-events:none;
   }
-
-  .grid-modal-head{
-    display:flex;align-items:center;justify-content:space-between;
-    flex-shrink:0;
-    padding:calc(16px + env(safe-area-inset-top,0)) 20px 16px;
-    border-bottom:1px solid rgba(255,255,255,0.1);
-  }
-  .grid-modal-title{color:#fff;font-size:15px;font-weight:600;letter-spacing:0.01em;}
-  .grid-modal-close{
-    width:40px;height:40px;border-radius:50%;flex-shrink:0;
-    background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
-    color:#fff;font-size:18px;cursor:pointer;line-height:1;
-    display:flex;align-items:center;justify-content:center;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .grid-modal-close:hover{background:rgba(255,255,255,0.18);}
-  .grid-modal-body{
-    flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
-    padding:16px 16px calc(24px + env(safe-area-inset-bottom,0));
-    display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
-  }
-  @media (min-width:520px){
-    .grid-modal-body{grid-template-columns:repeat(3,1fr);gap:14px;padding:20px 20px calc(28px + env(safe-area-inset-bottom,0));}
-  }
-  @media (min-width:900px){
-    .grid-modal-body{grid-template-columns:repeat(4,1fr);gap:16px;max-width:1040px;margin:0 auto;width:100%;}
-  }
-  .grid-modal-item{
-    position:relative;
-    width:100%;
-    padding-bottom:100%;
-    border-radius:6px;overflow:hidden;cursor:zoom-in;
-    background:rgba(255,255,255,0.04);
-  }
-  .grid-modal-item img{
-    position:absolute;inset:0;
-    width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform .2s ease;
-  }
-  .grid-modal-item:hover img{transform:scale(1.06);}
-
   .fade-in-img{opacity:0;transition:opacity .5s ease;}
   .fade-in-img.loaded{opacity:1;}
 </style>
@@ -1542,25 +1494,13 @@
   </div>
 </div>
 
-<div class="photo-modal" id="photoModal" role="dialog" aria-label="Photo gallery">
-
-  <div class="photo-modal-grid" id="photoModalGrid">
-    <div class="grid-modal-head">
-      <span class="grid-modal-title" id="gridModalTitle">Gallery</span>
-      <button class="grid-modal-close" id="gridModalClose" aria-label="Close">×</button>
-    </div>
-    <div class="grid-modal-body" id="gridModalBody"></div>
-  </div>
-
-  <div class="photo-modal-single" id="photoModalSingle">
-    <p class="lightbox-counter" id="lightboxCounter"></p>
-    <button class="lightbox-close" id="lightboxClose" aria-label="Back to gallery">×</button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
-    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">›</button>
-    <div class="lightbox-img-wrap"><img id="lightboxImg" src="" alt=""></div>
-    <p class="lightbox-caption" id="lightboxCaption"></p>
-  </div>
-
+<div class="photo-modal" id="photoModal" role="dialog" aria-label="Photo viewer">
+  <p class="lightbox-counter" id="lightboxCounter"></p>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">›</button>
+  <div class="lightbox-img-wrap"><img id="lightboxImg" src="" alt=""></div>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
 </div>
 
 <script>
@@ -1959,36 +1899,20 @@
     }
   })();
 
-  /* photo modal: grid view + single view sharing one overlay */
+  /* photo lightbox: tap a photo, it opens directly, swipe or use next/prev */
   (function(){
     const modal = document.getElementById('photoModal');
-    const gridView = document.getElementById('photoModalGrid');
-    const singleView = document.getElementById('photoModalSingle');
-    const gridTitle = document.getElementById('gridModalTitle');
-    const gridBody = document.getElementById('gridModalBody');
-    const gridClose = document.getElementById('gridModalClose');
     const img = document.getElementById('lightboxImg');
     const cap = document.getElementById('lightboxCaption');
     const cnt = document.getElementById('lightboxCounter');
     const closeBtn = document.getElementById('lightboxClose');
     const prev = document.getElementById('lightboxPrev');
     const next = document.getElementById('lightboxNext');
-    if (!modal || !gridView || !singleView) return;
+    if (!modal || !img) return;
 
     let items = [];
     let idx = 0;
     let lockY = 0;
-
-    const GROUP_LABELS = { gallery: 'Gallery', work: 'Completed Work' };
-
-    function showGridView(){
-      singleView.classList.remove('active');
-      gridView.classList.add('active');
-    }
-    function showSingleView(){
-      gridView.classList.remove('active');
-      singleView.classList.add('active');
-    }
 
     function openModal(){
       lockY = window.scrollY;
@@ -2014,30 +1938,7 @@
       const selector = group ? 'img[data-lightbox][data-lightbox-group="' + group + '"]' : 'img[data-lightbox]:not([data-lightbox-group])';
       items = Array.from(document.querySelectorAll(selector));
     }
-    function renderGrid(group){
-      gridTitle.textContent = GROUP_LABELS[group] || 'Photos';
-      gridBody.innerHTML = '';
-      items.forEach((el, i) => {
-        const cell = document.createElement('div');
-        cell.className = 'grid-modal-item';
-        const im = document.createElement('img');
-        im.src = el.currentSrc || el.src;
-        im.alt = el.getAttribute('data-caption') || el.alt || '';
-        im.loading = 'lazy';
-        cell.appendChild(im);
-        cell.addEventListener('click', () => openSingle(i));
-        gridBody.appendChild(cell);
-      });
-    }
-    function openGrid(group){
-      refresh(group);
-      if (!items.length) return;
-      renderGrid(group);
-      showGridView();
-      if (!modal.classList.contains('open')) openModal();
-    }
-
-    function renderSingle(){
+    function render(){
       const el = items[idx];
       img.src = el.currentSrc || el.src;
       const c = el.getAttribute('data-caption') || '';
@@ -2046,43 +1947,37 @@
       cnt.textContent = items.length > 1 ? (idx + 1) + ' / ' + items.length : '';
       prev.style.display = next.style.display = items.length > 1 ? 'flex' : 'none';
     }
-    function openSingle(i){
-      idx = i;
-      renderSingle();
-      showSingleView();
-    }
-    function go(n){ idx = (idx + n + items.length) % items.length; renderSingle(); }
+    function go(n){ idx = (idx + n + items.length) % items.length; render(); }
 
     function onKey(e){
-      if (e.key === 'Escape') {
-        singleView.classList.contains('active') ? showGridView() : closeModal();
-      }
-      if (singleView.classList.contains('active')) {
-        if (e.key === 'ArrowRight') go(1);
-        if (e.key === 'ArrowLeft') go(-1);
-      }
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
     }
 
     document.addEventListener('click', e => {
       const el = e.target.closest('img[data-lightbox]');
       if (!el) return;
-      openGrid(el.getAttribute('data-lightbox-group'));
+      refresh(el.getAttribute('data-lightbox-group'));
+      const i = items.indexOf(el);
+      idx = i === -1 ? 0 : i;
+      render();
+      openModal();
     });
 
-    gridClose.addEventListener('click', closeModal);
-    closeBtn.addEventListener('click', showGridView);
+    closeBtn.addEventListener('click', closeModal);
     next.addEventListener('click', () => go(1));
     prev.addEventListener('click', () => go(-1));
-    singleView.addEventListener('click', e => {
-      if (e.target === singleView || e.target.classList.contains('lightbox-img-wrap')) showGridView();
+    modal.addEventListener('click', e => {
+      if (e.target === modal || e.target.classList.contains('lightbox-img-wrap')) closeModal();
     });
 
     let sx = 0, sy = 0;
-    singleView.addEventListener('touchstart', e => {
+    modal.addEventListener('touchstart', e => {
       sx = e.changedTouches[0].screenX;
       sy = e.changedTouches[0].screenY;
     }, { passive: true });
-    singleView.addEventListener('touchend', e => {
+    modal.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].screenX - sx;
       const dy = e.changedTouches[0].screenY - sy;
       if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) dx < 0 ? go(1) : go(-1);
